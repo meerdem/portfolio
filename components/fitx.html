@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FitX – 9 Hypothesen zur CRO Optimierung | Muhammed-Emre Erdem</title>
+<meta name="description" content="Case Study: 9 isolierte A/B Test Empfehlungen zur Conversion-Optimierung der FitX Mitgliedschafts-Card – CRO-Analyse von Muhammed-Emre Erdem." />
+<link rel="canonical" href="https://muhammed-emre-erdem.de/components/fitx.html" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://muhammed-emre-erdem.de/components/fitx.html" />
+<meta property="og:title" content="FitX – 9 Hypothesen zur CRO Optimierung | Muhammed-Emre Erdem" />
+<meta property="og:description" content="9 isolierte A/B Test Empfehlungen zur Conversion-Optimierung der FitX Mitgliedschafts-Card." />
+<meta property="og:image" content="https://muhammed-emre-erdem.de/assets/fitx/fitx_thumbnail.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://muhammed-emre-erdem.de/assets/fitx/fitx_thumbnail.jpg" />
+<meta name="twitter:title" content="FitX – 9 Hypothesen zur CRO Optimierung | Muhammed-Emre Erdem" />
+<meta name="twitter:description" content="9 isolierte A/B Test Empfehlungen zur Conversion-Optimierung der FitX Mitgliedschafts-Card." />
+<meta name="author" content="Muhammed-Emre Erdem" />
+<meta name="robots" content="index, follow" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "FitX – 9 Hypothesen zur CRO Optimierung",
+  "author": { "@type": "Person", "name": "Muhammed-Emre Erdem", "url": "https://muhammed-emre-erdem.de" },
+  "description": "9 isolierte A/B Test Empfehlungen zur Conversion-Optimierung der FitX Mitgliedschafts-Card.",
+  "url": "https://muhammed-emre-erdem.de/components/fitx.html"
+}
+</script>
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css" />
+<link rel="icon" type="image/svg+xml" href="../assets/me_logo.svg" />
+
+<!-- Ubuntu Sans für SVG-Mockups (FitX Branding) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600;700;800&display=swap" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" crossorigin="anonymous"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        hsl(260 87% 3%);
+  --fg:        hsl(40 6% 95%);
+  --fg-sub:    rgba(240,234,220,0.55);
+  --font-body: 'Geist', sans-serif;
+  --font-head: 'General Sans', sans-serif;
+}
+
+html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); overflow-x: hidden; }
+
+/* ── Nav ── */
+.nav-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(240,234,220,0.2), transparent);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(240,234,220,0.5); font-family: var(--font-body);
+  font-size: 14px; text-decoration: none; transition: color 0.15s;
+  background: none; border: none; cursor: pointer; padding: 0;
+}
+.back-link:hover { color: rgba(240,234,220,0.9); }
+.me-badge {
+  display: inline-block; border-radius: 50%;
+  transition: box-shadow 0.2s, transform 0.2s;
+  line-height: 0; text-decoration: none;
+}
+.me-badge:hover {
+  box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3);
+  transform: scale(1.08);
+}
+
+/* ── Tag chips ── */
+.tag-chip {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: 9999px;
+  font-size: 12px; font-weight: 500;
+  font-family: var(--font-body); letter-spacing: 0.01em;
+}
+
+/* ── Hero fade-up animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.12s cubic-bezier(0.22,1,0.36,1) both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.24s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── Scroll slide animations ── */
+.slide-l {
+  opacity: 0; transform: translateX(-52px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-r {
+  opacity: 0; transform: translateX(52px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-l.in, .slide-r.in { opacity: 1; transform: translateX(0); }
+.slide-up {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-up.in { opacity: 1; transform: translateY(0); }
+
+/* ── Copy → Check draw animation ── */
+@keyframes checkDraw {
+  from { stroke-dashoffset: 22; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 768px) {
+  .meta-row { flex-direction: column !important; gap: 16px !important; }
+}
+
+/* ── FitX Slider ── */
+.fitx-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  border: none;
+  padding: 0;
+}
+.fitx-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #EC7404;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.fitx-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 10px rgba(236,116,4,0.4);
+}
+.fitx-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #EC7404;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="../js/fitx.js"></script>
+</body>
+</html>

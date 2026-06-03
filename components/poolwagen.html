@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Poolwagenverwaltung – Case Study</title>
+
+<link rel="icon" type="image/svg+xml" href="../assets/me_logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       hsl(260 87% 3%);
+  --fg:       hsl(40 6% 95%);
+  --fg-sub:   hsl(40 6% 72%);
+  --font-body: 'Geist', sans-serif;
+  --font-head: 'General Sans', sans-serif;
+}
+
+html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); overflow-x: hidden; }
+
+.nav-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(240,234,220,0.2), transparent);
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.12s cubic-bezier(0.22,1,0.36,1) both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.24s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--marquee-end, -50%)); }
+}
+.marquee-track {
+  display: flex;
+  animation: marquee 8s cubic-bezier(0.3, 0.2, 0.7, 0.8) infinite alternate;
+  will-change: transform;
+  user-select: none;
+  cursor: default;
+}
+.marquee-track * {
+  cursor: default;
+  user-select: none;
+}
+
+.slide-l {
+  opacity: 0;
+  transform: translateX(-52px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-r {
+  opacity: 0;
+  transform: translateX(52px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-l.in, .slide-r.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.slide-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.insight-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 32px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.insight-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(168,85,247,0.25);
+}
+.insight-card.slide-l,
+.insight-card.slide-r {
+  transition: background 0.2s, border-color 0.2s,
+              opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(240,234,220,0.5);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.back-link:hover { color: rgba(240,234,220,0.9); }
+
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .two-col { grid-template-columns: 1fr !important; }
+  .insight-grid { grid-template-columns: 1fr !important; }
+  .meta-row { flex-direction: column !important; gap: 16px !important; }
+}
+.me-badge { display: inline-block; border-radius: 50%; transition: box-shadow 0.2s, transform 0.2s; line-height: 0; text-decoration: none; }
+.me-badge:hover { box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3); transform: scale(1.08); }
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Copy → Check animation ── */
+@keyframes checkDraw {
+  from { stroke-dashoffset: 22; }
+  to   { stroke-dashoffset: 0; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+const mkIcon = (name) => ({ size=24, strokeWidth=2, color='currentColor', fill='none', style, ...rest } = {}) => {
+  const d = lucide[name]; if (!d) return null;
+  return React.createElement('svg', { xmlns:'http://www.w3.org/2000/svg', width:size, height:size, viewBox:'0 0 24 24', fill, stroke:color, strokeWidth, strokeLinecap:'round', strokeLinejoin:'round', style, ...rest },
+    ...d.map(([t,a],i) => { const ra={}; for(const k in a) ra[k.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())]=a[k]; return React.createElement(t,{key:i,...ra}); }));
+};
+const ArrowUpRight = mkIcon('ArrowUpRight');
+const Zap          = mkIcon('Zap');
+const Target       = mkIcon('Target');
+
+const useIsMobile = () => {
+  const [v, setV] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const h = () => setV(window.innerWidth < 768);
+    window.addEventListener('resize', h);
+    return () => window.removeEventListener('resize', h);
+  }, []);
+  return v;
+};
+
+/* ── Logo Marquee ── */
+const LOGOS = [
+  { name: 'Figma', src: '../assets/marquee-icons/figma.svg' },
+  { name: 'HTML5', src: '../assets/marquee-icons/html5.svg' },
+  { name: 'CSS3', src: '../assets/marquee-icons/css3.svg' },
+  { name: 'Photoshop', src: '../assets/marquee-icons/photoshop.svg' },
+  { name: 'Adobe XD', noFilter: true, src: '../assets/marquee-icons/adobe-xd.svg' },
+  { name: 'JavaScript', src: '../assets/marquee-icons/javascript.svg' },
+  { name: 'PHP', src: '../assets/marquee-icons/php.svg' },
+];
+
+const LogoItem = ({ name, src, noFilter }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+    <img
+      src={src} loading="lazy"
+      alt={name}
+      style={{ width: 22, height: 22, flexShrink: 0, display: 'block', filter: noFilter ? 'none' : 'brightness(0) invert(1)', opacity: 0.7 }}
+    />
+    <span style={{ fontSize: 15, fontWeight: 500, color: 'rgba(240,234,220,0.8)', fontFamily: 'var(--font-body)', whiteSpace: 'nowrap' }}>{name}</span>
+  </div>
+);
+
+
+const MarqueeSet = () => (
+  <div style={{ display: 'flex', gap: 64, paddingRight: 64, flexShrink: 0 }}>
+    {LOGOS.map((l, i) => <LogoItem key={i} {...l} />)}
+  </div>
+);
+
+const Marquee = () => (
+  <div className="marquee-wrapper" style={{ overflow: 'hidden', flex: 1, minWidth: 0 }}>
+    <div className="marquee-track">
+      <MarqueeSet />
+      <MarqueeSet aria-hidden="true" />
+      <MarqueeSet aria-hidden="true" />
+    </div>
+  </div>
+);
+
+const LogoCloud = ({ isMobile }) => (
+  <div style={{ paddingTop: 48, paddingBottom: 0, position: 'relative', zIndex: 10 }}>
+    <div style={{
+      maxWidth: 960, margin: '0 auto',
+      display: 'flex', alignItems: 'center',
+      gap: 48, padding: '0 32px',
+    }}>
+      <Marquee />
+    </div>
+  </div>
+);
+
+const DETAIL_1 = '../assets/poolwagen/kennzeichen-suche.webp';
+const DETAIL_2 = '../assets/poolwagen/antrieb-symbole.webp';
+const DETAIL_4 = '../assets/poolwagen/verfuegbarkeit.webp';
+const DETAIL_3 = '../assets/poolwagen/schnellzugriff.webp';
+/* ── Navbar ── */
+const Navbar = () => (
+  <header style={{ position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', background: 'rgba(5,2,14,0.85)' }}>
+    <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 32px', maxWidth: 1100, margin: '0 auto' }}>
+      <a href="../index.html" className="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+        Zurück zum Portfolio
+      </a>
+      <a href="../index.html" className="me-badge"><img src="../assets/me_logo.svg" style={{ width: 32, height: 32, display: 'block' }} alt="ME" /></a>
+    </nav>
+    <div className="nav-divider" />
+  </header>
+);
+
+/* ── Hero ── */
+const Hero = ({ isMobile }) => (
+  <section style={{ background: 'var(--bg)', padding: isMobile ? '60px 24px 48px' : '80px 32px 56px', position: 'relative', overflow: 'hidden' }}>
+    {/* Background glow */}
+    <div style={{ position: 'absolute', top: '-20%', left: '30%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(168,85,247,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      {/* Label */}
+      <p className="fade-up" style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#a855f7', marginBottom: 20, fontFamily: 'var(--font-body)' }}>Case Study</p>
+
+      {/* Title */}
+      <h1 className="fade-up-2" style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 48 : 88, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1, paddingBottom: 6, marginBottom: 32,
+        backgroundImage: 'linear-gradient(to bottom right, #e0e7ff, #a855f7, #6366f1)',
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        Poolwagenverwaltung
+      </h1>
+
+      {/* Meta row */}
+      <div className="fade-up-3 meta-row" style={{ display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {['UX/UI Design', 'Webentwicklung', 'Data-driven', 'Internes Tool', 'Fuhrparkverwaltung'].map(t => (
+            <span key={t} className="tag-chip" style={{ background: 'rgba(99,102,241,0.12)', color: '#a5b4fc', border: '1px solid rgba(99,102,241,0.25)' }}>{t}</span>
+          ))}
+        </div>
+        
+      </div>
+    </div>
+    <LogoCloud isMobile={isMobile} />
+  </section>
+);
+
+/* ── Section wrapper ── */
+const Section = ({ dark, children, style = {} }) => (
+  <section style={{
+    background: dark ? 'var(--bg)' : '#fff',
+    padding: '100px 32px',
+    borderTop: dark ? '1px solid rgba(255,255,255,0.05)' : '1px solid hsl(40 10% 93%)',
+    ...style
+  }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      {children}
+    </div>
+  </section>
+);
+
+const SectionLabel = ({ dark, children }) => (
+  <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: dark ? '#a855f7' : '#a855f7', marginBottom: 16, fontFamily: 'var(--font-body)' }}>{children}</p>
+);
+
+const SectionTitle = ({ dark, children, size }) => (
+  <h2 style={{ fontFamily: 'var(--font-head)', fontSize: size || 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 48, color: dark ? 'var(--fg)' : 'hsl(260 30% 12%)' }}>{children}</h2>
+);
+
+/* ── 1. Briefing ── */
+const Briefing = ({ isMobile }) => (
+  <Section>
+    <SectionLabel>01 — Briefing</SectionLabel>
+    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 80, alignItems: 'start' }}>
+      <div className='slide-l'>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 28, color: 'hsl(260 30% 12%)' }}>
+          Ein internes Verwaltungstool für den Fuhrpark von team neusta.
+        </h2>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 20 }}>
+          Poolwagen ist ein firmeninternes Verwaltungstool für Dienstfahrzeuge im Office-Management. Es ermöglicht Mitarbeitenden, Fahrzeuge einzusehen, hinzuzufügen, zu bearbeiten und deren Verfügbarkeit sowie Reservierungsdauer auf einen Blick zu erfassen.
+        </p>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>
+          Das Projekt entstand im Rahmen meiner Ausbildung bei team neusta und umfasste den gesamten UX/UI-Prozess — von der Konzeption bis zur fertigen Umsetzung. Zentrales Ziel war es, Fahrzeugdaten übersichtlich darzustellen und die Verwaltung so effizient zu gestalten, dass der manuelle Aufwand im Office-Management spürbar sinkt.
+        </p>
+      </div>
+      <div className='slide-r' style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {[
+          { label: 'Zeitraum', value: 'Feb. 2023 – Dez. 2023' },
+          { label: 'Rolle', value: 'UX/UI Designer & Frontend-Entwickler' },
+          { label: 'Einsatzdauer', value: '10 Monate' },
+        ].map(({ label, value }) => (
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '18px 0', borderBottom: '1px solid hsl(40 10% 92%)' }}>
+            <span style={{ fontSize: 13, color: 'hsl(260 10% 60%)', fontFamily: 'var(--font-body)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 500 }}>{label}</span>
+            <span style={{ fontSize: 15, color: 'hsl(260 30% 12%)', fontFamily: 'var(--font-body)', fontWeight: 500, textAlign: 'right' }}>{value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+);
+
+/* ── 2. Herausforderung & Ziel ── */
+const HerausforderungZiel = ({ isMobile }) => (
+  <Section dark>
+    <SectionLabel dark>02 — Herausforderung & Ziel</SectionLabel>
+    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 80 }}>
+      <div className='slide-l'>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }}>Die Herausforderung</h2>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)', marginBottom: 20 }}>
+          Die bestehende Übersicht der Dienstfahrzeuge war unordentlich und veraltet — schwer lesbar und nicht auf den tatsächlichen Verwaltungsalltag abgestimmt.
+        </p>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)' }}>
+          Hinzu kam, dass zentrale Funktionen wie das Hinzufügen, Bearbeiten oder Entfernen von Fahrzeugen unnötig umständlich waren — zu viele Schritte für Aufgaben, die täglich anfallen.
+        </p>
+      </div>
+      <div className='slide-r'>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }}>Das Ziel</h2>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)', marginBottom: 32 }}>
+          Ein klares, effizientes Verwaltungstool — das Fahrzeuginformationen bündelt und den Verwaltungsalltag spürbar vereinfacht.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {[
+            { num: '01', text: 'Zentrale Fahrzeugübersicht auf einen Blick' },
+            { num: '02', text: 'Fahrzeuge hinzufügen & bearbeiten' },
+            { num: '03', text: 'Verfügbarkeit & Reservierungsdauer einsehbar' },
+            { num: '04', text: 'Schnelle Kennzeichensuche' },
+          ].map(({ num, text }) => (
+            <div key={num} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '18px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.05)' }}>
+              <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 700, color: '#a855f7', minWidth: 28, letterSpacing: '0.04em' }}>{num}</span>
+              <span style={{ fontSize: 15, fontWeight: 500, color: 'var(--fg)', fontFamily: 'var(--font-body)' }}>{text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+);
+
+/* ── User Journey ── */
+
+const POOLWAGEN_MOCKUP = '../assets/poolwagen/poolwagen_mockup.webp';
+const POOLWAGEN_BANNER = '../assets/poolwagen/poolwagen_banner.webp';
+const POOLWAGEN_ALT = '../assets/poolwagen/poolwagen_alt.webp';
+/* ── 3. Mockup ── */
+/* ── DetailSection ── */
+const DETAIL_STEPS = [
+  { num: '01', title: 'Kennzeichensuche', img: DETAIL_1, body: ['Fahrzeuge lassen sich direkt über das Kennzeichen suchen. Die Autovervollständigung schlägt passende Einträge in Echtzeit vor — kein Scrollen, kein Raten, sofort am Ziel.'] },
+  { num: '02', title: 'Verfügbarkeit auf einen Blick', img: DETAIL_4, body: ['Kein ewiges Versuchen zu entziffern, ob ein Fahrzeug verfügbar ist. Der Verfügbarkeitsstatus ist sofort ersichtlich — klar, eindeutig und ohne Interpretationsspielraum.'] },
+  { num: '03', title: 'Innovative Darstellung der Antriebsart', img: DETAIL_2, body: ['Weg von der unidentifizierbaren Textwüste hin zu einer schnell zugänglichen, visuellen Darstellung. Symbole kommunizieren die Antriebsart auf einen Blick — intuitiv und ohne Lesen.'] },
+  { num: '04', title: 'Schneller Zugriff auf die wichtigsten Funktionen', img: DETAIL_3, body: ['Die wichtigsten Aktionen sind direkt in der Listenansicht erreichbar. Wer mehr Informationen zu einem Fahrzeug benötigt, klappt das Akkordion einfach auf — ohne Seitenwechsel.'] },
+];
+
+const DetailSection = ({ isMobile }) => {
+  const [step, setStep] = React.useState(0);
+  const [active, setActive] = React.useState(false);
+  const wrapperRef = React.useRef(null);
+  const N = DETAIL_STEPS.length;
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      if (!wrapperRef.current) return;
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const scrolledIn = -rect.top;
+      const inSection = scrolledIn >= 0 && rect.bottom > window.innerHeight;
+      setActive(inSection);
+      setStep(Math.max(0, Math.min(N - 1, Math.floor(scrolledIn / (window.innerHeight * 0.5)))));
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const imgStyle = { maxWidth: '100%', maxHeight: 'calc(100vh - 180px)', objectFit: 'contain', display: 'block', borderRadius: 16, boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' };
+
+  if (isMobile) return (
+    <section style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px 48px' }}>
+        <SectionLabel>04 — Details</SectionLabel>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 30, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>Funktionen im Detail.</h2>
+      </div>
+      {DETAIL_STEPS.map((st, i) => (
+        <div key={i} style={{ padding: '60px 24px', borderTop: '1px solid hsl(40 10% 93%)' }}>
+          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#a855f7', display: 'block', marginBottom: 12, fontFamily: 'var(--font-body)' }}>{st.num}</span>
+          <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 22, fontWeight: 600, color: 'hsl(260 30% 12%)', marginBottom: 14, lineHeight: 1.2 }}>{st.title}</h3>
+          {st.body.map((p, j) => <p key={j} style={{ fontSize: 15, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 10 }}>{p}</p>)}
+          <img src={st.img} loading="lazy" style={{ width: '100%', borderRadius: 12, marginTop: 24 }} alt={st.title} />
+        </div>
+      ))}
+    </section>
+  );
+
+  const cur = DETAIL_STEPS[step];
+
+  return (
+    <section style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)', position: 'relative' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 32px 16px' }}>
+        <SectionLabel>04 — Details</SectionLabel>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
+          Funktionen im Detail.
+        </h2>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', maxWidth: 540 }}>
+          Vier Designentscheidungen, die das Tool spürbar besser machen — von der Suche bis zum Schnellzugriff.
+        </p>
+      </div>
+
+      <div ref={wrapperRef} style={{ height: ((N + 3) * 50) + 'vh' }} />
+
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '100vh', background: '#fff', zIndex: 50, display: 'flex', alignItems: 'center', paddingTop: 64, opacity: active ? 1 : 0, pointerEvents: active ? 'auto' : 'none', transition: 'opacity 0.2s ease' }}>
+        <div style={{ position: 'absolute', left: '50%', translate: '-50% 0', top: '20px', maxWidth: 1100, margin: '0 auto', width: '100%', padding: '0 32px', display: 'grid', gridTemplateColumns: '72px 1fr', gap: 48, alignItems: 'center' }}>
+
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 20 }}>
+            <span style={{ fontFamily: 'var(--font-head)', fontSize: 52, fontWeight: 700, color: '#a855f7', lineHeight: 1, letterSpacing: '-0.03em' }}>{cur.num}</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {DETAIL_STEPS.map((_, i) => (
+                <div key={i} style={{ width: 4, height: i === step ? 20 : 4, borderRadius: 2, background: i === step ? '#a855f7' : 'hsl(260 10% 85%)', transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)' }} />
+              ))}
+            </div>
+          </div>
+
+          <div style={{ position: 'relative', height: 'calc(100vh - 140px)', display: 'flex', alignItems: 'center', overflow: 'visible' }}>
+            {DETAIL_STEPS.map((st, i) => (
+              <div key={i} style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', opacity: step === i ? 1 : 0, transform: step === i ? 'translateY(0px)' : step > i ? 'translateY(-20px)' : 'translateY(20px)', transition: 'opacity 0.45s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1)', pointerEvents: (active && step === i) ? 'auto' : 'none' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center', width: '100%' }}>
+                  <div>
+                    <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 28, fontWeight: 600, letterSpacing: '-0.02em', color: 'hsl(260 30% 12%)', marginBottom: 20, lineHeight: 1.2 }}>{st.title}</h3>
+                    {st.body.map((p, j) => <p key={j} style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: j < st.body.length - 1 ? 16 : 0 }}>{p}</p>)}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'center', paddingRight: 48 }}>
+                    <img src={st.img} loading="lazy" style={imgStyle} alt={st.title} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+const MockupSection = ({ isMobile }) => {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const els = ref.current ? ref.current.querySelectorAll('.reveal') : [];
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach((el, i) => { el.style.transitionDelay = (i * 0.15) + 's'; obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+  return (
+  <section ref={ref} style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)', padding: isMobile ? '60px 24px' : '80px 48px' }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      <SectionLabel>03 — Redesign</SectionLabel>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
+        Vom grauen Legacy-Look<br />zur neusta Corporate Identity.
+        </h2>
+        <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 56, maxWidth: 640 }}>
+        Das bestehende Tool wirkte generisch und unstrukturiert. Im Redesign wurde die Oberfläche konsequent an die neusta-Designsprache angepasst — klare Typografie, konsistente Farbgebung und eine deutlich übersichtlichere Informationsarchitektur.
+        </p>
+      <div style={{ marginBottom: 40 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 8, background: 'hsl(0 0% 92%)', fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: 700, color: 'hsl(260 10% 45%)', letterSpacing: '0.05em' }}>ALT</span>
+          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: 'hsl(260 10% 55%)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Vorher — Generisches Legacy-Interface</span>
+        </div>
+        <div className="reveal" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid hsl(40 10% 90%)' }}>
+          <img src={POOLWAGEN_ALT} loading="lazy" alt="Poolwagen Alt-Interface" style={{ width: '100%', display: 'block' }} />
+        </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 40 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+          <div style={{ width: 2, height: 28, background: 'linear-gradient(to bottom, hsl(40 10% 88%), #a855f7)' }} />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 8, background: '#f3e8ff', fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: 700, color: '#a855f7', letterSpacing: '0.05em' }}>NEU</span>
+          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: '#a855f7', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Nachher — Neusta Corporate Identity</span>
+        </div>
+        <div className="reveal" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' }}>
+          <img src={POOLWAGEN_BANNER} loading="lazy" alt="Poolwagen Banner" style={{ width: '100%', display: 'block' }} />
+        </div>
+        <div className="reveal" style={{ marginTop: 24, borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' }}>
+          <img src={POOLWAGEN_MOCKUP} loading="lazy" alt="Poolwagen Redesign" style={{ width: '100%', display: 'block' }} />
+        </div>
+      </div>
+    </div>
+  </section>
+  );
+};
+/* ── 3. Ergebnis ── */
+const Ergebnis = ({ isMobile }) => (
+  <Section style={{ background: 'hsl(220 70% 94%)', borderTop: '1px solid hsl(220 50% 88%)' }}>
+    <SectionLabel>05 — Ergebnis</SectionLabel>
+    <div className='slide-l'>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
+        Ein Tool, das im Büroalltag<br />wirklich funktioniert.
+      </h2>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 64, maxWidth: 620 }}>
+        Poolwagenverwaltung ist kein Showcase-Projekt — es soll echte Probleme im Büroalltag lösen. Das Ergebnis ist ein durchdachtes Interface, das Fahrzeugdaten strukturiert, Status sofort lesbar macht und unnötige Klicks konsequent eliminiert.
+      </p>
+    </div>
+
+    {/* Result highlights */}
+    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 20, marginBottom: 64 }}>
+      {[
+        { Icon: ArrowUpRight, stat: 'Legacy abgelöst', desc: 'Vom generischen Grau-Interface zur neusta Corporate Identity — konsequent und produktiv im Einsatz' },
+        { Icon: Zap,          stat: 'Sofort navigierbar', desc: 'Kennzeichensuche, Statusanzeige und Schnellzugriff machen jede Interaktion direkt und ohne Umweg' },
+        { Icon: Target,       stat: 'Weniger kognitive Last', desc: 'Icons statt Text, Farbe statt Raten — Informationen werden gelesen, nicht entziffert' },
+      ].map(({ Icon, stat, desc }, i) => (
+        <div key={stat} className='slide-up' style={{ background: '#f8f7ff', border: '1px solid hsl(40 10% 92%)', borderRadius: 20, padding: 32, transitionDelay: `${i * 0.1}s` }}>
+          <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(to bottom right, rgba(99,102,241,0.2), rgba(168,85,247,0.2))', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, color: '#a5b4fc' }}><Icon size={20} strokeWidth={1.8} color="#a5b4fc" /></div>
+          <p style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 600, color: 'hsl(260 30% 12%)', marginBottom: 8, letterSpacing: '-0.02em' }}>{stat}</p>
+          <p style={{ fontSize: 14, lineHeight: 1.65, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>{desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </Section>
+);
+
+/* ── 4. Erkenntnisse ── */
+const Erkenntnisse = ({ isMobile }) => (
+  <Section>
+    <SectionLabel>06 — Erkenntnisse</SectionLabel>
+    <div className='slide-l'>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
+      Was dieses Projekt gelehrt hat.
+      </h2>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 56, maxWidth: 560 }}>
+      Verwaltungstools werden oft unterschätzt — dabei steckt genauso viel UX-Potenzial drin wie in nutzerzentrierten Produkten.
+      </p>
+
+    </div>
+    <div className="insight-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 20 }}>
+      {[
+        { num: '01', title: 'Icons sprechen lauter als Text', body: 'Die Antriebssymbole haben gezeigt: In datenreichen Interfaces kommunizieren visuelle Symbole schneller und präziser als ausgeschriebene Werte. Was als kleines UI-Detail beginnt, verändert die gesamte Lesbarkeit einer Ansicht.' },
+        { num: '02', title: 'Status muss sofort erkennbar sein', body: 'Verfügbarkeit ist keine Information, die Nutzer suchen wollen — sie muss auf den ersten Blick da sein. Farbkodierung und klare Statusanzeigen sind kein Nice-to-have, sondern Kernbestandteil einer funktionierenden Verwaltungsoberfläche.' },
+        { num: '03', title: 'Progressive Disclosure reduziert Komplexität', body: 'Das Akkordion-Pattern hat gelehrt, wie viel eine einfache Entscheidung bewirkt: Zeige zuerst nur das Nötigste — wer mehr braucht, holt es sich aktiv. Das entlastet die Übersicht ohne Informationen zu verstecken.' },
+        { num: '04', title: 'Echtzeit-Feedback verändert das Nutzungsgefühl', body: 'Die Live-Suche über Kennzeichen war technisch überschaubar, aber das Nutzungsgefühl hat sich damit grundlegend verändert. Sofortiges Feedback macht ein Tool nicht nur schneller — es fühlt sich schlicht besser an.' },
+      ].map(({ num, title, body }, i) => (
+        <div key={num} className={`insight-card ${i % 2 === 0 ? 'slide-l' : 'slide-r'}`}>
+          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#a855f7', fontFamily: 'var(--font-body)', display: 'block', marginBottom: 16 }}>{num}</span>
+          <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 20, fontWeight: 600, letterSpacing: '-0.02em', color: 'hsl(260 30% 12%)', marginBottom: 12, lineHeight: 1.3 }}>{title}</h3>
+          <p style={{ fontSize: 15, lineHeight: 1.75, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>{body}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+
+/* ── Footer ── */
+const CopyButton = () => {
+  const [copied, setCopied] = React.useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText('m.e.erdem@hotmail.de');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <button
+      onClick={copy}
+      title="Kopieren"
+      style={{
+        background: copied ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.07)',
+        border: `1px solid ${copied ? 'rgba(52,211,153,0.45)' : 'rgba(255,255,255,0.12)'}`,
+        borderRadius: 8, width: 34, height: 34,
+        cursor: 'pointer',
+        color: copied ? '#34d399' : 'rgba(240,234,220,0.6)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flexShrink: 0,
+        transition: 'background 0.35s, border-color 0.35s, color 0.35s',
+      }}
+      onMouseEnter={e => { if (!copied) e.currentTarget.style.background = 'rgba(255,255,255,0.13)'; }}
+      onMouseLeave={e => { if (!copied) e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; }}
+    >
+      <span style={{ position: 'relative', width: 15, height: 15, display: 'block' }}>
+        {/* Copy icon */}
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          style={{ position: 'absolute', inset: 0, transition: 'opacity 0.18s, transform 0.18s', opacity: copied ? 0 : 1, transform: copied ? 'scale(0.3) rotate(-15deg)' : 'scale(1) rotate(0deg)' }}>
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        {/* Check icon */}
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+          style={{ position: 'absolute', inset: 0, transition: 'opacity 0.18s, transform 0.18s', opacity: copied ? 1 : 0, transform: copied ? 'scale(1)' : 'scale(0.3)' }}>
+          <polyline points="4 13 9 18 20 7" style={{ strokeDasharray: 22, strokeDashoffset: copied ? 0 : 22, animation: copied ? 'checkDraw 0.32s cubic-bezier(0.22,1,0.36,1) forwards' : 'none' }} />
+        </svg>
+      </span>
+    </button>
+  );
+};
+
+const Footer = ({ isMobile }) => (
+  <footer style={{ background: 'hsl(260 87% 3%)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: isMobile ? '60px 24px' : '100px 32px', textAlign: 'center' }}>
+    <div style={{ maxWidth: 640, margin: '0 auto' }}>
+      <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(168,85,247,0.7)', marginBottom: 16, fontFamily: 'var(--font-body)' }}>Kontakt</p>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 36 : 52, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 20, backgroundImage: 'linear-gradient(to bottom right, #6366f1, #a855f7, #fcd34d)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        Lass uns zusammenarbeiten.
+      </h2>
+      <p style={{ fontSize: 17, lineHeight: 1.65, color: 'rgba(240,234,220,0.6)', fontFamily: 'var(--font-body)', marginBottom: 40 }}>
+        Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+          <a href="mailto:m.e.erdem@hotmail.de" style={{ color: 'rgba(240,234,220,0.85)', fontFamily: 'var(--font-body)', fontSize: 18, fontWeight: 500, textDecoration: 'none' }}>m.e.erdem@hotmail.de</a>
+          <CopyButton />
+        </div>
+        <a href="https://www.linkedin.com/in/muhammed-emre-erdem-70408536a" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(240,234,220,0.55)', fontFamily: 'var(--font-body)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => e.currentTarget.style.color = 'rgba(240,234,220,0.9)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,234,220,0.55)'}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display:"block"}}><rect width="24" height="24" rx="4" fill="#0A66C2"/><g transform="translate(-1.3 0.3)"><circle cx="7.5" cy="6.8" r="1.6" fill="white"/><rect x="5.9" y="9.6" width="3.2" height="8.4" fill="white"/><path d="M12.8 9.6h2.75v1.25h.05c.38-.74 1.28-1.5 2.7-1.5 2.88 0 3.41 1.9 3.41 4.36V18h-3.2v-3.8c0-1-.02-2.28-1.39-2.28-1.4 0-1.61 1.09-1.61 2.2V18H12.8V9.6z" fill="white"/></g></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div style={{ marginTop: 80, paddingTop: 40, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <a href="../index.html" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(240,234,220,0.4)', fontFamily: 'var(--font-body)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => e.currentTarget.style.color = 'rgba(240,234,220,0.85)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,234,220,0.4)'}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+          Zurück zum Portfolio
+        </a>
+        <a href="../index.html" className="me-badge"><img src="../assets/me_logo.svg" style={{ width: 32, height: 32, display: 'block' }} alt="ME" /></a>
+      </div>
+    </div>
+  </footer>
+);
+
+
+/* ── Scroll To Top ── */
+const ScrollToTop = () => {
+  const [visible, setVisible] = React.useState(false);
+  const [onLight, setOnLight] = React.useState(false);
+  const btnRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const check = () => {
+      setVisible(window.scrollY > 400);
+      const btn = btnRef.current;
+      if (btn) btn.style.pointerEvents = 'none';
+      const x = window.innerWidth - 56;
+      const y = window.innerHeight - 56;
+      const el = document.elementFromPoint(x, y);
+      if (btn) btn.style.pointerEvents = '';
+      let node = el;
+      while (node && node !== document.body) {
+        const bg = getComputedStyle(node).backgroundColor;
+        if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+          const m = bg.match(/\d+/g);
+          if (m) {
+            const lum = (0.299 * +m[0] + 0.587 * +m[1] + 0.114 * +m[2]) / 255;
+            setOnLight(lum > 0.5);
+          }
+          break;
+        }
+        node = node.parentElement;
+      }
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+    return () => window.removeEventListener('scroll', check);
+  }, []);
+
+  return (
+    <button
+      ref={btnRef}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      title="Nach oben"
+      style={{
+        position: 'fixed', bottom: 32, right: 32, zIndex: 999,
+        width: 44, height: 44, borderRadius: 12,
+        backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)',
+        background: onLight ? 'rgba(99,102,241,0.1)' : 'rgba(255,255,255,0.07)',
+        border: onLight ? '1px solid rgba(99,102,241,0.28)' : '1px solid rgba(255,255,255,0.14)',
+        color: onLight ? '#6366f1' : 'rgba(255,255,255,0.85)',
+        cursor: 'pointer',
+        display: visible ? 'flex' : 'none',
+        alignItems: 'center', justifyContent: 'center',
+        transition: 'background 0.3s, border 0.3s, color 0.3s, box-shadow 0.3s',
+        boxShadow: onLight ? '0 4px 20px rgba(99,102,241,0.18)' : '0 4px 20px rgba(0,0,0,0.35)',
+      }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = onLight ? '0 8px 28px rgba(99,102,241,0.28)' : '0 8px 28px rgba(0,0,0,0.45)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = onLight ? '0 4px 20px rgba(99,102,241,0.18)' : '0 4px 20px rgba(0,0,0,0.35)'; }}
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+  );
+};
+/* ── App ── */
+const App = () => {
+  const isMobile = useIsMobile();
+  React.useEffect(() => {
+    const els = document.querySelectorAll('.slide-l, .slide-r, .slide-up');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <>
+      <ScrollToTop />
+      <Navbar />
+      <Hero isMobile={isMobile} />
+      <Briefing isMobile={isMobile} />
+      <HerausforderungZiel isMobile={isMobile} />
+      <MockupSection isMobile={isMobile} />
+      <DetailSection isMobile={isMobile} />
+      <Ergebnis isMobile={isMobile} />
+      <Erkenntnisse isMobile={isMobile} />
+      <Footer isMobile={isMobile} />
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script>
+(function(){
+  var PPS = 60;
+  function fix(){
+    document.querySelectorAll('.marquee-track').forEach(function(t){
+      var wrap = t.parentElement;
+      var overflow = t.scrollWidth - wrap.clientWidth;
+      if(overflow > 0){
+        t.style.setProperty('--marquee-end', '-' + overflow + 'px');
+        t.style.animationDuration = (overflow / PPS).toFixed(2) + 's';
+      } else {
+        t.style.animationName = 'none';
+      }
+    });
+  }
+  [100, 400, 1000].forEach(function(d){ setTimeout(fix, d); });
+  window.addEventListener('resize', fix);
+})();
+</script>
+</body>
+</html>
