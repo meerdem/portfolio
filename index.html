@@ -113,7 +113,7 @@ html, body {
 @keyframes mblob1{0%,100%{transform:translate(-8%,-6%) scale(1)}50%{transform:translate(16%,22%) scale(1.35)}}
 @keyframes mblob2{0%,100%{transform:translate(12%,28%) scale(1.1)}50%{transform:translate(-14%,-8%) scale(1.45)}}
 @keyframes mblob3{0%,100%{transform:translate(18%,-8%) scale(1)}50%{transform:translate(-10%,16%) scale(1.3)}}
-.mobbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(140deg,#0b0a1e 0%,#160726 55%,#0a1230 100%)}
+.mobbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(140deg,#0b0a1e 0%,#160726 55%,#0a1230 100%)}.mobbg{contain:paint;transform:translateZ(0)}
 .mobbg span{position:absolute;border-radius:50%;filter:blur(52px);will-change:transform;pointer-events:none}
 .mobbg .b1{width:80%;height:60%;left:-12%;top:-12%;background:radial-gradient(circle,rgba(66,255,233,0.50),transparent 65%);animation:mblob1 19s ease-in-out infinite}
 .mobbg .b2{width:95%;height:72%;right:-22%;bottom:-16%;background:radial-gradient(circle,rgba(129,6,190,0.62),transparent 65%);animation:mblob2 23s ease-in-out infinite}
@@ -489,7 +489,7 @@ html, body {
 <script>(function(){function setup(){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("rv-in");io.unobserve(en.target)}})},{threshold:0.01,rootMargin:"0px 0px 320px 0px"});var seen=new WeakSet();function scan(){document.querySelectorAll(".rv").forEach(function(el){if(!seen.has(el)){seen.add(el);io.observe(el)}})}scan();var r=document.getElementById("root")||document.body;new MutationObserver(scan).observe(r,{childList:true,subtree:true});}if(document.readyState!=="loading")setup();else document.addEventListener("DOMContentLoaded",setup);})();</script>
 <!-- Main header: sticky + condense on scroll -->
 <style>
-#root header{position:fixed !important;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;z-index:500 !important;border-radius:9999px;background:rgba(14,23,58,0.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 14px 44px -16px rgba(0,0,0,0.6);transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, border-color .3s ease}#root header nav{padding:13px 16px 13px 28px !important}
+#root header{position:fixed !important;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;z-index:500 !important;border-radius:9999px;background:rgba(14,23,58,0.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 14px 44px -16px rgba(0,0,0,0.6);transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, border-color .3s ease}#root header nav{padding:13px 16px 13px 28px !important}@media (max-width:599px){#root header{background:rgba(14,23,58,0.92) !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}}
 #root header nav{transition:padding .34s cubic-bezier(.16,1,.3,1)}
 #root header .btn-nav{background:rgba(255,255,255,0.08)!important;border-color:rgba(255,255,255,0.22)!important;color:hsl(40 6% 95%)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .25s,border-color .25s,color .25s}#root header .btn-nav:hover{background:rgba(255,255,255,0.14)!important;border-color:rgba(255,255,255,0.4)!important}
 #root header nav img{transition:transform .34s cubic-bezier(.16,1,.3,1), filter .3s ease}
