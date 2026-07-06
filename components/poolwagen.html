@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Poolwagenverwaltung – Case Study</title>
+<title>Poolwagen – Case Study</title>
 
-<link rel="icon" type="image/svg+xml" href="../assets/me_logo.svg" />
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="preconnect" href="https://api.fontshare.com" />
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
@@ -22,18 +19,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       hsl(260 87% 3%);
+  --bg:       hsl(264 50% 13%);
   --fg:       hsl(40 6% 95%);
   --fg-sub:   hsl(40 6% 72%);
-  --font-body: 'Geist', sans-serif;
-  --font-head: 'General Sans', sans-serif;
+  --font-body: 'Momo Trust Sans', sans-serif;
+  --font-head: 'Momo Trust Sans', sans-serif;
 }
 
-html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); overflow-x: hidden; }
+html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); letter-spacing: -0.04em; overflow-x: hidden; }
 
 .nav-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(240,234,220,0.2), transparent);
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.07), transparent);
 }
 
 .tag-chip {
@@ -105,7 +102,7 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
 }
 .insight-card:hover {
   background: rgba(255,255,255,0.06);
-  border-color: rgba(168,85,247,0.25);
+  border-color: rgba(124,58,237,0.25);
 }
 .insight-card.slide-l,
 .insight-card.slide-r {
@@ -118,7 +115,7 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: rgba(240,234,220,0.5);
+  color: #4c1d95;
   font-family: var(--font-body);
   font-size: 14px;
   text-decoration: none;
@@ -128,7 +125,7 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   cursor: pointer;
   padding: 0;
 }
-.back-link:hover { color: rgba(240,234,220,0.9); }
+.back-link:hover { color: #4c1d95; }
 
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr !important; }
@@ -136,8 +133,8 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   .insight-grid { grid-template-columns: 1fr !important; }
   .meta-row { flex-direction: column !important; gap: 16px !important; }
 }
-.me-badge { display: inline-block; border-radius: 50%; transition: box-shadow 0.2s, transform 0.2s; line-height: 0; text-decoration: none; }
-.me-badge:hover { box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3); transform: scale(1.08); }
+.me-badge { display: inline-block; padding: 6px; margin: -6px; border-radius: 50%; transition: background-color 0.2s ease, transform 0.2s ease; line-height: 0; text-decoration: none; }
+.me-badge:hover { transform: scale(1.08); }
 /* ── Scroll reveal ── */
 .reveal {
   opacity: 0;
@@ -154,7 +151,16 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   from { stroke-dashoffset: 22; }
   to   { stroke-dashoffset: 0; }
 }
+  html[lang="de"] .sub-en-only{display:none}
+  @keyframes pnav-by{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}@keyframes pnav-bxr{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}@keyframes pnav-bxl{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}.proj-nav a{padding:12px 16px;border-radius:12px;transition:background-color .22s ease,box-shadow .22s ease}.proj-nav a:hover{background-color:#f5f3ff;box-shadow:inset 0 0 0 1px rgba(124,58,237,0.18),0 6px 18px rgba(124,58,237,0.12)}.proj-nav a[href*="index.html"]:hover svg{animation:pnav-by .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):first-child:hover svg{animation:pnav-bxl .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):last-child:hover svg{animation:pnav-bxr .55s ease-in-out infinite}
+  .bounce-back{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color 0.15s}.bounce-back:hover{background-color:rgba(124,58,237,0.14)}.bounce-back:hover svg{animation:pnav-bxl .55s ease-in-out infinite}
+  .langToggle{transition:background .2s ease,border-color .2s ease}.langToggle:hover{background:rgba(124,58,237,0.2)!important;border-color:rgba(255,255,255,0.34)!important}
+  @keyframes cpbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes libob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}.cp-btn:hover span{animation:cpbob .5s ease-in-out infinite}.li-btn:hover svg{animation:libob .55s ease-in-out infinite}.li-btn:hover{background:rgba(255,255,255,0.08)}
+  @media (max-width:600px){a.back-link,a.bounce-back{font-size:0 !important;gap:0 !important;}a.back-link>svg,a.bounce-back>svg{display:none !important;}a.back-link::before,a.bounce-back::before{content:"";display:inline-block;width:21px;height:21px;flex-shrink:0;background-color:currentColor;-webkit-mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;}}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="root"></div>
@@ -187,7 +193,7 @@ const LOGOS = [
   { name: 'HTML5', src: '../assets/marquee-icons/html5.svg' },
   { name: 'CSS3', src: '../assets/marquee-icons/css3.svg' },
   { name: 'Photoshop', src: '../assets/marquee-icons/photoshop.svg' },
-  { name: 'Adobe XD', noFilter: true, src: '../assets/marquee-icons/adobe-xd.svg' },
+  { name: 'Adobe XD', src: '../assets/marquee-icons/adobe-xd.svg' },
   { name: 'JavaScript', src: '../assets/marquee-icons/javascript.svg' },
   { name: 'PHP', src: '../assets/marquee-icons/php.svg' },
 ];
@@ -197,9 +203,9 @@ const LogoItem = ({ name, src, noFilter }) => (
     <img
       src={src} loading="lazy"
       alt={name}
-      style={{ width: 22, height: 22, flexShrink: 0, display: 'block', filter: noFilter ? 'none' : 'brightness(0) invert(1)', opacity: 0.7 }}
+      style={{ width: 22, height: 22, flexShrink: 0, display: 'block', filter: noFilter ? 'none' : 'brightness(0) saturate(100%) invert(20%) sepia(89%) saturate(3000%) hue-rotate(248deg) brightness(92%) contrast(95%)', opacity: 0.75 }}
     />
-    <span style={{ fontSize: 15, fontWeight: 500, color: 'rgba(240,234,220,0.8)', fontFamily: 'var(--font-body)', whiteSpace: 'nowrap' }}>{name}</span>
+    <span style={{ fontSize: 15, fontWeight: 500, color: 'rgba(91,33,182,0.7)', fontFamily: 'var(--font-body)', whiteSpace: 'nowrap' }}>{name}</span>
   </div>
 );
 
@@ -238,13 +244,10 @@ const DETAIL_4 = '../assets/poolwagen/verfuegbarkeit.webp';
 const DETAIL_3 = '../assets/poolwagen/schnellzugriff.webp';
 /* ── Navbar ── */
 const Navbar = () => (
-  <header style={{ position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', background: 'rgba(5,2,14,0.85)' }}>
-    <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 32px', maxWidth: 1100, margin: '0 auto' }}>
-      <a href="../index.html" className="back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
-        Zurück zum Portfolio
-      </a>
-      <a href="../index.html" className="me-badge"><img src="../assets/me_logo.svg" style={{ width: 32, height: 32, display: 'block' }} alt="ME" /></a>
+  <header style={{ position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', background: '#fff', borderBottom: '1px solid hsl(220 8% 92%)' }}>
+    <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px' }}>
+      <div></div>
+      <a href="../index.html" className="me-badge"><img src="../assets/logo.svg" style={{ width: 46, height: 46, display: 'block', filter: 'brightness(0) saturate(100%) invert(20%) sepia(89%) saturate(3000%) hue-rotate(248deg) brightness(92%) contrast(95%)' }} alt="ME" /></a>
     </nav>
     <div className="nav-divider" />
   </header>
@@ -252,29 +255,22 @@ const Navbar = () => (
 
 /* ── Hero ── */
 const Hero = ({ isMobile }) => (
-  <section style={{ background: 'var(--bg)', padding: isMobile ? '60px 24px 48px' : '80px 32px 56px', position: 'relative', overflow: 'hidden' }}>
-    {/* Background glow */}
-    <div style={{ position: 'absolute', top: '-20%', left: '30%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(168,85,247,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
-    <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-      {/* Label */}
-      <p className="fade-up" style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#a855f7', marginBottom: 20, fontFamily: 'var(--font-body)' }}>Case Study</p>
-
-      {/* Title */}
-      <h1 className="fade-up-2" style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 48 : 88, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1, paddingBottom: 6, marginBottom: 32,
-        backgroundImage: 'linear-gradient(to bottom right, #e0e7ff, #a855f7, #6366f1)',
-        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-        Poolwagenverwaltung
-      </h1>
-
-      {/* Meta row */}
-      <div className="fade-up-3 meta-row" style={{ display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {['UX/UI Design', 'Webentwicklung', 'Data-driven', 'Internes Tool', 'Fuhrparkverwaltung'].map(t => (
-            <span key={t} className="tag-chip" style={{ background: 'rgba(99,102,241,0.12)', color: '#a5b4fc', border: '1px solid rgba(99,102,241,0.25)' }}>{t}</span>
+  <section id="pw-top" style={{ background: '#fff', padding: isMobile ? '20px 24px 8px' : '32px 48px 16px', position: 'relative' }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.05fr 0.95fr', gap: isMobile ? 42 : 44, alignItems: 'center' }}>
+      <div>
+        <p className="fade-up" style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#4c1d95', marginBottom: isMobile ? 16 : 22, fontFamily: 'var(--font-body)' }}>Case Study</p>
+        <h1 className="fade-up-2" style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 48 : 92, fontWeight: 700, letterSpacing: '-0.045em', lineHeight: 1.06, paddingBottom: '0.08em',
+          backgroundImage: 'linear-gradient(to bottom right, #7c3aed, #4c1d95)',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: isMobile ? 14 : 16 }}>Poolwagen</h1>
+        <p className="fade-up-2 sub-en-only" style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 18 : 24, fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: 'hsl(260 10% 45%)', fontStyle: 'italic', marginBottom: isMobile ? 22 : 26 }}>Company Pool Cars</p>
+        <div className="fade-up-3" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {['UX/UI Design', 'Webentwicklung', 'Internes Tool', 'Fuhrparkverwaltung'].map(t => (
+            <span key={t} style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(124,58,237,0.05)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '1px solid rgba(124,58,237,0.16)', color: 'rgba(91,33,182,0.9)', padding: '9px 20px', borderRadius: 9999, fontSize: 13, fontWeight: 500, fontFamily: 'var(--font-body)' }}>{t}</span>
           ))}
         </div>
-        
+      </div>
+      <div className="fade-up-3" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 26px 70px rgba(76,29,149,0.22)', border: '1px solid rgba(76,29,149,0.08)' }}>
+        <img src="../assets/poolwagen/poolwagen_thumbnail.webp" alt="Poolwagen" style={{ width: '100%', display: 'block', aspectRatio: '3 / 2', objectFit: 'cover' }} />
       </div>
     </div>
     <LogoCloud isMobile={isMobile} />
@@ -296,7 +292,7 @@ const Section = ({ dark, children, style = {} }) => (
 );
 
 const SectionLabel = ({ dark, children }) => (
-  <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: dark ? '#a855f7' : '#a855f7', marginBottom: 16, fontFamily: 'var(--font-body)' }}>{children}</p>
+  <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: dark ? '#a78bfa' : '#4c1d95', marginBottom: 16, fontFamily: 'var(--font-body)' }}>{children}</p>
 );
 
 const SectionTitle = ({ dark, children, size }) => (
@@ -306,17 +302,17 @@ const SectionTitle = ({ dark, children, size }) => (
 /* ── 1. Briefing ── */
 const Briefing = ({ isMobile }) => (
   <Section>
-    <SectionLabel>01 — Briefing</SectionLabel>
+    <span id="pw-briefing" aria-hidden="true"></span><SectionLabel>01 · Briefing</SectionLabel>
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 80, alignItems: 'start' }}>
       <div className='slide-l'>
         <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 28, color: 'hsl(260 30% 12%)' }}>
-          Ein internes Verwaltungstool für den Fuhrpark von team neusta.
+          Ein internes Verwaltungstool für den Fuhrpark von team neusta
         </h2>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 20 }}>
           Poolwagen ist ein firmeninternes Verwaltungstool für Dienstfahrzeuge im Office-Management. Es ermöglicht Mitarbeitenden, Fahrzeuge einzusehen, hinzuzufügen, zu bearbeiten und deren Verfügbarkeit sowie Reservierungsdauer auf einen Blick zu erfassen.
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>
-          Das Projekt entstand im Rahmen meiner Ausbildung bei team neusta und umfasste den gesamten UX/UI-Prozess — von der Konzeption bis zur fertigen Umsetzung. Zentrales Ziel war es, Fahrzeugdaten übersichtlich darzustellen und die Verwaltung so effizient zu gestalten, dass der manuelle Aufwand im Office-Management spürbar sinkt.
+          Das Projekt entstand im Rahmen meiner Ausbildung bei team neusta und umfasste den gesamten UX/UI-Prozess, von der Konzeption bis zur fertigen Umsetzung. Zentrales Ziel war es, Fahrzeugdaten übersichtlich darzustellen und die Verwaltung so effizient zu gestalten, dass der manuelle Aufwand im Office-Management spürbar sinkt.
         </p>
       </div>
       <div className='slide-r' style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -338,21 +334,21 @@ const Briefing = ({ isMobile }) => (
 /* ── 2. Herausforderung & Ziel ── */
 const HerausforderungZiel = ({ isMobile }) => (
   <Section dark>
-    <SectionLabel dark>02 — Herausforderung & Ziel</SectionLabel>
+    <SectionLabel dark>02 · Herausforderung & Ziel</SectionLabel>
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 80 }}>
       <div className='slide-l'>
-        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }}>Die Herausforderung</h2>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }} id="pw-herausforderung">Die Herausforderung</h2>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)', marginBottom: 20 }}>
-          Die bestehende Übersicht der Dienstfahrzeuge war unordentlich und veraltet — schwer lesbar und nicht auf den tatsächlichen Verwaltungsalltag abgestimmt.
+          Die bestehende Übersicht der Dienstfahrzeuge war unordentlich und veraltet, schwer lesbar und nicht auf den tatsächlichen Verwaltungsalltag abgestimmt.
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)' }}>
-          Hinzu kam, dass zentrale Funktionen wie das Hinzufügen, Bearbeiten oder Entfernen von Fahrzeugen unnötig umständlich waren — zu viele Schritte für Aufgaben, die täglich anfallen.
+          Hinzu kam, dass zentrale Funktionen wie das Hinzufügen, Bearbeiten oder Entfernen von Fahrzeugen unnötig umständlich waren, zu viele Schritte für Aufgaben, die täglich anfallen.
         </p>
       </div>
       <div className='slide-r'>
-        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }}>Das Ziel</h2>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 28 : 36, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 24, color: 'var(--fg)' }} id="pw-ziel">Das Ziel</h2>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--fg-sub)', fontFamily: 'var(--font-body)', marginBottom: 32 }}>
-          Ein klares, effizientes Verwaltungstool — das Fahrzeuginformationen bündelt und den Verwaltungsalltag spürbar vereinfacht.
+          Ein klares, effizientes Verwaltungstool, das Fahrzeuginformationen bündelt und den Verwaltungsalltag spürbar vereinfacht.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {[
@@ -362,7 +358,7 @@ const HerausforderungZiel = ({ isMobile }) => (
             { num: '04', text: 'Schnelle Kennzeichensuche' },
           ].map(({ num, text }) => (
             <div key={num} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '18px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.05)' }}>
-              <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 700, color: '#a855f7', minWidth: 28, letterSpacing: '0.04em' }}>{num}</span>
+              <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 700, color: '#a78bfa', minWidth: 28, letterSpacing: '0.04em' }}>{num}</span>
               <span style={{ fontSize: 15, fontWeight: 500, color: 'var(--fg)', fontFamily: 'var(--font-body)' }}>{text}</span>
             </div>
           ))}
@@ -380,10 +376,10 @@ const POOLWAGEN_ALT = '../assets/poolwagen/poolwagen_alt.webp';
 /* ── 3. Mockup ── */
 /* ── DetailSection ── */
 const DETAIL_STEPS = [
-  { num: '01', title: 'Kennzeichensuche', img: DETAIL_1, body: ['Fahrzeuge lassen sich direkt über das Kennzeichen suchen. Die Autovervollständigung schlägt passende Einträge in Echtzeit vor — kein Scrollen, kein Raten, sofort am Ziel.'] },
-  { num: '02', title: 'Verfügbarkeit auf einen Blick', img: DETAIL_4, body: ['Kein ewiges Versuchen zu entziffern, ob ein Fahrzeug verfügbar ist. Der Verfügbarkeitsstatus ist sofort ersichtlich — klar, eindeutig und ohne Interpretationsspielraum.'] },
-  { num: '03', title: 'Innovative Darstellung der Antriebsart', img: DETAIL_2, body: ['Weg von der unidentifizierbaren Textwüste hin zu einer schnell zugänglichen, visuellen Darstellung. Symbole kommunizieren die Antriebsart auf einen Blick — intuitiv und ohne Lesen.'] },
-  { num: '04', title: 'Schneller Zugriff auf die wichtigsten Funktionen', img: DETAIL_3, body: ['Die wichtigsten Aktionen sind direkt in der Listenansicht erreichbar. Wer mehr Informationen zu einem Fahrzeug benötigt, klappt das Akkordion einfach auf — ohne Seitenwechsel.'] },
+  { num: '01', title: 'Kennzeichensuche', img: DETAIL_1, body: ['Fahrzeuge lassen sich direkt über das Kennzeichen suchen. Die Autovervollständigung schlägt passende Einträge in Echtzeit vor, kein Scrollen, kein Raten, sofort am Ziel.'] },
+  { num: '02', title: 'Verfügbarkeit auf einen Blick', img: DETAIL_4, body: ['Kein ewiges Versuchen zu entziffern, ob ein Fahrzeug verfügbar ist. Der Verfügbarkeitsstatus ist sofort ersichtlich, klar, eindeutig und ohne Interpretationsspielraum.'] },
+  { num: '03', title: 'Innovative Darstellung der Antriebsart', img: DETAIL_2, body: ['Weg von der unidentifizierbaren Textwüste hin zu einer schnell zugänglichen, visuellen Darstellung. Symbole kommunizieren die Antriebsart auf einen Blick, intuitiv und ohne Lesen.'] },
+  { num: '04', title: 'Schneller Zugriff auf die wichtigsten Funktionen', img: DETAIL_3, body: ['Die wichtigsten Aktionen sind direkt in der Listenansicht erreichbar. Wer mehr Informationen zu einem Fahrzeug benötigt, klappt das Akkordion einfach auf, ohne Seitenwechsel.'] },
 ];
 
 const DetailSection = ({ isMobile }) => {
@@ -406,17 +402,17 @@ const DetailSection = ({ isMobile }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const imgStyle = { maxWidth: '100%', maxHeight: 'calc(100vh - 180px)', objectFit: 'contain', display: 'block', borderRadius: 16, boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' };
+  const imgStyle = { maxWidth: '100%', maxHeight: 'calc(100vh - 180px)', objectFit: 'contain', display: 'block', borderRadius: 16, boxShadow: '0 24px 80px rgba(124,58,237,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #ede9fe' };
 
   if (isMobile) return (
     <section style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px 48px' }}>
-        <SectionLabel>04 — Details</SectionLabel>
-        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 30, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>Funktionen im Detail.</h2>
+        <SectionLabel>04 · Details</SectionLabel>
+        <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 30, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }} id="pw-funktionen">Funktionen im Detail</h2>
       </div>
       {DETAIL_STEPS.map((st, i) => (
         <div key={i} style={{ padding: '60px 24px', borderTop: '1px solid hsl(40 10% 93%)' }}>
-          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#a855f7', display: 'block', marginBottom: 12, fontFamily: 'var(--font-body)' }}>{st.num}</span>
+          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#4c1d95', display: 'block', marginBottom: 12, fontFamily: 'var(--font-body)' }}>{st.num}</span>
           <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 22, fontWeight: 600, color: 'hsl(260 30% 12%)', marginBottom: 14, lineHeight: 1.2 }}>{st.title}</h3>
           {st.body.map((p, j) => <p key={j} style={{ fontSize: 15, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 10 }}>{p}</p>)}
           <img src={st.img} loading="lazy" style={{ width: '100%', borderRadius: 12, marginTop: 24 }} alt={st.title} />
@@ -430,12 +426,12 @@ const DetailSection = ({ isMobile }) => {
   return (
     <section style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)', position: 'relative' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 32px 16px' }}>
-        <SectionLabel>04 — Details</SectionLabel>
+        <SectionLabel>04 · Details</SectionLabel>
         <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
-          Funktionen im Detail.
+          Funktionen im Detail
         </h2>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', maxWidth: 540 }}>
-          Vier Designentscheidungen, die das Tool spürbar besser machen — von der Suche bis zum Schnellzugriff.
+          Vier Designentscheidungen, die das Tool spürbar besser machen, von der Suche bis zum Schnellzugriff.
         </p>
       </div>
 
@@ -445,10 +441,10 @@ const DetailSection = ({ isMobile }) => {
         <div style={{ position: 'absolute', left: '50%', translate: '-50% 0', top: '20px', maxWidth: 1100, margin: '0 auto', width: '100%', padding: '0 32px', display: 'grid', gridTemplateColumns: '72px 1fr', gap: 48, alignItems: 'center' }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 20 }}>
-            <span style={{ fontFamily: 'var(--font-head)', fontSize: 52, fontWeight: 700, color: '#a855f7', lineHeight: 1, letterSpacing: '-0.03em' }}>{cur.num}</span>
+            <span style={{ fontFamily: 'var(--font-head)', fontSize: 52, fontWeight: 700, color: '#4c1d95', lineHeight: 1, letterSpacing: '-0.03em' }}>{cur.num}</span>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {DETAIL_STEPS.map((_, i) => (
-                <div key={i} style={{ width: 4, height: i === step ? 20 : 4, borderRadius: 2, background: i === step ? '#a855f7' : 'hsl(260 10% 85%)', transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)' }} />
+                <div key={i} style={{ width: 4, height: i === step ? 20 : 4, borderRadius: 2, background: i === step ? '#4c1d95' : 'hsl(260 10% 85%)', transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)' }} />
               ))}
             </div>
           </div>
@@ -487,17 +483,17 @@ const MockupSection = ({ isMobile }) => {
   return (
   <section ref={ref} style={{ background: '#fff', borderTop: '1px solid hsl(40 10% 93%)', padding: isMobile ? '60px 24px' : '80px 48px' }}>
     <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-      <SectionLabel>03 — Redesign</SectionLabel>
-      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
-        Vom grauen Legacy-Look<br />zur neusta Corporate Identity.
+      <SectionLabel>03 · Redesign</SectionLabel>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }} id="pw-vergleich">
+        Vom grauen Legacy-Look<br />zur neusta Corporate Identity
         </h2>
         <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 56, maxWidth: 640 }}>
-        Das bestehende Tool wirkte generisch und unstrukturiert. Im Redesign wurde die Oberfläche konsequent an die neusta-Designsprache angepasst — klare Typografie, konsistente Farbgebung und eine deutlich übersichtlichere Informationsarchitektur.
+        Das bestehende Tool wirkte generisch und unstrukturiert. Im Redesign wurde die Oberfläche konsequent an die neusta-Designsprache angepasst, klare Typografie, konsistente Farbgebung und eine deutlich übersichtlichere Informationsarchitektur.
         </p>
       <div style={{ marginBottom: 40 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 8, background: 'hsl(0 0% 92%)', fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: 700, color: 'hsl(260 10% 45%)', letterSpacing: '0.05em' }}>ALT</span>
-          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: 'hsl(260 10% 55%)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Vorher — Generisches Legacy-Interface</span>
+          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: 'hsl(260 10% 55%)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Vorher, Generisches Legacy-Interface</span>
         </div>
         <div className="reveal" style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid hsl(40 10% 90%)' }}>
           <img src={POOLWAGEN_ALT} loading="lazy" alt="Poolwagen Alt-Interface" style={{ width: '100%', display: 'block' }} />
@@ -505,19 +501,19 @@ const MockupSection = ({ isMobile }) => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 40 }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-          <div style={{ width: 2, height: 28, background: 'linear-gradient(to bottom, hsl(40 10% 88%), #a855f7)' }} />
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div style={{ width: 2, height: 28, background: 'linear-gradient(to bottom, hsl(40 10% 88%), #4c1d95)' }} />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4c1d95" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
       </div>
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 8, background: '#f3e8ff', fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: 700, color: '#a855f7', letterSpacing: '0.05em' }}>NEU</span>
-          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: '#a855f7', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Nachher — Neusta Corporate Identity</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 8, background: '#ede9fe', fontFamily: 'var(--font-head)', fontSize: 11, fontWeight: 700, color: '#4c1d95', letterSpacing: '0.05em' }}>NEU</span>
+          <span style={{ fontFamily: 'var(--font-head)', fontSize: 13, fontWeight: 600, color: '#4c1d95', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Nachher, Neusta Corporate Identity</span>
         </div>
-        <div className="reveal" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' }}>
+        <div className="reveal" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(124,58,237,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #ede9fe' }}>
           <img src={POOLWAGEN_BANNER} loading="lazy" alt="Poolwagen Banner" style={{ width: '100%', display: 'block' }} />
         </div>
-        <div className="reveal" style={{ marginTop: 24, borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(168,85,247,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #f3e8ff' }}>
+        <div className="reveal" style={{ marginTop: 24, borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 80px rgba(124,58,237,0.15), 0 8px 32px rgba(0,0,0,0.08)', border: '1px solid #ede9fe' }}>
           <img src={POOLWAGEN_MOCKUP} loading="lazy" alt="Poolwagen Redesign" style={{ width: '100%', display: 'block' }} />
         </div>
       </div>
@@ -527,26 +523,26 @@ const MockupSection = ({ isMobile }) => {
 };
 /* ── 3. Ergebnis ── */
 const Ergebnis = ({ isMobile }) => (
-  <Section style={{ background: 'hsl(220 70% 94%)', borderTop: '1px solid hsl(220 50% 88%)' }}>
-    <SectionLabel>05 — Ergebnis</SectionLabel>
+  <Section style={{ background: 'hsl(265 60% 96%)', borderTop: '1px solid hsl(265 40% 90%)' }}>
+    <span id="pw-ergebnis" aria-hidden="true"></span><SectionLabel>05 · Ergebnis</SectionLabel>
     <div className='slide-l'>
       <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
-        Ein Tool, das im Büroalltag<br />wirklich funktioniert.
+        Ein Tool, das im Büroalltag<br />wirklich funktioniert
       </h2>
       <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 64, maxWidth: 620 }}>
-        Poolwagenverwaltung ist kein Showcase-Projekt — es soll echte Probleme im Büroalltag lösen. Das Ergebnis ist ein durchdachtes Interface, das Fahrzeugdaten strukturiert, Status sofort lesbar macht und unnötige Klicks konsequent eliminiert.
+        Poolwagen ist kein Showcase-Projekt, es soll echte Probleme im Büroalltag lösen. Das Ergebnis ist ein durchdachtes Interface, das Fahrzeugdaten strukturiert, Status sofort lesbar macht und unnötige Klicks konsequent eliminiert.
       </p>
     </div>
 
     {/* Result highlights */}
     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 20, marginBottom: 64 }}>
       {[
-        { Icon: ArrowUpRight, stat: 'Legacy abgelöst', desc: 'Vom generischen Grau-Interface zur neusta Corporate Identity — konsequent und produktiv im Einsatz' },
+        { Icon: ArrowUpRight, stat: 'Legacy abgelöst', desc: 'Vom generischen Grau-Interface zur neusta Corporate Identity, konsequent und produktiv im Einsatz' },
         { Icon: Zap,          stat: 'Sofort navigierbar', desc: 'Kennzeichensuche, Statusanzeige und Schnellzugriff machen jede Interaktion direkt und ohne Umweg' },
-        { Icon: Target,       stat: 'Weniger kognitive Last', desc: 'Icons statt Text, Farbe statt Raten — Informationen werden gelesen, nicht entziffert' },
+        { Icon: Target,       stat: 'Weniger kognitive Last', desc: 'Icons statt Text, Farbe statt Raten, Informationen werden gelesen, nicht entziffert' },
       ].map(({ Icon, stat, desc }, i) => (
         <div key={stat} className='slide-up' style={{ background: '#f8f7ff', border: '1px solid hsl(40 10% 92%)', borderRadius: 20, padding: 32, transitionDelay: `${i * 0.1}s` }}>
-          <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(to bottom right, rgba(99,102,241,0.2), rgba(168,85,247,0.2))', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, color: '#a5b4fc' }}><Icon size={20} strokeWidth={1.8} color="#a5b4fc" /></div>
+          <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(to bottom right, rgba(124,58,237,0.2), rgba(124,58,237,0.2))', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, color: '#7c3aed' }}><Icon size={20} strokeWidth={1.8} color="#7c3aed" /></div>
           <p style={{ fontFamily: 'var(--font-head)', fontSize: 18, fontWeight: 600, color: 'hsl(260 30% 12%)', marginBottom: 8, letterSpacing: '-0.02em' }}>{stat}</p>
           <p style={{ fontSize: 14, lineHeight: 1.65, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>{desc}</p>
         </div>
@@ -559,25 +555,25 @@ const Ergebnis = ({ isMobile }) => (
 /* ── 4. Erkenntnisse ── */
 const Erkenntnisse = ({ isMobile }) => (
   <Section>
-    <SectionLabel>06 — Erkenntnisse</SectionLabel>
+    <SectionLabel>06 · Erkenntnisse</SectionLabel>
     <div className='slide-l'>
-      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }}>
-      Was dieses Projekt gelehrt hat.
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 30 : 40, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.12, marginBottom: 16, color: 'hsl(260 30% 12%)' }} id="pw-learnings">
+      Was dieses Projekt gelehrt hat
       </h2>
       <p style={{ fontSize: 16, lineHeight: 1.8, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)', marginBottom: 56, maxWidth: 560 }}>
-      Verwaltungstools werden oft unterschätzt — dabei steckt genauso viel UX-Potenzial drin wie in nutzerzentrierten Produkten.
+      Verwaltungstools werden oft unterschätzt, dabei steckt genauso viel UX-Potenzial drin wie in nutzerzentrierten Produkten.
       </p>
 
     </div>
     <div className="insight-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 20 }}>
       {[
         { num: '01', title: 'Icons sprechen lauter als Text', body: 'Die Antriebssymbole haben gezeigt: In datenreichen Interfaces kommunizieren visuelle Symbole schneller und präziser als ausgeschriebene Werte. Was als kleines UI-Detail beginnt, verändert die gesamte Lesbarkeit einer Ansicht.' },
-        { num: '02', title: 'Status muss sofort erkennbar sein', body: 'Verfügbarkeit ist keine Information, die Nutzer suchen wollen — sie muss auf den ersten Blick da sein. Farbkodierung und klare Statusanzeigen sind kein Nice-to-have, sondern Kernbestandteil einer funktionierenden Verwaltungsoberfläche.' },
-        { num: '03', title: 'Progressive Disclosure reduziert Komplexität', body: 'Das Akkordion-Pattern hat gelehrt, wie viel eine einfache Entscheidung bewirkt: Zeige zuerst nur das Nötigste — wer mehr braucht, holt es sich aktiv. Das entlastet die Übersicht ohne Informationen zu verstecken.' },
-        { num: '04', title: 'Echtzeit-Feedback verändert das Nutzungsgefühl', body: 'Die Live-Suche über Kennzeichen war technisch überschaubar, aber das Nutzungsgefühl hat sich damit grundlegend verändert. Sofortiges Feedback macht ein Tool nicht nur schneller — es fühlt sich schlicht besser an.' },
+        { num: '02', title: 'Status muss sofort erkennbar sein', body: 'Verfügbarkeit ist keine Information, die Nutzer suchen wollen, sie muss auf den ersten Blick da sein. Farbkodierung und klare Statusanzeigen sind kein Nice-to-have, sondern Kernbestandteil einer funktionierenden Verwaltungsoberfläche.' },
+        { num: '03', title: 'Progressive Disclosure reduziert Komplexität', body: 'Das Akkordion-Pattern hat gelehrt, wie viel eine einfache Entscheidung bewirkt: Zeige zuerst nur das Nötigste, wer mehr braucht, holt es sich aktiv. Das entlastet die Übersicht ohne Informationen zu verstecken.' },
+        { num: '04', title: 'Echtzeit-Feedback verändert das Nutzungsgefühl', body: 'Die Live-Suche über Kennzeichen war technisch überschaubar, aber das Nutzungsgefühl hat sich damit grundlegend verändert. Sofortiges Feedback macht ein Tool nicht nur schneller, es fühlt sich schlicht besser an.' },
       ].map(({ num, title, body }, i) => (
         <div key={num} className={`insight-card ${i % 2 === 0 ? 'slide-l' : 'slide-r'}`}>
-          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#a855f7', fontFamily: 'var(--font-body)', display: 'block', marginBottom: 16 }}>{num}</span>
+          <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: '#4c1d95', fontFamily: 'var(--font-body)', display: 'block', marginBottom: 16 }}>{num}</span>
           <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 20, fontWeight: 600, letterSpacing: '-0.02em', color: 'hsl(260 30% 12%)', marginBottom: 12, lineHeight: 1.3 }}>{title}</h3>
           <p style={{ fontSize: 15, lineHeight: 1.75, color: 'hsl(260 10% 45%)', fontFamily: 'var(--font-body)' }}>{body}</p>
         </div>
@@ -587,6 +583,7 @@ const Erkenntnisse = ({ isMobile }) => (
 );
 
 /* ── Footer ── */
+
 const CopyButton = () => {
   const [copied, setCopied] = React.useState(false);
   const copy = () => {
@@ -595,7 +592,7 @@ const CopyButton = () => {
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <button
+    <button className="cp-btn"
       onClick={copy}
       title="Kopieren"
       style={{
@@ -629,11 +626,11 @@ const CopyButton = () => {
 };
 
 const Footer = ({ isMobile }) => (
-  <footer style={{ background: 'hsl(260 87% 3%)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: isMobile ? '60px 24px' : '100px 32px', textAlign: 'center' }}>
+  <footer style={{ background: 'hsl(264 50% 13%)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: isMobile ? '60px 24px' : '100px 32px', textAlign: 'center' }}>
     <div style={{ maxWidth: 640, margin: '0 auto' }}>
-      <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(168,85,247,0.7)', marginBottom: 16, fontFamily: 'var(--font-body)' }}>Kontakt</p>
-      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 36 : 52, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 20, backgroundImage: 'linear-gradient(to bottom right, #6366f1, #a855f7, #fcd34d)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-        Lass uns zusammenarbeiten.
+      <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.9)', marginBottom: 16, fontFamily: 'var(--font-body)' }}>Kontakt</p>
+      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: isMobile ? 36 : 52, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 20, backgroundImage: 'linear-gradient(to bottom right, #ffffff, #d1d5db, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        Lass uns zusammenarbeiten
       </h2>
       <p style={{ fontSize: 17, lineHeight: 1.65, color: 'rgba(240,234,220,0.6)', fontFamily: 'var(--font-body)', marginBottom: 40 }}>
         Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.
@@ -643,17 +640,14 @@ const Footer = ({ isMobile }) => (
           <a href="mailto:m.e.erdem@hotmail.de" style={{ color: 'rgba(240,234,220,0.85)', fontFamily: 'var(--font-body)', fontSize: 18, fontWeight: 500, textDecoration: 'none' }}>m.e.erdem@hotmail.de</a>
           <CopyButton />
         </div>
-        <a href="https://www.linkedin.com/in/muhammed-emre-erdem-70408536a" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(240,234,220,0.55)', fontFamily: 'var(--font-body)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => e.currentTarget.style.color = 'rgba(240,234,220,0.9)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,234,220,0.55)'}>
+        <a href="https://www.linkedin.com/in/muhammed-emre-erdem-70408536a" className="li-btn" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(240,234,220,0.55)', fontFamily: 'var(--font-body)', fontSize: 14, textDecoration: 'none', padding: '8px 16px', borderRadius: 10, transition: 'color 0.15s, background 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'rgba(240,234,220,0.9)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,234,220,0.55)'}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display:"block"}}><rect width="24" height="24" rx="4" fill="#0A66C2"/><g transform="translate(-1.3 0.3)"><circle cx="7.5" cy="6.8" r="1.6" fill="white"/><rect x="5.9" y="9.6" width="3.2" height="8.4" fill="white"/><path d="M12.8 9.6h2.75v1.25h.05c.38-.74 1.28-1.5 2.7-1.5 2.88 0 3.41 1.9 3.41 4.36V18h-3.2v-3.8c0-1-.02-2.28-1.39-2.28-1.4 0-1.61 1.09-1.61 2.2V18H12.8V9.6z" fill="white"/></g></svg>
           LinkedIn
         </a>
       </div>
-      <div style={{ marginTop: 80, paddingTop: 40, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <a href="../index.html" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(240,234,220,0.4)', fontFamily: 'var(--font-body)', fontSize: 14, textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => e.currentTarget.style.color = 'rgba(240,234,220,0.85)'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,234,220,0.4)'}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
-          Zurück zum Portfolio
-        </a>
-        <a href="../index.html" className="me-badge"><img src="../assets/me_logo.svg" style={{ width: 32, height: 32, display: 'block' }} alt="ME" /></a>
+      <div style={{ marginTop: 80, paddingTop: 40, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        
+        <a href="../index.html" className="me-badge"><img src="../assets/logo.svg" style={{ width: 32, height: 32, display: 'block' }} alt="ME" /></a>
       </div>
     </div>
   </footer>
@@ -703,17 +697,17 @@ const ScrollToTop = () => {
         position: 'fixed', bottom: 32, right: 32, zIndex: 999,
         width: 44, height: 44, borderRadius: 12,
         backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)',
-        background: onLight ? 'rgba(99,102,241,0.1)' : 'rgba(255,255,255,0.07)',
-        border: onLight ? '1px solid rgba(99,102,241,0.28)' : '1px solid rgba(255,255,255,0.14)',
-        color: onLight ? '#6366f1' : 'rgba(255,255,255,0.85)',
+        background: onLight ? 'rgba(124,58,237,0.1)' : 'rgba(255,255,255,0.07)',
+        border: onLight ? '1px solid rgba(124,58,237,0.28)' : '1px solid rgba(255,255,255,0.14)',
+        color: onLight ? '#4c1d95' : 'rgba(255,255,255,0.85)',
         cursor: 'pointer',
         display: visible ? 'flex' : 'none',
         alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.3s, border 0.3s, color 0.3s, box-shadow 0.3s',
-        boxShadow: onLight ? '0 4px 20px rgba(99,102,241,0.18)' : '0 4px 20px rgba(0,0,0,0.35)',
+        boxShadow: onLight ? '0 4px 20px rgba(124,58,237,0.18)' : '0 4px 20px rgba(0,0,0,0.35)',
       }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = onLight ? '0 8px 28px rgba(99,102,241,0.28)' : '0 8px 28px rgba(0,0,0,0.45)'; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = onLight ? '0 4px 20px rgba(99,102,241,0.18)' : '0 4px 20px rgba(0,0,0,0.35)'; }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = onLight ? '0 8px 28px rgba(124,58,237,0.28)' : '0 8px 28px rgba(0,0,0,0.45)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = onLight ? '0 4px 20px rgba(124,58,237,0.18)' : '0 4px 20px rgba(0,0,0,0.35)'; }}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="18 15 12 9 6 15"/>
@@ -743,6 +737,7 @@ const App = () => {
       <DetailSection isMobile={isMobile} />
       <Ergebnis isMobile={isMobile} />
       <Erkenntnisse isMobile={isMobile} />
+      <section className="proj-nav" style={{ background: '#fff', borderTop: '1px solid hsl(220 20% 92%)', padding: isMobile ? '40px 24px' : '56px 32px' }}><div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 16 : 24, justifyContent: 'space-between', alignItems: 'center' }}><a href="fitx.html" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', gap: 4, textDecoration: 'none' }}><span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#4c1d95', fontFamily: 'var(--font-body)' }}>Vorheriges Projekt</span><span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-head)', fontSize: isMobile ? 22 : 28, fontWeight: 600, letterSpacing: '-0.03em', color: 'hsl(260 30% 12%)' }}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>FitX</span></a><a href="werderloge.html" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: isMobile ? 'flex-start' : 'flex-end', gap: 4, textDecoration: 'none' }}><span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#4c1d95', fontFamily: 'var(--font-body)' }}>Nächstes Projekt</span><span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-head)', fontSize: isMobile ? 22 : 28, fontWeight: 600, letterSpacing: '-0.03em', color: 'hsl(260 30% 12%)' }}>Werderloge<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></div></section>
       <Footer isMobile={isMobile} />
     </>
   );
@@ -769,5 +764,676 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   window.addEventListener('resize', fix);
 })();
 </script>
+
+<!-- ── Sprach-Umschalter DE/EN (isoliert) ── -->
+<script>
+(function(){
+  var DICT = {
+    "Kennzeichensuche":"License plate search",
+    "UX/UI Designer & Frontend-Entwickler":"UX/UI Designer & Frontend Developer",
+    "Sofort navigierbar":"Instantly navigable",
+    "Weniger kognitive Last":"Less cognitive load",
+    "Kontakt":"Contact",
+    "Vorheriges Projekt":"Previous project",
+    "Zur Übersicht":"All projects",
+    "Alle Projekte":"All projects",
+    "Nächstes Projekt":"Next project",
+    "Legacy abgelöst":"Legacy replaced",
+    "Zentrale Fahrzeugübersicht auf einen Blick":"Central vehicle overview at a glance",
+    "Weg von der unidentifizierbaren Textwüste hin zu einer schnell zugänglichen, visuellen Darstellung. Symbole kommunizieren die Antriebsart auf einen Blick, intuitiv und ohne Lesen.":"Away from an unreadable wall of text toward a quick, visual presentation. Symbols communicate the drive type at a glance, intuitively and without reading.",
+    "Fahrzeuge hinzufügen & bearbeiten":"Add & edit vehicles",
+    "Die wichtigsten Aktionen sind direkt in der Listenansicht erreichbar. Wer mehr Informationen zu einem Fahrzeug benötigt, klappt das Akkordion einfach auf, ohne Seitenwechsel.":"The most important actions are available right in the list view. Anyone who needs more information about a vehicle simply expands the accordion, with no page change.",
+    "Verfügbarkeit & Reservierungsdauer einsehbar":"Availability & reservation duration at a glance",
+    "Fahrzeuge lassen sich direkt über das Kennzeichen suchen. Die Autovervollständigung schlägt passende Einträge in Echtzeit vor, kein Scrollen, kein Raten, sofort am Ziel.":"Vehicles can be searched directly by license plate. Autocomplete suggests matching entries in real time, no scrolling, no guessing, straight to the result.",
+    "Kein ewiges Versuchen zu entziffern, ob ein Fahrzeug verfügbar ist. Der Verfügbarkeitsstatus ist sofort ersichtlich, klar, eindeutig und ohne Interpretationsspielraum.":"No more endless squinting to figure out whether a vehicle is available. The availability status is immediately clear, unambiguous and leaves no room for interpretation.",
+    "Zurück zum Portfolio":"Back to portfolio",
+    "Webentwicklung":"Web Development",
+    "Internes Tool":"Internal Tool",
+    "Fuhrparkverwaltung":"Fleet Management",
+    "01 · Briefing":"01 · Briefing",
+
+/* ── 2. Herausforderung & Ziel ── */
+    "02 · Herausforderung & Ziel":"02 · Challenge & Goal",
+    "03 · Redesign":"03 · Redesign",
+    "04 · Details":"04 · Details",
+    "05 · Ergebnis":"05 · Result",
+    "06 · Erkenntnisse":"06 · Learnings",
+    "Zeitraum":"Timeframe",
+    "Feb. 2023 – Dez. 2023":"Feb 2023 – Dec 2023",
+    "Rolle":"Role",
+    "Einsatzdauer":"Duration",
+    "10 Monate":"10 months",
+    "Ein internes Verwaltungstool für den Fuhrpark von team neusta":"An internal management tool for team neusta's vehicle fleet",
+    "Poolwagen ist ein firmeninternes Verwaltungstool für Dienstfahrzeuge im Office-Management. Es ermöglicht Mitarbeitenden, Fahrzeuge einzusehen, hinzuzufügen, zu bearbeiten und deren Verfügbarkeit sowie Reservierungsdauer auf einen Blick zu erfassen.":"Poolwagen is an internal management tool for company vehicles in office management. It lets employees view, add and edit vehicles and see their availability and reservation duration at a glance.",
+    "Das Projekt entstand im Rahmen meiner Ausbildung bei team neusta und umfasste den gesamten UX/UI-Prozess, von der Konzeption bis zur fertigen Umsetzung. Zentrales Ziel war es, Fahrzeugdaten übersichtlich darzustellen und die Verwaltung so effizient zu gestalten, dass der manuelle Aufwand im Office-Management spürbar sinkt.":"The project was created during my apprenticeship at team neusta and covered the entire UX/UI process, from concept to finished build. The central goal was to present vehicle data clearly and make administration efficient enough to noticeably cut manual effort in office management.",
+    "Die Herausforderung":"The Challenge",
+    "Die bestehende Übersicht der Dienstfahrzeuge war unordentlich und veraltet, schwer lesbar und nicht auf den tatsächlichen Verwaltungsalltag abgestimmt.":"The existing overview of company vehicles was messy and outdated, hard to read and not aligned with the actual day-to-day of administration.",
+    "Hinzu kam, dass zentrale Funktionen wie das Hinzufügen, Bearbeiten oder Entfernen von Fahrzeugen unnötig umständlich waren, zu viele Schritte für Aufgaben, die täglich anfallen.":"On top of that, core functions like adding, editing or removing vehicles were unnecessarily cumbersome, too many steps for tasks that come up every day.",
+    "Das Ziel":"The Goal",
+    "Ein klares, effizientes Verwaltungstool, das Fahrzeuginformationen bündelt und den Verwaltungsalltag spürbar vereinfacht.":"A clear, efficient management tool that bundles vehicle information and noticeably simplifies day-to-day administration.",
+    "Das bestehende Tool wirkte generisch und unstrukturiert. Im Redesign wurde die Oberfläche konsequent an die neusta-Designsprache angepasst, klare Typografie, konsistente Farbgebung und eine deutlich übersichtlichere Informationsarchitektur.":"The existing tool felt generic and unstructured. In the redesign the interface was consistently aligned with the neusta design language, with clear typography, consistent colors and a much clearer information architecture.",
+    "Vorher, Generisches Legacy-Interface":"Before, generic legacy interface",
+    "Nachher, Neusta Corporate Identity":"After, neusta corporate identity",
+    "Vom grauen Legacy-Look":"From the grey legacy look",
+    "zur neusta Corporate Identity":"to the neusta corporate identity",
+    "Vom generischen Grau-Interface zur neusta Corporate Identity, konsequent und produktiv im Einsatz":"From the generic grey interface to the neusta corporate identity, consistent and productive in use",
+    "Funktionen im Detail":"Features in detail",
+    "Vier Designentscheidungen, die das Tool spürbar besser machen, von der Suche bis zum Schnellzugriff.":"Four design decisions that make the tool noticeably better, from search to quick access.",
+    "Kennzeichensuche, Statusanzeige und Schnellzugriff machen jede Interaktion direkt und ohne Umweg":"License plate search, status display and quick access make every interaction direct and detour-free",
+    "Schnelle Kennzeichensuche":"License plate search",
+    "Verfügbarkeit auf einen Blick":"Availability at a glance",
+    "Innovative Darstellung der Antriebsart":"Innovative display of the drive type",
+    "Schneller Zugriff auf die wichtigsten Funktionen":"Quick access to the most important functions",
+    "Ein Tool, das im Büroalltag":"A tool that in everyday office work",
+    "wirklich funktioniert":"really works",
+    "Poolwagen ist kein Showcase-Projekt, es soll echte Probleme im Büroalltag lösen. Das Ergebnis ist ein durchdachtes Interface, das Fahrzeugdaten strukturiert, Status sofort lesbar macht und unnötige Klicks konsequent eliminiert.":"Poolwagen isn't a showcase project, it's meant to solve real problems in everyday office work. The result is a thoughtful interface that structures vehicle data, makes status instantly readable and consistently eliminates unnecessary clicks.",
+    "Was dieses Projekt gelehrt hat":"What this project taught me",
+    "Verwaltungstools werden oft unterschätzt, dabei steckt genauso viel UX-Potenzial drin wie in nutzerzentrierten Produkten.":"Management tools are often underestimated, even though they hold just as much UX potential as user-centered products.",
+    "Icons sprechen lauter als Text":"Icons speak louder than text",
+    "Die Antriebssymbole haben gezeigt: In datenreichen Interfaces kommunizieren visuelle Symbole schneller und präziser als ausgeschriebene Werte. Was als kleines UI-Detail beginnt, verändert die gesamte Lesbarkeit einer Ansicht.":"The drive-type symbols showed that in data-rich interfaces, visual symbols communicate faster and more precisely than spelled-out values. What starts as a small UI detail changes the readability of an entire view.",
+    "Status muss sofort erkennbar sein":"Status has to be instantly recognizable",
+    "Verfügbarkeit ist keine Information, die Nutzer suchen wollen, sie muss auf den ersten Blick da sein. Farbkodierung und klare Statusanzeigen sind kein Nice-to-have, sondern Kernbestandteil einer funktionierenden Verwaltungsoberfläche.":"Availability isn't information users want to search for, it has to be there at first glance. Color coding and clear status indicators aren't a nice-to-have, they're a core part of a working admin interface.",
+    "Progressive Disclosure reduziert Komplexität":"Progressive disclosure reduces complexity",
+    "Das Akkordion-Pattern hat gelehrt, wie viel eine einfache Entscheidung bewirkt: Zeige zuerst nur das Nötigste, wer mehr braucht, holt es sich aktiv. Das entlastet die Übersicht ohne Informationen zu verstecken.":"The accordion pattern taught me how much a simple decision can achieve: show only the essentials first, and anyone who needs more pulls it up actively. That unclutters the overview without hiding information.",
+    "Echtzeit-Feedback verändert das Nutzungsgefühl":"Real-time feedback changes how the tool feels",
+    "Die Live-Suche über Kennzeichen war technisch überschaubar, aber das Nutzungsgefühl hat sich damit grundlegend verändert. Sofortiges Feedback macht ein Tool nicht nur schneller, es fühlt sich schlicht besser an.":"The live search by license plate was technically modest, but it fundamentally changed how the tool feels. Instant feedback doesn't just make a tool faster, it simply feels better.",
+    "Icons statt Text, Farbe statt Raten, Informationen werden gelesen, nicht entziffert":"Icons instead of text, color instead of guessing, information gets read, not deciphered",
+    "Lass uns zusammenarbeiten":"Let's work together",
+    "Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.":"Like my work? I'd love to hear from you."
+  };
+  var lang = localStorage.getItem('siteLang') || 'de';
+  var root, obs, applying = false;
+  function walk(node){
+    var en = lang === 'en';
+    var w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while ((n = w.nextNode())){
+      var key = n.nodeValue.trim();
+      if (!key) continue;
+      if (en){ if (DICT[key] !== undefined){ if (n.__de == null) n.__de = n.nodeValue; n.nodeValue = n.nodeValue.replace(key, DICT[key]); } }
+      else if (n.__de != null){ n.nodeValue = n.__de; }
+    }
+  }
+  function apply(){ if (!root) return; applying = true; if (obs) obs.disconnect(); walk(root); if (obs) obs.observe(root, { childList:true, subtree:true, characterData:true }); applying = false; }
+  function flagSVG(which){
+    if (which === 'de') return '<svg width="24" height="16" viewBox="0 0 5 3" style="display:block;border-radius:3px"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>';
+    return '<svg width="24" height="16" viewBox="0 0 60 30" style="display:block;border-radius:3px"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3.5"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>';
+  }
+  function setLang(l){ if (l === lang) return; lang = l; localStorage.setItem('siteLang', l); document.documentElement.lang = l; apply(); refreshToggles(); }
+  var toggleEls = [];
+  var CELL = 34;
+  function refreshToggles(){ toggleEls.forEach(function(t){ t.de.style.opacity = lang==='de'?'1':'0.45'; t.en.style.opacity = lang==='en'?'1':'0.45'; t.thumb.style.transform = 'translateX(' + (lang==='en'?CELL:0) + 'px)'; }); }
+  function buildToggle(){
+    var wrap = document.createElement('div'); wrap.className='langToggle'; wrap.setAttribute('role','switch'); wrap.title='DE / EN';
+    wrap.style.cssText='position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;padding:3px;border-radius:9999px;background:rgba(124,58,237,0.14);border:1px solid rgba(255,255,255,0.16);cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,0.35)';
+    var thumb=document.createElement('div');
+    thumb.style.cssText='position:absolute;top:3px;left:3px;width:'+CELL+'px;height:22px;border-radius:9999px;background:rgba(255,255,255,0.82);box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .26s cubic-bezier(0.22,1,0.36,1);transform:translateX('+(lang==='en'?CELL:0)+'px)';
+    wrap.appendChild(thumb);
+    function cell(l){ var c=document.createElement('div'); c.style.cssText='position:relative;z-index:1;width:'+CELL+'px;height:22px;display:flex;align-items:center;justify-content:center;opacity:'+(lang===l?'1':'0.45')+';transition:opacity .2s;filter:drop-shadow(0 1px 1.5px rgba(124,58,237,0.3))'; c.innerHTML=flagSVG(l); return c; }
+    var de=cell('de'), en=cell('en'); wrap.appendChild(de); wrap.appendChild(en);
+    wrap.onclick=function(){ setLang(lang==='de'?'en':'de'); };
+    toggleEls.push({el:wrap,de:de,en:en,thumb:thumb}); return wrap;
+  }
+  function ensureNav(){
+    if (!root) return;
+    var nav = root.querySelector('nav');
+    if (!nav || nav.querySelector('.langToggle')) return;
+    toggleEls = toggleEls.filter(function(t){ return document.body.contains(t.el); });
+    nav.style.position='relative';nav.appendChild(buildToggle());
+  }
+  var pending=null;
+  function schedule(){ if (pending) return; pending=setTimeout(function(){ pending=null; if(lang==='en') apply(); ensureNav(); }, 40); }
+  function start(){ root=document.getElementById('root'); if(!root){ setTimeout(start,150); return; } document.documentElement.lang=lang; obs=new MutationObserver(function(){ if(!applying) schedule(); }); apply(); ensureNav(); obs.observe(root,{childList:true,subtree:true,characterData:true}); }
+  if (document.readyState !== 'loading') start(); else document.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+<!-- StaggeredMenu (probeweise) -->
+<div id="sm-root"></div>
+<style>
+.staggered-menu-wrapper{position:relative;width:100%;height:100%;z-index:200;pointer-events:none}
+.staggered-menu-wrapper.fixed-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:200;overflow:hidden}
+.staggered-menu-header{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;box-sizing:border-box;height:72px;display:flex;align-items:center;justify-content:flex-start;padding:0 32px;background:transparent;pointer-events:none;z-index:20}
+.staggered-menu-header > *{pointer-events:auto}
+.sm-logo{display:none}
+.sm-toggle{position:relative;display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:none;cursor:pointer;color:#111;font-weight:600;font-size:15px;line-height:1;overflow:visible;font-family:var(--font-body)}.sm-toggle{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color .25s}.sm-toggle:hover{background-color:rgba(76,29,149,0.12)}
+.sm-toggle:focus-visible{outline:2px solid #3f465466;outline-offset:4px;border-radius:4px}
+.sm-line:last-of-type{margin-top:6px}
+.sm-toggle-textWrap{position:relative;display:inline-block;height:1em;overflow:hidden;white-space:nowrap;width:var(--sm-toggle-width,auto);min-width:var(--sm-toggle-width,auto)}
+.sm-toggle-textInner{display:flex;flex-direction:column;line-height:1}
+.sm-toggle-line{display:block;height:1em;line-height:1}
+.sm-icon{position:relative;width:14px;height:14px;flex:0 0 14px;display:inline-flex;align-items:center;justify-content:center;will-change:transform}
+.sm-panel-itemWrap{position:relative;overflow:hidden;line-height:1.2}
+.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}
+.sm-line{display:none !important}
+.staggered-menu-panel{position:absolute;top:0;right:0;width:clamp(320px,48vw,585px);height:100%;background:#fff;box-shadow:-34px 0 90px -26px rgba(17,24,39,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:4em 2em 2em 2em;overflow-y:auto;z-index:10;pointer-events:auto;opacity:0}
+[data-position='left'] .staggered-menu-panel{right:auto;left:0}
+.sm-prelayers{position:absolute;top:0;right:0;bottom:0;width:clamp(320px,48vw,585px);pointer-events:none;z-index:5;opacity:0}
+[data-position='left'] .sm-prelayers{right:auto;left:0}
+.sm-prelayer{position:absolute;top:0;right:0;height:100%;width:100%;transform:translateX(0);opacity:0}
+.sm-panel-inner{flex:1;display:flex;flex-direction:column;gap:1.25rem}
+.sm-socials{margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem}
+.sm-socials-title{margin:0;font-size:1rem;font-weight:500;color:var(--sm-accent,#3f4654)}
+.sm-socials-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:center;gap:1rem;flex-wrap:wrap}
+.sm-panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.sm-panel-item{position:relative;color:#0e1013;font-weight:700;font-size:clamp(1.5rem,4.6vw,2.45rem);cursor:pointer;line-height:1.16;letter-spacing:-1.5px;text-transform:uppercase;transition:background .25s,color .25s;display:inline-block;white-space:nowrap;text-decoration:none;padding:.1em .62em .04em 0;font-family:var(--font-head)}
+@media (max-width:768px){.staggered-menu-panel .back-link{font-size:15px !important;gap:8px !important}.staggered-menu-panel .back-link::before{display:none !important}.staggered-menu-panel .back-link>svg{display:inline-block !important}}.sm-panel-itemLabel{display:inline-block;will-change:transform;transform-origin:50% 100%}
+.sm-panel-item:hover{color:var(--sm-accent,#3f4654)}
+.sm-panel-list[data-numbering]{counter-reset:smItem}
+.sm-panel-list[data-numbering] .sm-panel-item::after{counter-increment:smItem;content:counter(smItem,decimal-leading-zero);font-size:.42em;font-weight:400;color:var(--sm-accent,#3f4654);letter-spacing:0;vertical-align:1.2em;margin-left:.38em;pointer-events:none;user-select:none;opacity:var(--sm-num-opacity,0)}.sm-panel-item.sm-small{font-size:clamp(1.35rem,4.6vw,2.1rem)!important}.sm-panel-item.sm-sub{font-size:clamp(.85rem,2.6vw,1.25rem);margin-left:1.8rem;font-weight:600;letter-spacing:-.3px;text-transform:none}.sm-panel-list[data-numbering] .sm-panel-item.sm-sub::after{content:none}
+@media (max-width:1024px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (max-width:640px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (min-width:641px) and (max-width:1024px){.sm-panel-item{font-size:clamp(2.1rem,6.4vw,3.35rem) !important}.sm-panel-item.sm-small{font-size:clamp(1.85rem,6.4vw,2.85rem) !important}}</style>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+"use strict";
+
+const {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState
+} = React;
+const gsap = window.gsap;
+const StaggeredMenu = ({
+  position = 'right',
+  colors = ['#B497CF', '#5227FF'],
+  items = [],
+  socialItems = [],
+  displaySocials = false,
+  displayItemNumbering = true,
+  className,
+  logoUrl,
+  menuButtonColor = '#111',
+  openMenuButtonColor = '#111',
+  accentColor = '#3f4654',
+  changeMenuColorOnOpen = true,
+  isFixed = true,
+  closeOnClickAway = true,
+  onMenuOpen,
+  onMenuClose,
+  menuLabel = 'Menu',
+  closeLabel = 'Close'
+}) => {
+  const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
+  const panelRef = useRef(null);
+  const preLayersRef = useRef(null);
+  const preLayerElsRef = useRef([]);
+  const plusHRef = useRef(null);
+  const plusVRef = useRef(null);
+  const iconRef = useRef(null);
+  const textInnerRef = useRef(null);
+  const textWrapRef = useRef(null);
+  const [textLines, setTextLines] = useState([menuLabel, closeLabel]);
+  const openTlRef = useRef(null);
+  const closeTweenRef = useRef(null);
+  const spinTweenRef = useRef(null);
+  const textCycleAnimRef = useRef(null);
+  const colorTweenRef = useRef(null);
+  const toggleBtnRef = useRef(null);
+  const busyRef = useRef(false);
+  const itemEntranceTweenRef = useRef(null);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panel = panelRef.current;
+      const preContainer = preLayersRef.current;
+      const plusH = plusHRef.current;
+      const plusV = plusVRef.current;
+      const icon = iconRef.current;
+      const textInner = textInnerRef.current;
+      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      let preLayers = [];
+      if (preContainer) preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+      preLayerElsRef.current = preLayers;
+      const offscreen = position === 'left' ? -100 : 100;
+      gsap.set([panel, ...preLayers], {
+        xPercent: offscreen,
+        opacity: 1
+      });
+      if (preContainer) gsap.set(preContainer, {
+        xPercent: 0,
+        opacity: 1
+      });
+      gsap.set(plusH, {
+        transformOrigin: '50% 50%',
+        rotate: 0
+      });
+      gsap.set(plusV, {
+        transformOrigin: '50% 50%',
+        rotate: 90
+      });
+      gsap.set(icon, {
+        rotate: 0,
+        transformOrigin: '50% 50%'
+      });
+      gsap.set(textInner, {
+        yPercent: 0
+      });
+      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    });
+    return () => ctx.revert();
+  }, [menuButtonColor, position]);
+  const buildOpenTimeline = useCallback(() => {
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return null;
+    openTlRef.current && openTlRef.current.kill();
+    if (closeTweenRef.current) {
+      closeTweenRef.current.kill();
+      closeTweenRef.current = null;
+    }
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+    const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+    const socialTitle = panel.querySelector('.sm-socials-title');
+    const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+    const offscreen = position === 'left' ? -100 : 100;
+    const layerStates = layers.map(el => ({
+      el,
+      start: offscreen
+    }));
+    const panelStart = offscreen;
+    if (itemEls.length) gsap.set(itemEls, {
+      yPercent: 140,
+      rotate: 10
+    });
+    if (numberEls.length) gsap.set(numberEls, {
+      '--sm-num-opacity': 0
+    });
+    if (socialTitle) gsap.set(socialTitle, {
+      opacity: 0
+    });
+    if (socialLinks.length) gsap.set(socialLinks, {
+      y: 25,
+      opacity: 0
+    });
+    const tl = gsap.timeline({
+      paused: true
+    });
+    layerStates.forEach((ls, i) => {
+      tl.fromTo(ls.el, {
+        xPercent: ls.start
+      }, {
+        xPercent: 0,
+        duration: 0.5,
+        ease: 'power4.out'
+      }, i * 0.07);
+    });
+    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
+    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+    const panelDuration = 0.65;
+    tl.fromTo(panel, {
+      xPercent: panelStart
+    }, {
+      xPercent: 0,
+      duration: panelDuration,
+      ease: 'power4.out'
+    }, panelInsertTime);
+    if (itemEls.length) {
+      const itemsStart = panelInsertTime + panelDuration * 0.15;
+      tl.to(itemEls, {
+        yPercent: 0,
+        rotate: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: {
+          each: 0.1,
+          from: 'start'
+        }
+      }, itemsStart);
+      if (numberEls.length) {
+        tl.to(numberEls, {
+          duration: 0.6,
+          ease: 'power2.out',
+          '--sm-num-opacity': 1,
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          }
+        }, itemsStart + 0.1);
+      }
+    }
+    if (socialTitle || socialLinks.length) {
+      const socialsStart = panelInsertTime + panelDuration * 0.4;
+      if (socialTitle) tl.to(socialTitle, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, socialsStart);
+      if (socialLinks.length) {
+        tl.to(socialLinks, {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          },
+          onComplete: () => {
+            gsap.set(socialLinks, {
+              clearProps: 'opacity'
+            });
+          }
+        }, socialsStart + 0.04);
+      }
+    }
+    openTlRef.current = tl;
+    return tl;
+  }, [position]);
+  const playOpen = useCallback(() => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    const tl = buildOpenTimeline();
+    if (tl) {
+      tl.eventCallback('onComplete', () => {
+        busyRef.current = false;
+      });
+      tl.play(0);
+    } else busyRef.current = false;
+  }, [buildOpenTimeline]);
+  const playClose = useCallback(() => {
+    openTlRef.current && openTlRef.current.kill();
+    openTlRef.current = null;
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return;
+    const all = [...layers, panel];
+    closeTweenRef.current && closeTweenRef.current.kill();
+    const offscreen = position === 'left' ? -100 : 100;
+    closeTweenRef.current = gsap.to(all, {
+      xPercent: offscreen,
+      duration: 0.32,
+      ease: 'power3.in',
+      overwrite: 'auto',
+      onComplete: () => {
+        const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+        if (itemEls.length) gsap.set(itemEls, {
+          yPercent: 140,
+          rotate: 10
+        });
+        const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+        if (numberEls.length) gsap.set(numberEls, {
+          '--sm-num-opacity': 0
+        });
+        const socialTitle = panel.querySelector('.sm-socials-title');
+        const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+        if (socialTitle) gsap.set(socialTitle, {
+          opacity: 0
+        });
+        if (socialLinks.length) gsap.set(socialLinks, {
+          y: 25,
+          opacity: 0
+        });
+        busyRef.current = false;
+      }
+    });
+  }, [position]);
+  const animateIcon = useCallback(opening => {
+    const icon = iconRef.current;
+    if (!icon) return;
+    spinTweenRef.current && spinTweenRef.current.kill();
+    if (opening) spinTweenRef.current = gsap.to(icon, {
+      rotate: 225,
+      duration: 0.8,
+      ease: 'power4.out',
+      overwrite: 'auto'
+    });else spinTweenRef.current = gsap.to(icon, {
+      rotate: 0,
+      duration: 0.35,
+      ease: 'power3.inOut',
+      overwrite: 'auto'
+    });
+  }, []);
+  const animateColor = useCallback(opening => {
+    const btn = toggleBtnRef.current;
+    if (!btn) return;
+    colorTweenRef.current && colorTweenRef.current.kill();
+    if (changeMenuColorOnOpen) {
+      const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+      colorTweenRef.current = gsap.to(btn, {
+        color: targetColor,
+        delay: 0.18,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    } else gsap.set(btn, {
+      color: menuButtonColor
+    });
+  }, [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]);
+  React.useEffect(() => {
+    if (toggleBtnRef.current) {
+      if (changeMenuColorOnOpen) {
+        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
+        gsap.set(toggleBtnRef.current, {
+          color: targetColor
+        });
+      } else gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    }
+  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  const animateText = useCallback(opening => {
+    const inner = textInnerRef.current;
+    if (!inner) return;
+    textCycleAnimRef.current && textCycleAnimRef.current.kill();
+    const currentLabel = opening ? menuLabel : closeLabel;
+    const targetLabel = opening ? closeLabel : menuLabel;
+    const cycles = 3;
+    const seq = [currentLabel];
+    let last = currentLabel;
+    for (let i = 0; i < cycles; i++) {
+      last = last === menuLabel ? closeLabel : menuLabel;
+      seq.push(last);
+    }
+    if (last !== targetLabel) seq.push(targetLabel);
+    seq.push(targetLabel);
+    setTextLines(seq);
+    gsap.set(inner, {
+      yPercent: 0
+    });
+    const lineCount = seq.length;
+    const finalShift = (lineCount - 1) / lineCount * 100;
+    textCycleAnimRef.current = gsap.to(inner, {
+      yPercent: -finalShift,
+      duration: 0.5 + lineCount * 0.07,
+      ease: 'power4.out'
+    });
+  }, []);
+  const toggleMenu = useCallback(() => {
+    const target = !openRef.current;
+    openRef.current = target;
+    setOpen(target);
+    if (target) {
+      onMenuOpen && onMenuOpen();
+      playOpen();
+    } else {
+      onMenuClose && onMenuClose();
+      playClose();
+    }
+    animateIcon(target);
+    animateColor(target);
+    animateText(target);
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+  const closeMenu = useCallback(() => {
+    if (openRef.current) {
+      openRef.current = false;
+      setOpen(false);
+      onMenuClose && onMenuClose();
+      playClose();
+      animateIcon(false);
+      animateColor(false);
+      animateText(false);
+    }
+  }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
+  React.useEffect(() => {
+    if (!closeOnClickAway || !open) return;
+    const handleClickOutside = event => {
+      if (panelRef.current && !panelRef.current.contains(event.target) && toggleBtnRef.current && !toggleBtnRef.current.contains(event.target)) closeMenu();
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [closeOnClickAway, open, closeMenu]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: (className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : ''),
+    style: accentColor ? {
+      ['--sm-accent']: accentColor
+    } : undefined,
+    "data-position": position,
+    "data-open": open || undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: preLayersRef,
+    className: "sm-prelayers",
+    "aria-hidden": "true"
+  }, (() => {
+    const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
+    let arr = [...raw];
+    if (arr.length >= 3) {
+      const mid = Math.floor(arr.length / 2);
+      arr.splice(mid, 1);
+    }
+    return arr.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "sm-prelayer",
+      style: {
+        background: c
+      }
+    }));
+  })()), /*#__PURE__*/React.createElement("header", {
+    className: "staggered-menu-header",
+    "aria-label": "Main navigation header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-logo",
+    "aria-label": "Logo"
+  }), /*#__PURE__*/React.createElement("button", {
+    ref: toggleBtnRef,
+    className: "sm-toggle",
+    "aria-label": open ? 'Close menu' : 'Open menu',
+    "aria-expanded": open,
+    "aria-controls": "staggered-menu-panel",
+    onClick: toggleMenu,
+    type: "button"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textWrapRef,
+    className: "sm-toggle-textWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textInnerRef,
+    className: "sm-toggle-textInner"
+  }, textLines.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    className: "sm-toggle-line",
+    key: i
+  }, l)))), /*#__PURE__*/React.createElement("span", {
+    ref: iconRef,
+    className: "sm-icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: plusHRef,
+    className: "sm-icon-line"
+  }), /*#__PURE__*/React.createElement("span", {
+    ref: plusVRef,
+    className: "sm-icon-line sm-icon-line-v"
+  })))), /*#__PURE__*/React.createElement("aside", {
+    id: "staggered-menu-panel",
+    ref: panelRef,
+    className: "staggered-menu-panel",
+    "aria-hidden": !open
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-panel-inner"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "sm-panel-list",
+    role: "list",
+    "data-numbering": displayItemNumbering || undefined
+  }, items && items.length ? items.map((it, idx) => /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    key: it.label + idx
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "sm-panel-item" + (it.sub ? " sm-sub" : "") + (it.small ? " sm-small" : ""),
+    href: it.link,
+    "aria-label": it.ariaLabel,
+    "data-index": idx + 1,
+    onClick: e => {
+      if (it.onClick) it.onClick(e);
+      closeMenu();
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, it.label)))) : /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, "No items")))))));
+};
+const SECTIONS = [
+  { de:'Briefing',        en:'Briefing',   target:'pw-briefing' },
+  { de:'Herausforderung & Ziel', en:'Challenge & Goal', target:'pw-herausforderung', small:true },
+  { de:'Redesign',        en:'Redesign',   target:'pw-vergleich' },
+  { de:'Details',         en:'Details',    target:'pw-funktionen' },
+  { de:'Ergebnis',        en:'Result',     target:'pw-ergebnis' },
+  { de:'Erkenntnisse',    en:'Learnings',  target:'pw-learnings' }
+];
+const T = { de:{ menu:'Menü', close:'Schließen', to:'Zu ' }, en:{ menu:'Menu', close:'Close', to:'Go to ' } };
+function curLang(){ return (document.documentElement.lang === 'en' || localStorage.getItem('siteLang') === 'en') ? 'en' : 'de'; }
+function MenuApp(){
+  const [lang, setLang] = React.useState(curLang());
+  React.useEffect(function(){
+    const upd = function(){ setLang(curLang()); };
+    const mo = new MutationObserver(upd);
+    mo.observe(document.documentElement, { attributes:true, attributeFilter:['lang'] });
+    window.addEventListener('storage', upd);
+    return function(){ mo.disconnect(); window.removeEventListener('storage', upd); };
+  }, []);
+  const en = lang === 'en';
+  const items = SECTIONS.map(function(row){
+    const label = en ? row.en : row.de;
+    return {
+      label: label, sub: !!row.sub, small: !!row.small, link: '#',
+      ariaLabel: (en ? T.en.to : T.de.to) + label,
+      onClick: function(e){ e.preventDefault(); var el=document.getElementById(row.target); if(el) el.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    };
+  });
+  return React.createElement(StaggeredMenu, {
+    key: lang, position: "right", isFixed: true, items: items,
+    displaySocials: false, displayItemNumbering: true,
+    menuButtonColor: "#4c1d95", openMenuButtonColor: "#4c1d95",
+    accentColor: "#4c1d95", colors: ['#e5dbf5', '#4c1d95'], changeMenuColorOnOpen: true,
+    menuLabel: en ? T.en.menu : T.de.menu, closeLabel: en ? T.en.close : T.de.close
+  });
+}
+ReactDOM.createRoot(document.getElementById('sm-root')).render(React.createElement(MenuApp, null));
+})();
+</script>
+<!-- Header: fixed + condense on scroll -->
+<style>
+#root{background:#fff}#root header nav{padding:13px 28px !important}@media (max-width:768px){.staggered-menu-panel{padding-top:8em !important}}#root header{position:fixed!important;top:16px!important;left:50%;transform:translateX(-50%);width:calc(100% - 28px)!important;max-width:1180px;border-radius:9999px!important;background:linear-gradient(0deg,rgba(76,29,149,0.16),rgba(76,29,149,0.16)),rgba(255,255,255,0.58)!important;backdrop-filter:blur(22px) saturate(140%)!important;-webkit-backdrop-filter:blur(22px) saturate(140%)!important;border:1px solid rgba(76,29,149,0.18)!important;box-shadow:0 14px 40px -16px rgba(76,29,149,.34)!important;transition:box-shadow .3s ease,background .3s ease}
+#root header nav{transition:padding .34s cubic-bezier(.16,1,.3,1)!important}
+#root header.nav-scrolled{background:linear-gradient(0deg,rgba(76,29,149,0.16),rgba(76,29,149,0.16)),rgba(255,255,255,0.58) !important;box-shadow:0 14px 40px -16px rgba(76,29,149,.34)}
+#root header.nav-scrolled nav{padding-top:13px!important;padding-bottom:13px!important}
+#root header nav img{transition:transform .34s cubic-bezier(.16,1,.3,1)}
+#root header.nav-scrolled nav img{transform:scale(1)}@media (max-width:768px){#root header nav{padding:13px 20px !important}.staggered-menu-header{height:72px;padding:0 20px}}
+#root section,[id^="pw-"]{scroll-margin-top:84px}
+.staggered-menu-header{transition:height .34s cubic-bezier(.16,1,.3,1)!important}
+.staggered-menu-header.nav-scrolled{height:72px!important}
+</style>
+<script>
+(function(){
+  function init(){
+    var hdr = document.querySelector('#root header');
+    if (!hdr){ requestAnimationFrame(init); return; }
+    if (hdr.parentElement){ hdr.parentElement.style.paddingTop = (hdr.offsetHeight + 34) + 'px'; hdr.parentElement.style.background = '#fff'; }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+
+
 </body>
 </html>

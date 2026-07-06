@@ -10,9 +10,9 @@
 <meta property="og:url" content="https://muhammed-emre-erdem.de/components/aboutyou.html" />
 <meta property="og:title" content="ABOUT YOU – Checkout ohne Reibung | Muhammed-Emre Erdem" />
 <meta property="og:description" content="Fiktiver CRO-Case: Optimierung des mobilen Checkout-Funnels bei ABOUT YOU durch Deferred Account Commitment." />
-<meta property="og:image" content="https://muhammed-emre-erdem.de/assets/aboutyou/aboutyou_thumbnail.jpg" />
+<meta property="og:image" content="https://muhammed-emre-erdem.de/assets/aboutyou/aboutyou_thumbnail.webp" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://muhammed-emre-erdem.de/assets/aboutyou/aboutyou_thumbnail.jpg" />
+<meta name="twitter:image" content="https://muhammed-emre-erdem.de/assets/aboutyou/aboutyou_thumbnail.webp" />
 <meta name="twitter:title" content="ABOUT YOU – Checkout ohne Reibung | Muhammed-Emre Erdem" />
 <meta name="twitter:description" content="Fiktiver CRO-Case: Optimierung des mobilen Checkout-Funnels bei ABOUT YOU durch Deferred Account Commitment." />
 <meta name="author" content="Muhammed-Emre Erdem" />
@@ -30,8 +30,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../assets/fonts/fonts.css" />
-<link rel="icon" type="image/svg+xml" href="../assets/me_logo.svg" />
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
@@ -41,18 +40,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       hsl(260 87% 3%);
+  --bg:       #0e1013;
   --fg:       hsl(40 6% 95%);
   --fg-sub:   hsl(40 6% 72%);
-  --font-body: 'Geist', sans-serif;
-  --font-head: 'General Sans', sans-serif;
+  --font-body: 'Momo Trust Sans', sans-serif;
+  --font-head: 'Momo Trust Sans', sans-serif;
 }
 
-html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); overflow-x: hidden; }
+html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); letter-spacing: -0.04em; overflow-x: hidden; }
 
 .nav-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(240,234,220,0.2), transparent);
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.07), transparent);
 }
 
 .tag-chip {
@@ -94,7 +93,7 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
 }
 .insight-card:hover {
   background: rgba(255,255,255,0.06);
-  border-color: rgba(168,85,247,0.25);
+  border-color: rgba(174,180,190,0.25);
 }
 .insight-card.slide-l,
 .insight-card.slide-r {
@@ -105,22 +104,779 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
 
 .back-link {
   display: inline-flex; align-items: center; gap: 8px;
-  color: rgba(240,234,220,0.5); font-family: var(--font-body);
+  color: #3f4654; font-family: var(--font-body);
   font-size: 14px; text-decoration: none; transition: color 0.15s;
   background: none; border: none; cursor: pointer; padding: 0;
 }
-.back-link:hover { color: rgba(240,234,220,0.9); }
+.back-link:hover { color: #3f4654; }
 
-.me-badge { display: inline-block; border-radius: 50%; transition: box-shadow 0.2s, transform 0.2s; line-height: 0; text-decoration: none; }
-.me-badge:hover { box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3); transform: scale(1.08); }
+.me-badge { display: inline-block; padding: 6px; margin: -6px; border-radius: 50%; transition: background-color 0.2s ease, transform 0.2s ease; line-height: 0; text-decoration: none; }
+.me-badge:hover { transform: scale(1.08); }
 
 @media (max-width: 768px) {
   .meta-row { flex-direction: column !important; gap: 16px !important; }
 }
+  @keyframes pnav-by{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}@keyframes pnav-bxr{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}@keyframes pnav-bxl{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}.proj-nav a{padding:12px 16px;border-radius:12px;transition:background-color .22s ease,box-shadow .22s ease}.proj-nav a:hover{background-color:#f1f3f5;box-shadow:inset 0 0 0 1px rgba(63,70,84,0.18),0 6px 18px rgba(63,70,84,0.12)}.proj-nav a[href*="index.html"]:hover svg{animation:pnav-by .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):first-child:hover svg{animation:pnav-bxl .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):last-child:hover svg{animation:pnav-bxr .55s ease-in-out infinite}
+  .bounce-back{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color 0.15s}.bounce-back:hover{background-color:rgba(63,70,84,0.14)}.bounce-back:hover svg{animation:pnav-bxl .55s ease-in-out infinite}
+  .langToggle{transition:background .2s ease,border-color .2s ease}.langToggle:hover{background:rgba(63,70,84,0.2)!important;border-color:rgba(255,255,255,0.34)!important}
+  @keyframes cpbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes libob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}.cp-btn:hover span{animation:cpbob .5s ease-in-out infinite}.li-btn:hover svg{animation:libob .55s ease-in-out infinite}.li-btn:hover{background:rgba(255,255,255,0.08)}
+  @media (max-width:600px){a.back-link,a.bounce-back{font-size:0 !important;gap:0 !important;}a.back-link>svg,a.bounce-back>svg{display:none !important;}a.back-link::before,a.bounce-back::before{content:"";display:inline-block;width:21px;height:21px;flex-shrink:0;background-color:currentColor;-webkit-mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;}}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="root"></div>
 <script src="../js/aboutyou.js"></script>
+
+<!-- ── Sprach-Umschalter DE/EN (isoliert) ── -->
+<script>
+(function(){
+  var DICT = {
+    "Warum lohnt es sich, genau diese Schritte testweise wegzulassen?":"Why is it worth dropping exactly these steps in a test?",
+    "Konto anlegen?":"Create account?",
+    "Passwort setzen?":"Set password?",
+    "E-Mail bestätigen?":"Verify email?",
+    "nein":"no",
+    "Abbruch":"Drop-off",
+    "Ausgangspunkt ist die Journey aus Variante A.":"Starting point: the journey from Variant A.",
+    "Fertig: der optimierte Flow von Variante B. Das Konto wird optional erst nach dem Kauf angelegt.":"Done: the optimized flow of Variant B. The account is created optionally only after the purchase.",
+    "Aus Variante A wird Schritt für Schritt der reibungsfreie Flow, die drei Gates fallen weg, das Konto kommt nach dem Kauf.":"Variant A becomes the frictionless flow step by step, the three gates fall away, the account comes after purchase.",
+    "entfällt":"removed",
+    "Variante A · Original-Journey mit drei Pflicht-Gates vor dem Kauf.":"Variant A · the original journey with three mandatory gates before purchase.",
+    "Konto-Zwang, Passwort und E-Mail-Verifizierung erzeugen Reibung. Für unseren Test lassen wir sie entfallen.":"Forced account, password and email verification create friction. For our test we let them fall away.",
+    "Durch die Reduktion der Schritte stehen dem Kauf als Conversion-Ziel nun weniger Hürden im Weg.":"By reducing the steps, the purchase as conversion goal now faces fewer hurdles.",
+    "Der Gast-Checkout hält den Kaufimpuls am Laufen, statt ihn zu unterbrechen. Der Nutzer kauft direkt, ohne Registrierung, und genau die Hürde mit dem höchsten Abbruchrisiko fällt im entscheidenden Moment weg.":"Guest checkout keeps the buying impulse alive instead of interrupting it. The user buys right away without registering, and exactly the step with the highest abandonment risk falls away at the decisive moment.",
+    "Das Konto kommt optional erst nach dem Kauf. Variante B.":"The account comes optionally only after purchase. Variant B.",
+    "Variante B · Optimierte Journey":"Variant B · Optimized journey",
+    "Der Kauf läuft ohne Konto-Hürde durch. Die Kontoerstellung passiert optional erst nach dem Abschluss.":"The purchase runs through without an account hurdle. Account creation happens optionally only after completion.",
+    "− Konto-Zwang entfällt":"− Forced account removed",
+    "− Passwort-Pflicht entfällt":"− Mandatory password removed",
+    "− E-Mail-Verifizierung vorab entfällt":"− Upfront email verification removed",
+    "+ Konto optional nach dem Kauf":"+ Account optional after purchase",
+    "Gast-Checkout":"Guest checkout",
+    "Konto anlegen":"Create account",
+    "ohne Konto":"no account",
+    "optional · danach":"optional · later",
+    "Quellen":"Sources",
+    "Ø 70,19 % Warenkorb-Abbruch, Durchschnitt aus 49 dokumentierten Studien.":"Avg. 70.19 % cart abandonment, average across 49 documented studies.",
+    "Konto-Zwang ≈ 24 %, zu langer oder komplizierter Checkout ≈ 18 %, Umfrage, n ≈ 4.300.":"Forced account ≈ 24 %, checkout too long or complicated ≈ 18 %, survey, n ≈ 4,300.",
+    "Bis zu +35 % Conversion-Potenzial durch einen optimierten Checkout.":"Up to +35 % conversion potential from an optimized checkout.",
+    "Baymard · Abbruchgründe (n≈4.300)":"Baymard · abandonment reasons (n≈4,300)",
+    "Baymard · Checkout-Usability":"Baymard · checkout usability",
+    "Drei künstliche Gates stehen vor dem Kauf, exakt die Reibungspunkte, die Baymard als Top-Abbruchgründe dokumentiert.":"Three artificial gates sit before purchase, exactly the friction points Baymard documents as top abandonment reasons.",
+    "Konto-Zwang":"Forced account",
+    "Passwort":"Password",
+    "E-Mail-Verifizierung":"Email verification",
+    "Kauf":"Purchase",
+    "Abbruch-Risiko":"Drop-off risk",
+    "Ø Warenkorb-Abbruch im Online-Handel":"Avg. cart abandonment in online retail",
+    "Baymard · 49 Studien":"Baymard · 49 studies",
+    "brechen ab, weil ein Konto erzwungen wird":"abandon because an account is forced",
+    "brechen ab: Checkout zu lang oder kompliziert":"abandon: checkout too long or complicated",
+    "Conversion-Potenzial durch optimierten Checkout":"Conversion potential from an optimized checkout",
+    "Weil genau diese Schritte messbar Käufer kosten.":"Because these steps measurably cost buyers.",
+    "Konto-Zwang und ein zu langer Checkout zählen bei Baymard zu den meistgenannten Abbruchgründen, ohne etwas zum Kauf beizutragen. Sie probeweise zu entfernen, testet keinen Designgeschmack, sondern einen der größten Conversion-Hebel.":"Forced account and a long checkout rank among Baymard's most-cited abandonment reasons without contributing to the purchase. Removing them on a trial basis tests not a matter of taste but one of the biggest conversion levers.",
+    "Quelle:":"Source:",
+    "durchschnittliche Warenkorb-Abbruchrate (70,19 %, 49 Studien) und Checkout-Usability-Forschung.":"average cart abandonment rate (70.19 %, 49 studies) and checkout usability research.",
+    "Variante A · Original-Journey":"Variant A · Original journey",
+    "Konto-Pflicht vor dem Kauf. Jede künstliche Hürde kostet kaufbereite Nutzer.":"Account required before purchase. Every artificial hurdle costs ready-to-buy users.",
+    "≈ 75 % Abbruch":"≈ 75 % drop-off",
+    "nur jede vierte Session wird zum Kauf":"only one in four sessions converts",
+    "Warenkorb":"Cart",
+    "Zur Kasse":"Checkout",
+    "Login / Konto-Gate":"Login / account gate",
+    "E-Mail bestätigen":"Verify email",
+    "Adresse & Zahlung":"Address & payment",
+    "Kauf abgeschlossen":"Purchase complete",
+    "Gate ohne Kaufbezug":"Gate unrelated to purchase",
+    "Konto-Pflicht":"Account required",
+    "Drei der größten Abbrüche entstehen an Gates, die nichts mit dem Kauf zu tun haben":"Three of the biggest drop-offs happen at gates that have nothing to do with the purchase",
+    "erzwungene Registrierung, Passwort-Erstellung und E-Mail-Verifizierung. Variante B verlegt die Kontoerstellung hinter den Kauf: Der Kaufimpuls trägt ungebrochen bis zum Abschluss und vervielfacht den Funnel-Output.":"forced registration, password creation and email verification. Variant B moves account creation behind the purchase: the buying impulse carries through uninterrupted and multiplies funnel output.",
+    "Funnel-Werte illustrativ, zur Veranschaulichung der Drop-off-Logik.":"Funnel values illustrative, to convey the drop-off logic.",
+    "Ein fiktiver CRO-Case für eine reale Herausforderung":"A fictional CRO case for a real challenge",
+    "Mobile Fashion-Käufe sind spontan. Der Checkout darf es nicht unterbrechen":"Mobile fashion purchases are spontaneous. The checkout must not interrupt that",
+    "Der Großteil der User Sessions erfolgt über mobile Endgeräte. Mobile Fashion-Käufe bei ABOUT YOU sind häufig spontan, emotional und situationsgetrieben, Nutzerinnen reagieren entsprechend sensibel auf Friktion im Kaufprozess.":"The majority of user sessions happen on mobile devices. Mobile fashion purchases at ABOUT YOU are often spontaneous, emotional and situation-driven, so users react sensitively to friction in the buying process.",
+    "Zentrale Fragestellung":"Central question",
+    "Mobile Traffic-Anteil":"Mobile traffic share",
+    "aller globalen E-Commerce-Seitenaufrufe kommen von Mobilgeräten":"of all global e-commerce page views come from mobile devices",
+    "Quellen:":"Sources:",
+    "Konto später vervollständigen":"Complete account later",
+    "Vier Verhaltensmuster als Grundlage":"Four behavioral patterns as the basis",
+    "Wenn User den mobilen Checkout ohne aktive Passwort-Erstellung abschließen können, dann reduziert sich die wahrgenommene Friktion und die Checkout-Abschlussrate steigt.":"If users can complete the mobile checkout without actively creating a password, perceived friction is reduced and the checkout completion rate rises.",
+    "KPIs & Erfolgsmessung":"KPIs & success measurement",
+    "Zentrale Erfolgsmetrik. Misst den Anteil der Nutzerinnen, die den Checkout erfolgreich bis zum Kaufabschluss durchlaufen, bewertet direkt die Wirkung der reduzierten Reibung.":"Central success metric. Measures the share of users who complete the checkout all the way to purchase, directly assessing the impact of the reduced friction.",
+    "Was dieser Test zeigen soll":"What this test aims to show",
+    "Vorheriges Projekt":"Previous project",
+    "Zur Übersicht":"All projects",
+    "Alle Projekte":"All projects",
+    "Nächstes Projekt":"Next project",
+    "Dieses Projekt demonstriert, wie ich ein reales Conversion-Problem strukturiert analysieren, priorisieren und experimentell lösen würde. Im Fokus stand der mobile Checkout-Funnel von ABOUT YOU.":"This project demonstrates how I would analyze, prioritize and experimentally solve a real conversion problem in a structured way. The focus was on the mobile checkout funnel of ABOUT YOU.",
+    "„Wie kann der mobile Checkout den Kaufimpuls ohne registrierungsbedingte Unterbrechungen bis zum Abschluss tragen?\"":"\"How can the mobile checkout carry the purchase impulse all the way to completion without registration-related interruptions?\"",
+    "Impulsive Kaufdynamik":"Impulsive buying dynamics",
+    "Niedrige Frustrationstoleranz":"Low frustration tolerance",
+    "Bedürfnis nach sofortiger Belohnung":"Need for immediate reward",
+    "Vermeidung unnötiger Verpflichtung":"Avoiding unnecessary commitment",
+    "E-Mail":"Email",
+    "Passwort erstellen":"Create password",
+    "Passwort bestätigen":"Confirm password",
+    "Typ":"Type",
+    "Fokus":"Focus",
+    "Methode":"Method",
+    "Plattform":"Platform",
+    "Umfangreiches A/B-Experiment":"Comprehensive A/B experiment",
+    "Konto wird im Hintergrund vorbereitet":"Account is prepared in the background",
+    "Variante B":"Variant B",
+    "Optimierter Flow":"Optimized flow",
+    "Konto erstellen":"Create account",
+    "Konto erstellen & weiter →":"Create account & continue →",
+    "Jetzt kaufen →":"Buy now →",
+    "Nicht die Registrierung selbst ist problematisch, sondern der Kontextwechsel von „Ich kaufe jetzt\" zu „Ich verwalte jetzt ein Konto\".":"It isn't registration itself that's the problem, it's the context switch from 'I'm buying now' to 'I'm now managing an account'.",
+    "Zurück zum Portfolio":"Back to portfolio",
+    "Checkout ohne Reibung?":"Checkout Without Friction?",
+    "Conversion Optimierung":"Conversion Optimization",
+    "Conversion-Optimierung":"Conversion Optimization",
+    "Mobiler Checkout-Funnel":"Mobile checkout funnel",
+    "Die Wahl fiel bewusst auf ABOUT YOU, da das Unternehmen über einen professionell optimierten E-Commerce-Auftritt verfügt. Die Herausforderung bestand nicht darin, offensichtliche UX-Fehler zu beheben, sondern feinere psychologische Mechanismen im mobilen Checkout zu identifizieren.":"ABOUT YOU was chosen deliberately, because the company already runs a professionally optimized e-commerce presence. The challenge wasn't to fix obvious UX errors, but to identify subtler psychological mechanisms in the mobile checkout.",
+    "01 · Briefing":"01 · Briefing",
+    "02 · Ausgangslage":"02 · Starting Point","03 · Annahmen":"03 · Assumptions",
+    "04 · Hypothese":"04 · Hypothesis",
+    "05 · Lösung":"05 · Solution",
+    "06 · Experiment":"06 · Experiment",
+    "07 · Impact":"07 · Impact",
+    "Kaufmotivation entsteht schnell, ist aber ebenso anfällig für Unterbrechungen. Im mobilen Kontext ist die Aufrechterhaltung des Kauf-Momentums entscheidend.":"Purchase motivation forms quickly, but it is just as vulnerable to interruptions. In a mobile context, keeping the purchase momentum alive is critical.",
+    "Geringe Unterbrechungen oder zusätzliche mentale Aufgaben reichen aus, um den Kaufprozess abzubrechen oder auf später zu verschieben.":"Small interruptions or extra mental tasks are enough to abandon the purchase or postpone it for later.",
+    "Fashion-Käufe sind häufig emotional motiviert. Je technischer der Checkout wirkt, desto stärker verliert der ursprüngliche Kaufimpuls an Intensität.":"Fashion purchases are often emotionally driven. The more technical the checkout feels, the more the original purchase impulse loses intensity.",
+    ",fontWeight:500}},'„Wie kann der mobile Checkout den Kaufimpuls ohne registrierungsbedingte Unterbrechungen bis zum Abschluss tragen?":"How can the mobile checkout carry the purchase impulse all the way to completion without registration-related interruptions?",
+    "Variante A":"Variant A",
+    "Bestehender Flow":"Existing flow",
+    "Login / Registrierung vor Checkout":"Login / registration before checkout",
+    "Aktive Passwort-Erstellung erforderlich":"Active password creation required",
+    "Checkout zunächst nur mit E-Mail-Adresse":"Checkout with email address only at first",
+    "Passwort-Erstellung optional nach Kaufabschluss":"Password creation optional after purchase",
+    "Der Kaufabschluss wird vollständig von der Kontoerstellung entkoppelt. Das Konto wird im Hintergrund vorbereitet und kann nach dem Kauf vervollständigt werden.":"The purchase is fully decoupled from account creation. The account is prepared in the background and can be completed after the purchase.",
+    "Drop-off Rate vor Payment":"Drop-off rate before payment",
+    "Checkout-Abbruchrate":"Checkout abandonment rate",
+    "Zeigt, ob die Reduktion von Registrierungshürden insbesondere neue Nutzerinnen aktiviert.":"Shows whether reducing registration barriers activates new users in particular.",
+    "Identifiziert mögliche verschobene Reibungspunkte im Funnel vor dem finalen Zahlungsschritt.":"Identifies possible shifted friction points in the funnel before the final payment step.",
+    "Diagnostische Metrik zur Einordnung der Effizienz, unterstützend, kein primärer Erfolgsindikator.":"Diagnostic metric to gauge efficiency, supporting only, not a primary success indicator.",
+    "Zeigt, ob vereinfachte Kaufentscheidungen zu unpassenderen Käufen führen.":"Shows whether simpler purchase decisions lead to less suitable purchases.",
+    "Bewertet langfristige Kundenbindung, verhindert kurzfristige Gewinne ohne Loyalitätseffekt.":"Assesses long-term retention and guards against short-term gains with no loyalty effect.",
+    "Stellt sicher, dass höhere Conversion nicht durch geringeren Warenkorbwert erkauft wird.":"Ensures that higher conversion is not bought at the cost of a lower basket value.",
+    "Identifiziert UX-Brüche in der Post-Purchase Experience nach dem vereinfachten Checkout.":"Identifies UX breaks in the post-purchase experience after the simplified checkout.",
+    "Einstiegshürde sinkt":"Lower barrier to entry",
+    "Insbesondere Neukunden profitieren von einem Checkout ohne obligatorische Kontoerstellung.":"New customers in particular benefit from a checkout without mandatory account creation.",
+    "Kaufimpuls bleibt stabil":"Purchase impulse stays stable",
+    "Kein Kontextwechsel zwischen Kaufmoment und bürokratischem Registrierungsprozess.":"No context switch between the moment of purchase and a bureaucratic registration process.",
+    "Checkout Completion Rate steigt":"Checkout completion rate rises",
+    "Weniger Abbrüche durch reduzierte kognitive Last im entscheidenden Kaufmoment.":"Fewer drop-offs thanks to reduced cognitive load at the decisive moment of purchase.",
+    "Erstkäufer-Conversion verbessert":"First-time buyer conversion improves",
+    "Niedrigschwelliger Einstieg kann die Aktivierung neuer Nutzerinnen messbar steigern.":"A low-threshold entry can measurably increase activation of new users.",
+    "Kopieren":"Copy",
+    "Nach oben":"Back to top",
+    "Lass uns zusammenarbeiten":"Let's work together",
+    "Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.":"Like my work? I'd love to hear from you.",
+    "Kontakt":"Contact"
+  };
+  var lang = localStorage.getItem('siteLang') || 'de';
+  var root, obs, applying = false;
+  function walk(node){
+    var en = lang === 'en';
+    var w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while ((n = w.nextNode())){
+      var key = n.nodeValue.trim();
+      if (!key) continue;
+      if (en){ if (DICT[key] !== undefined){ if (n.__de == null) n.__de = n.nodeValue; n.nodeValue = n.nodeValue.replace(key, DICT[key]); } }
+      else if (n.__de != null){ n.nodeValue = n.__de; }
+    }
+  }
+  function apply(){ if (!root) return; applying = true; if (obs) obs.disconnect(); walk(root); if (obs) obs.observe(root, { childList:true, subtree:true, characterData:true }); applying = false; }
+  function flagSVG(which){
+    if (which === 'de') return '<svg width="24" height="16" viewBox="0 0 5 3" style="display:block;border-radius:3px"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>';
+    return '<svg width="24" height="16" viewBox="0 0 60 30" style="display:block;border-radius:3px"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3.5"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>';
+  }
+  function setLang(l){ if (l === lang) return; lang = l; localStorage.setItem('siteLang', l); document.documentElement.lang = l; apply(); refreshToggles(); }
+  var toggleEls = [];
+  var CELL = 34;
+  function refreshToggles(){ toggleEls.forEach(function(t){ t.de.style.opacity = lang==='de'?'1':'0.45'; t.en.style.opacity = lang==='en'?'1':'0.45'; t.thumb.style.transform = 'translateX(' + (lang==='en'?CELL:0) + 'px)'; }); }
+  function buildToggle(){
+    var wrap = document.createElement('div'); wrap.className='langToggle'; wrap.setAttribute('role','switch'); wrap.title='DE / EN';
+    wrap.style.cssText='position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;padding:3px;border-radius:9999px;background:rgba(63,70,84,0.14);border:1px solid rgba(255,255,255,0.16);cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,0.35)';
+    var thumb=document.createElement('div');
+    thumb.style.cssText='position:absolute;top:3px;left:3px;width:'+CELL+'px;height:22px;border-radius:9999px;background:rgba(255,255,255,0.82);box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .26s cubic-bezier(0.22,1,0.36,1);transform:translateX('+(lang==='en'?CELL:0)+'px)';
+    wrap.appendChild(thumb);
+    function cell(l){ var c=document.createElement('div'); c.style.cssText='position:relative;z-index:1;width:'+CELL+'px;height:22px;display:flex;align-items:center;justify-content:center;opacity:'+(lang===l?'1':'0.45')+';transition:opacity .2s;filter:drop-shadow(0 1px 1.5px rgba(63,70,84,0.3))'; c.innerHTML=flagSVG(l); return c; }
+    var de=cell('de'), en=cell('en'); wrap.appendChild(de); wrap.appendChild(en);
+    wrap.onclick=function(){ setLang(lang==='de'?'en':'de'); };
+    toggleEls.push({el:wrap,de:de,en:en,thumb:thumb}); return wrap;
+  }
+  function ensureNav(){
+    if (!root) return;
+    var nav = root.querySelector('nav');
+    if (!nav || nav.querySelector('.langToggle')) return;
+    toggleEls = toggleEls.filter(function(t){ return document.body.contains(t.el); });
+    nav.style.position='relative';nav.appendChild(buildToggle());
+  }
+  var pending=null;
+  function schedule(){ if (pending) return; pending=setTimeout(function(){ pending=null; if(lang==='en') apply(); ensureNav(); }, 40); }
+  function start(){ root=document.getElementById('root'); if(!root){ setTimeout(start,150); return; } document.documentElement.lang=lang; obs=new MutationObserver(function(){ if(!applying) schedule(); }); apply(); ensureNav(); obs.observe(root,{childList:true,subtree:true,characterData:true}); }
+  if (document.readyState !== 'loading') start(); else document.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+
+<!-- StaggeredMenu (probeweise) -->
+<div id="sm-root"></div>
+<style>
+.staggered-menu-wrapper{position:relative;width:100%;height:100%;z-index:200;pointer-events:none}
+.staggered-menu-wrapper.fixed-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:200;overflow:hidden}
+.staggered-menu-header{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;box-sizing:border-box;height:72px;display:flex;align-items:center;justify-content:flex-start;padding:0 32px;background:transparent;pointer-events:none;z-index:20}
+.staggered-menu-header > *{pointer-events:auto}
+.sm-logo{display:none}
+.sm-toggle{position:relative;display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:none;cursor:pointer;color:#111;font-weight:600;font-size:15px;line-height:1;overflow:visible;font-family:var(--font-body)}.sm-toggle{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color .25s}.sm-toggle:hover{background-color:rgba(63,70,84,0.14)}
+.sm-toggle:focus-visible{outline:2px solid #3f465466;outline-offset:4px;border-radius:4px}
+.sm-line:last-of-type{margin-top:6px}
+.sm-toggle-textWrap{position:relative;display:inline-block;height:1em;overflow:hidden;white-space:nowrap;width:var(--sm-toggle-width,auto);min-width:var(--sm-toggle-width,auto)}
+.sm-toggle-textInner{display:flex;flex-direction:column;line-height:1}
+.sm-toggle-line{display:block;height:1em;line-height:1}
+.sm-icon{position:relative;width:14px;height:14px;flex:0 0 14px;display:inline-flex;align-items:center;justify-content:center;will-change:transform}
+.sm-panel-itemWrap{position:relative;overflow:hidden;line-height:1.2}
+.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}
+.sm-line{display:none !important}
+.staggered-menu-panel{position:absolute;top:0;right:0;width:clamp(320px,48vw,585px);height:100%;background:#fff;box-shadow:-34px 0 90px -26px rgba(17,24,39,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:4em 2em 2em 2em;overflow-y:auto;z-index:10;pointer-events:auto;opacity:0}
+[data-position='left'] .staggered-menu-panel{right:auto;left:0}
+.sm-prelayers{position:absolute;top:0;right:0;bottom:0;width:clamp(320px,48vw,585px);pointer-events:none;z-index:5;opacity:0}
+[data-position='left'] .sm-prelayers{right:auto;left:0}
+.sm-prelayer{position:absolute;top:0;right:0;height:100%;width:100%;transform:translateX(0);opacity:0}
+.sm-panel-inner{flex:1;display:flex;flex-direction:column;gap:1.25rem}
+.sm-socials{margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem}
+.sm-socials-title{margin:0;font-size:1rem;font-weight:500;color:var(--sm-accent,#3f4654)}
+.sm-socials-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:center;gap:1rem;flex-wrap:wrap}
+.sm-panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.sm-panel-item{position:relative;color:#0e1013;font-weight:700;font-size:clamp(1.5rem,4.6vw,2.45rem);cursor:pointer;line-height:1.16;letter-spacing:-1.5px;text-transform:uppercase;transition:background .25s,color .25s;display:inline-block;white-space:nowrap;text-decoration:none;padding:.1em .62em .04em 0;font-family:var(--font-head)}
+@media (max-width:768px){.staggered-menu-panel .back-link{font-size:15px !important;gap:8px !important}.staggered-menu-panel .back-link::before{display:none !important}.staggered-menu-panel .back-link>svg{display:inline-block !important}}.sm-panel-itemLabel{display:inline-block;will-change:transform;transform-origin:50% 100%}
+.sm-panel-item:hover{color:var(--sm-accent,#3f4654)}
+.sm-panel-list[data-numbering]{counter-reset:smItem}
+.sm-panel-list[data-numbering] .sm-panel-item::after{counter-increment:smItem;content:counter(smItem,decimal-leading-zero);font-size:.42em;font-weight:400;color:var(--sm-accent,#3f4654);letter-spacing:0;vertical-align:1.2em;margin-left:.38em;pointer-events:none;user-select:none;opacity:var(--sm-num-opacity,0)}
+@media (max-width:1024px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (max-width:640px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (min-width:641px) and (max-width:1024px){.sm-panel-item{font-size:clamp(2.1rem,6.4vw,3.35rem) !important}.sm-panel-item.sm-small{font-size:clamp(1.85rem,6.4vw,2.85rem) !important}}</style>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+"use strict";
+
+const {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState
+} = React;
+const gsap = window.gsap;
+const StaggeredMenu = ({
+  position = 'right',
+  colors = ['#B497CF', '#5227FF'],
+  items = [],
+  socialItems = [],
+  displaySocials = false,
+  displayItemNumbering = true,
+  className,
+  logoUrl,
+  menuButtonColor = '#111',
+  openMenuButtonColor = '#111',
+  accentColor = '#3f4654',
+  changeMenuColorOnOpen = true,
+  isFixed = true,
+  closeOnClickAway = true,
+  onMenuOpen,
+  onMenuClose,
+  menuLabel = 'Menu',
+  closeLabel = 'Close'
+}) => {
+  const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
+  const panelRef = useRef(null);
+  const preLayersRef = useRef(null);
+  const preLayerElsRef = useRef([]);
+  const plusHRef = useRef(null);
+  const plusVRef = useRef(null);
+  const iconRef = useRef(null);
+  const textInnerRef = useRef(null);
+  const textWrapRef = useRef(null);
+  const [textLines, setTextLines] = useState([menuLabel, closeLabel]);
+  const openTlRef = useRef(null);
+  const closeTweenRef = useRef(null);
+  const spinTweenRef = useRef(null);
+  const textCycleAnimRef = useRef(null);
+  const colorTweenRef = useRef(null);
+  const toggleBtnRef = useRef(null);
+  const busyRef = useRef(false);
+  const itemEntranceTweenRef = useRef(null);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panel = panelRef.current;
+      const preContainer = preLayersRef.current;
+      const plusH = plusHRef.current;
+      const plusV = plusVRef.current;
+      const icon = iconRef.current;
+      const textInner = textInnerRef.current;
+      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      let preLayers = [];
+      if (preContainer) preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+      preLayerElsRef.current = preLayers;
+      const offscreen = position === 'left' ? -100 : 100;
+      gsap.set([panel, ...preLayers], {
+        xPercent: offscreen,
+        opacity: 1
+      });
+      if (preContainer) gsap.set(preContainer, {
+        xPercent: 0,
+        opacity: 1
+      });
+      gsap.set(plusH, {
+        transformOrigin: '50% 50%',
+        rotate: 0
+      });
+      gsap.set(plusV, {
+        transformOrigin: '50% 50%',
+        rotate: 90
+      });
+      gsap.set(icon, {
+        rotate: 0,
+        transformOrigin: '50% 50%'
+      });
+      gsap.set(textInner, {
+        yPercent: 0
+      });
+      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    });
+    return () => ctx.revert();
+  }, [menuButtonColor, position]);
+  const buildOpenTimeline = useCallback(() => {
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return null;
+    openTlRef.current && openTlRef.current.kill();
+    if (closeTweenRef.current) {
+      closeTweenRef.current.kill();
+      closeTweenRef.current = null;
+    }
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+    const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+    const socialTitle = panel.querySelector('.sm-socials-title');
+    const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+    const offscreen = position === 'left' ? -100 : 100;
+    const layerStates = layers.map(el => ({
+      el,
+      start: offscreen
+    }));
+    const panelStart = offscreen;
+    if (itemEls.length) gsap.set(itemEls, {
+      yPercent: 140,
+      rotate: 10
+    });
+    if (numberEls.length) gsap.set(numberEls, {
+      '--sm-num-opacity': 0
+    });
+    if (socialTitle) gsap.set(socialTitle, {
+      opacity: 0
+    });
+    if (socialLinks.length) gsap.set(socialLinks, {
+      y: 25,
+      opacity: 0
+    });
+    const tl = gsap.timeline({
+      paused: true
+    });
+    layerStates.forEach((ls, i) => {
+      tl.fromTo(ls.el, {
+        xPercent: ls.start
+      }, {
+        xPercent: 0,
+        duration: 0.5,
+        ease: 'power4.out'
+      }, i * 0.07);
+    });
+    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
+    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+    const panelDuration = 0.65;
+    tl.fromTo(panel, {
+      xPercent: panelStart
+    }, {
+      xPercent: 0,
+      duration: panelDuration,
+      ease: 'power4.out'
+    }, panelInsertTime);
+    if (itemEls.length) {
+      const itemsStart = panelInsertTime + panelDuration * 0.15;
+      tl.to(itemEls, {
+        yPercent: 0,
+        rotate: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: {
+          each: 0.1,
+          from: 'start'
+        }
+      }, itemsStart);
+      if (numberEls.length) {
+        tl.to(numberEls, {
+          duration: 0.6,
+          ease: 'power2.out',
+          '--sm-num-opacity': 1,
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          }
+        }, itemsStart + 0.1);
+      }
+    }
+    if (socialTitle || socialLinks.length) {
+      const socialsStart = panelInsertTime + panelDuration * 0.4;
+      if (socialTitle) tl.to(socialTitle, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, socialsStart);
+      if (socialLinks.length) {
+        tl.to(socialLinks, {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          },
+          onComplete: () => {
+            gsap.set(socialLinks, {
+              clearProps: 'opacity'
+            });
+          }
+        }, socialsStart + 0.04);
+      }
+    }
+    openTlRef.current = tl;
+    return tl;
+  }, [position]);
+  const playOpen = useCallback(() => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    const tl = buildOpenTimeline();
+    if (tl) {
+      tl.eventCallback('onComplete', () => {
+        busyRef.current = false;
+      });
+      tl.play(0);
+    } else busyRef.current = false;
+  }, [buildOpenTimeline]);
+  const playClose = useCallback(() => {
+    openTlRef.current && openTlRef.current.kill();
+    openTlRef.current = null;
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return;
+    const all = [...layers, panel];
+    closeTweenRef.current && closeTweenRef.current.kill();
+    const offscreen = position === 'left' ? -100 : 100;
+    closeTweenRef.current = gsap.to(all, {
+      xPercent: offscreen,
+      duration: 0.32,
+      ease: 'power3.in',
+      overwrite: 'auto',
+      onComplete: () => {
+        const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+        if (itemEls.length) gsap.set(itemEls, {
+          yPercent: 140,
+          rotate: 10
+        });
+        const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+        if (numberEls.length) gsap.set(numberEls, {
+          '--sm-num-opacity': 0
+        });
+        const socialTitle = panel.querySelector('.sm-socials-title');
+        const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+        if (socialTitle) gsap.set(socialTitle, {
+          opacity: 0
+        });
+        if (socialLinks.length) gsap.set(socialLinks, {
+          y: 25,
+          opacity: 0
+        });
+        busyRef.current = false;
+      }
+    });
+  }, [position]);
+  const animateIcon = useCallback(opening => {
+    const icon = iconRef.current;
+    if (!icon) return;
+    spinTweenRef.current && spinTweenRef.current.kill();
+    if (opening) spinTweenRef.current = gsap.to(icon, {
+      rotate: 225,
+      duration: 0.8,
+      ease: 'power4.out',
+      overwrite: 'auto'
+    });else spinTweenRef.current = gsap.to(icon, {
+      rotate: 0,
+      duration: 0.35,
+      ease: 'power3.inOut',
+      overwrite: 'auto'
+    });
+  }, []);
+  const animateColor = useCallback(opening => {
+    const btn = toggleBtnRef.current;
+    if (!btn) return;
+    colorTweenRef.current && colorTweenRef.current.kill();
+    if (changeMenuColorOnOpen) {
+      const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+      colorTweenRef.current = gsap.to(btn, {
+        color: targetColor,
+        delay: 0.18,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    } else gsap.set(btn, {
+      color: menuButtonColor
+    });
+  }, [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]);
+  React.useEffect(() => {
+    if (toggleBtnRef.current) {
+      if (changeMenuColorOnOpen) {
+        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
+        gsap.set(toggleBtnRef.current, {
+          color: targetColor
+        });
+      } else gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    }
+  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  const animateText = useCallback(opening => {
+    const inner = textInnerRef.current;
+    if (!inner) return;
+    textCycleAnimRef.current && textCycleAnimRef.current.kill();
+    const currentLabel = opening ? menuLabel : closeLabel;
+    const targetLabel = opening ? closeLabel : menuLabel;
+    const cycles = 3;
+    const seq = [currentLabel];
+    let last = currentLabel;
+    for (let i = 0; i < cycles; i++) {
+      last = last === menuLabel ? closeLabel : menuLabel;
+      seq.push(last);
+    }
+    if (last !== targetLabel) seq.push(targetLabel);
+    seq.push(targetLabel);
+    setTextLines(seq);
+    gsap.set(inner, {
+      yPercent: 0
+    });
+    const lineCount = seq.length;
+    const finalShift = (lineCount - 1) / lineCount * 100;
+    textCycleAnimRef.current = gsap.to(inner, {
+      yPercent: -finalShift,
+      duration: 0.5 + lineCount * 0.07,
+      ease: 'power4.out'
+    });
+  }, []);
+  const toggleMenu = useCallback(() => {
+    const target = !openRef.current;
+    openRef.current = target;
+    setOpen(target);
+    if (target) {
+      onMenuOpen && onMenuOpen();
+      playOpen();
+    } else {
+      onMenuClose && onMenuClose();
+      playClose();
+    }
+    animateIcon(target);
+    animateColor(target);
+    animateText(target);
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+  const closeMenu = useCallback(() => {
+    if (openRef.current) {
+      openRef.current = false;
+      setOpen(false);
+      onMenuClose && onMenuClose();
+      playClose();
+      animateIcon(false);
+      animateColor(false);
+      animateText(false);
+    }
+  }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
+  React.useEffect(() => {
+    if (!closeOnClickAway || !open) return;
+    const handleClickOutside = event => {
+      if (panelRef.current && !panelRef.current.contains(event.target) && toggleBtnRef.current && !toggleBtnRef.current.contains(event.target)) closeMenu();
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [closeOnClickAway, open, closeMenu]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: (className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : ''),
+    style: accentColor ? {
+      ['--sm-accent']: accentColor
+    } : undefined,
+    "data-position": position,
+    "data-open": open || undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: preLayersRef,
+    className: "sm-prelayers",
+    "aria-hidden": "true"
+  }, (() => {
+    const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
+    let arr = [...raw];
+    if (arr.length >= 3) {
+      const mid = Math.floor(arr.length / 2);
+      arr.splice(mid, 1);
+    }
+    return arr.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "sm-prelayer",
+      style: {
+        background: c
+      }
+    }));
+  })()), /*#__PURE__*/React.createElement("header", {
+    className: "staggered-menu-header",
+    "aria-label": "Main navigation header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-logo",
+    "aria-label": "Logo"
+  }), /*#__PURE__*/React.createElement("button", {
+    ref: toggleBtnRef,
+    className: "sm-toggle",
+    "aria-label": open ? 'Close menu' : 'Open menu',
+    "aria-expanded": open,
+    "aria-controls": "staggered-menu-panel",
+    onClick: toggleMenu,
+    type: "button"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textWrapRef,
+    className: "sm-toggle-textWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textInnerRef,
+    className: "sm-toggle-textInner"
+  }, textLines.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    className: "sm-toggle-line",
+    key: i
+  }, l)))), /*#__PURE__*/React.createElement("span", {
+    ref: iconRef,
+    className: "sm-icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: plusHRef,
+    className: "sm-icon-line"
+  }), /*#__PURE__*/React.createElement("span", {
+    ref: plusVRef,
+    className: "sm-icon-line sm-icon-line-v"
+  })))), /*#__PURE__*/React.createElement("aside", {
+    id: "staggered-menu-panel",
+    ref: panelRef,
+    className: "staggered-menu-panel",
+    "aria-hidden": !open
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-panel-inner"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "sm-panel-list",
+    role: "list",
+    "data-numbering": displayItemNumbering || undefined
+  }, items && items.length ? items.map((it, idx) => /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    key: it.label + idx
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "sm-panel-item",
+    href: it.link,
+    "aria-label": it.ariaLabel,
+    "data-index": idx + 1,
+    onClick: e => {
+      if (it.onClick) it.onClick(e);
+      closeMenu();
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, it.label)))) : /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, "No items")))))));
+};
+const SECTIONS = [['Briefing','Briefing',1], ['Ausgangslage','Starting Point',2], ['Annahmen','Assumptions',3], ['Hypothese','Hypothesis',4], ['Lösung','Solution',5], ['Experiment','Experiment',6], ['Impact','Impact',7]];
+const T = { de:{ menu:'Menü', close:'Schließen', to:'Zu ' }, en:{ menu:'Menu', close:'Close', to:'Go to ' } };
+function curLang(){ return (document.documentElement.lang === 'en' || localStorage.getItem('siteLang') === 'en') ? 'en' : 'de'; }
+function MenuApp(){
+  const [lang, setLang] = React.useState(curLang());
+  React.useEffect(function(){
+    const upd = function(){ setLang(curLang()); };
+    const mo = new MutationObserver(upd);
+    mo.observe(document.documentElement, { attributes:true, attributeFilter:['lang'] });
+    window.addEventListener('storage', upd);
+    return function(){ mo.disconnect(); window.removeEventListener('storage', upd); };
+  }, []);
+  const en = lang === 'en';
+  const items = SECTIONS.map(function(row){
+    const label = en ? row[1] : row[0]; const idx = row[2];
+    return {
+      label: label,
+      link: '#',
+      ariaLabel: (en ? T.en.to : T.de.to) + label,
+      onClick: function(e){
+        e.preventDefault();
+        const secs = document.querySelectorAll('#root section');
+        if (secs[idx]) secs[idx].scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    };
+  });
+  return React.createElement(StaggeredMenu, {
+    key: lang,
+    position: "right",
+    isFixed: true,
+    items: items,
+    displaySocials: false,
+    displayItemNumbering: true,
+    menuButtonColor: "#111",
+    openMenuButtonColor: "#111",
+    accentColor: "#3f4654",
+    colors: ['#cfd3da', '#3f4654'],
+    changeMenuColorOnOpen: true,
+    menuLabel: en ? T.en.menu : T.de.menu,
+    closeLabel: en ? T.en.close : T.de.close
+  });
+}
+ReactDOM.createRoot(document.getElementById('sm-root')).render(React.createElement(MenuApp, null));
+})();
+</script>
+<!-- Header: fixed + condense on scroll -->
+<style>
+#root{background:#fff}#root header nav{padding:13px 28px !important}@media (max-width:768px){.staggered-menu-panel{padding-top:8em !important}}#root header{position:fixed!important;top:16px!important;left:50%;transform:translateX(-50%);width:calc(100% - 28px)!important;max-width:1180px;border-radius:9999px!important;background:linear-gradient(0deg,rgba(63,70,84,0.16),rgba(63,70,84,0.16)),rgba(255,255,255,0.58)!important;backdrop-filter:blur(22px) saturate(140%)!important;-webkit-backdrop-filter:blur(22px) saturate(140%)!important;border:1px solid rgba(63,70,84,0.18)!important;box-shadow:0 14px 40px -16px rgba(63,70,84,.34)!important;transition:box-shadow .3s ease,background .3s ease}
+#root header nav{transition:padding .34s cubic-bezier(.16,1,.3,1)!important}
+#root header.nav-scrolled{background:linear-gradient(0deg,rgba(63,70,84,0.16),rgba(63,70,84,0.16)),rgba(255,255,255,0.58) !important;box-shadow:0 14px 40px -16px rgba(63,70,84,.34)}
+#root header.nav-scrolled nav{padding-top:13px!important;padding-bottom:13px!important}
+#root header nav img{transition:transform .34s cubic-bezier(.16,1,.3,1)}
+#root header.nav-scrolled nav img{transform:scale(1)}@media (max-width:768px){#root header nav{padding:13px 20px !important}.staggered-menu-header{height:72px;padding:0 20px}}
+.staggered-menu-header{transition:height .34s cubic-bezier(.16,1,.3,1)!important}
+.staggered-menu-header.nav-scrolled{height:72px!important}
+</style>
+<script>
+(function(){
+  function init(){
+    var hdr = document.querySelector('#root header');
+    if (!hdr){ requestAnimationFrame(init); return; }
+    if (hdr.parentElement){ hdr.parentElement.style.paddingTop = (hdr.offsetHeight + 34) + 'px'; hdr.parentElement.style.background = '#fff'; }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
 </body>
 </html>

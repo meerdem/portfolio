@@ -35,8 +35,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="assets/fonts/fonts.css" />
-<link rel="icon" type="image/svg+xml" href="assets/me_logo.svg" />
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
@@ -51,16 +50,17 @@
   --bg:        hsl(260 87% 3%);
   --fg:        hsl(40 6% 95%);
   --fg-sub:    hsl(40 6% 82%);
-  --font-body: 'Geist', sans-serif;
-  --font-head: 'General Sans', sans-serif;
+  --font-body: 'Momo Trust Sans', sans-serif;
+  --font-head: 'Momo Trust Sans', sans-serif;
 }
 
+html[lang="de"] .teaser-sub-en{display:none}
 html, body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  height: 100%;
-  overflow-x: hidden;
+  letter-spacing: -0.04em;
+  overflow-x: clip;
 }
 
 /* ── Liquid Glass ── */
@@ -106,7 +106,16 @@ html, body {
   from { opacity: 0; transform: translateX(-56px); }
   to   { opacity: 1; transform: translateX(0); }
 }
-.hero-text-clip  { overflow: hidden; }
+.hero-text-clip  { overflow: hidden; padding: 64px 60px 64px 48px; margin: -64px -60px -64px -48px; }
+@keyframes mblob1{0%,100%{transform:translate(-8%,-6%) scale(1)}50%{transform:translate(16%,22%) scale(1.35)}}
+@keyframes mblob2{0%,100%{transform:translate(12%,28%) scale(1.1)}50%{transform:translate(-14%,-8%) scale(1.45)}}
+@keyframes mblob3{0%,100%{transform:translate(18%,-8%) scale(1)}50%{transform:translate(-10%,16%) scale(1.3)}}
+.mobbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(140deg,#0b0a1e 0%,#160726 55%,#0a1230 100%)}
+.mobbg span{position:absolute;border-radius:50%;filter:blur(52px);will-change:transform;pointer-events:none}
+.mobbg .b1{width:80%;height:60%;left:-12%;top:-12%;background:radial-gradient(circle,rgba(66,255,233,0.50),transparent 65%);animation:mblob1 19s ease-in-out infinite}
+.mobbg .b2{width:95%;height:72%;right:-22%;bottom:-16%;background:radial-gradient(circle,rgba(129,6,190,0.62),transparent 65%);animation:mblob2 23s ease-in-out infinite}
+.mobbg .b3{width:62%;height:52%;left:22%;top:32%;background:radial-gradient(circle,rgba(84,120,255,0.42),transparent 65%);animation:mblob3 27s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.mobbg .b1,.mobbg .b2,.mobbg .b3{animation:none}}
 .hero-text-inner { animation: heroSlideIn 0.75s cubic-bezier(0.22,1,0.36,1) both; }
 
 /* ── Marquee (bounce / ping-pong) ── */
@@ -148,7 +157,7 @@ html, body {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.04em;
   position: relative;
   overflow: hidden;
 }
@@ -179,19 +188,19 @@ html, body {
   align-items: center;
   gap: 8px;
   border-radius: 9999px;
-  border: 1px solid rgba(168,85,247,0.35);
-  background: rgba(168,85,247,0.08);
-  color: #7c3aed;
+  border: 1px solid rgba(29,78,216,0.35);
+  background: rgba(29,78,216,0.08);
+  color: #1e40af;
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.04em;
 }
 .btn-primary:hover {
-  background: rgba(168,85,247,0.15);
-  border-color: rgba(168,85,247,0.55);
+  background: rgba(29,78,216,0.15);
+  border-color: rgba(29,78,216,0.55);
   transform: translateY(-1px);
 }
 
@@ -219,14 +228,22 @@ html, body {
 .tweak-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(240,234,220,0.4); margin-bottom: 16px; }
 .tweak-row   { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .tweak-label { font-size: 12px; color: rgba(240,234,220,0.55); }
-.tweak-row input[type=range] { width: 100%; accent-color: #a855f7; }
+.tweak-row input[type=range] { width: 100%; accent-color: #1d4ed8; }
 .tweak-row select {
   width: 100%; background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px; padding: 6px 10px;
   color: var(--fg); font-size: 13px; cursor: pointer;
 }
+  .langToggle{transition:background .2s ease,border-color .2s ease}.langToggle:hover{background:rgba(255,255,255,0.16)!important;border-color:rgba(255,255,255,0.34)!important}
+  @keyframes cpbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes libob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}.cp-btn:hover span{animation:cpbob .5s ease-in-out infinite}.li-btn:hover svg{animation:libob .55s ease-in-out infinite}.li-btn:hover{background:rgba(255,255,255,0.08)}
+  .rv{opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}.rv-up{transform:translateY(36px)}.rv-right{transform:translateX(44px) scale(.97)}.rv.rv-in{opacity:1;transform:none}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preload" as="image" href="assets/profilbild_kreis.webp?v=2" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -273,5 +290,724 @@ html, body {
   window.addEventListener('resize', fix);
 })();
 </script>
+
+<!-- ── Sprach-Umschalter DE/EN (isoliert, greift main.js nicht an) ── -->
+<script>
+(function(){
+  var DICT = {
+    "Qualifikationen":"Skills",
+    "Sprachen":"Languages",
+    "Prozessanalyse":"Process analysis",
+    "KI-gestütztes Design":"AI-assisted design",
+    "Barrierefreiheit":"Accessibility",
+    "Anforderungsmanagement":"Requirements management",
+    "Systemverständnis":"Systems thinking",
+    "Agiles Arbeiten (Scrum)":"Agile work (Scrum)",
+    "Frontend-Frameworks":"Frontend frameworks",
+    "Mediengestaltung":"Media design",
+    "Deutsch (Muttersprache)":"German (native)",
+    "Englisch (fließend)":"English (fluent)",
+    "Türkisch (Muttersprache)":"Turkish (native)",
+    "Case Study ansehen":"View case study",
+    "9 Hypothesen zur CRO Optimierung":"9 Hypotheses for CRO Optimization",
+    "Checkout ohne Reibung?":"Checkout Without Friction?",
+    // Navigation
+    "Projekte":"Projects",
+    "Über mich":"About me",
+    "Kontakt aufnehmen":"Get in touch",
+    "Projekte ansehen":"View projects",
+    // Hero
+    "Moin. Ich verbinde UX Design, Webentwicklung und Conversion-Optimierung, um digitale Produkte zu entwickeln, die nicht nur gut aussehen, sondern auch funktionieren.":"Hi, I'm Muhammed-Emre. I combine UX design, web development and conversion optimization to build digital products that look good and actually work.",
+    // Projekte-Section
+    "Ausgewählte":"Selected",
+    // Card-Titel
+    "FitX – 9 Hypothesen zur CRO Optimierung":"FitX – 9 Hypotheses for CRO Optimization",
+    "ABOUT YOU – Checkout ohne Reibung?":"ABOUT YOU – Checkout Without Friction?",
+    // Tags
+    "Webentwicklung":"Web Development",
+    "Internes Tool":"Internal Tool",
+    "Prozessoptimierung":"Process Optimization",
+    "Buchungssystem":"Booking System",
+    "Conversion Optimierung":"Conversion Optimization",
+    "Fuhrparkverwaltung":"Fleet Management",
+    // Zeiträume
+    "Jan. 2024 – Feb. 2025":"Jan 2024 – Feb 2025",
+    "Nov. 2022 – Feb. 2023":"Nov 2022 – Feb 2023",
+    "Mai 2026":"May 2026",
+    "Nov. 2024 – Mär. 2026":"Nov 2024 – Mar 2026",
+    "Feb. 2023 – Dez. 2023":"Feb 2023 – Dec 2023",
+    // Card-Beschreibungen
+    "Redesign eines firmeninternen Tools zur Buchung und Verwaltung von Sitzplätzen in Logen im Weserstadion. Ziel war es, die Nutzeroberfläche zu modernisieren, den Buchungsprozess zu vereinfachen und die Informationsstruktur klarer zu gestalten, um Eingabefehler im Arbeitsalltag zu reduzieren.":"Redesign of an internal tool for booking and managing box seats at the Weserstadion. The goal was to modernize the interface, simplify the booking flow and make the structure clearer, reducing input errors in daily work.",
+    "Gast-WLAN ist ein Tool zur schnellen Bereitstellung temporärer WLAN-Zugänge für Firmenbesucher. Ziel war ein klarer, effizienter Registrierungsprozess, der Abbrüche minimiert und Nutzer direkt zum personalisierten Zugangscode führt.":"Gast-WLAN quickly provisions temporary WiFi access for company visitors. The goal was a clear, efficient sign-up that minimizes drop-offs and takes users straight to their personal access code.",
+    "Analyse und A/B-Testkonzept zur Steigerung der Conversion Rate auf der FitX-Anmeldeseite. Fokus auf Hypothesenentwicklung, priorisierten Testszenarien und messbaren Wachstumshebeln entlang des Conversion Funnels.":"An analysis and A/B testing concept to lift the conversion rate on the FitX sign-up page, with a focus on hypotheses, prioritized test scenarios and measurable growth levers along the funnel.",
+    "Fiktiver CRO-Case: Wie lässt sich der mobile Checkout-Funnel bei ABOUT YOU optimieren, ohne den Kaufimpuls durch Registrierungsprozesse zu unterbrechen?":"Fictional CRO case: how can the mobile checkout funnel at ABOUT YOU be optimized without breaking the purchase impulse with registration steps?",
+    "Sammlung diverser Social Media Projekte mit Fokus auf Content Design und visuelle Markenkommunikation. Ziel war die Entwicklung klarer, wiedererkennbarer Designs für verschiedene Plattformen und Kampagnen mit zielgruppenorientierter Ansprache.":"A collection of social media projects focused on content design and visual brand communication. The goal was to create clear, recognizable designs for different platforms and campaigns, tailored to each audience.",
+    "Poolwagen ist ein Tool zur strukturierten Verwaltung von Dienstfahrzeugen im Office-Management. Ziel war eine schnelle, fehlerfreie Fahrzeugreservierung und eine klare Informationsübersicht für alle Nutzer.":"Poolwagen is a tool for managing company vehicles in office operations. The goal was fast, error-free booking and a clear overview for everyone.",
+    // Über mich
+    "Designs und digitale Produkte, die Ergebnisse liefern":"Designs and digital products that deliver results",
+    "Ich bin UX/UI Designer mit technischem Verständnis und Fokus auf Conversion-Optimierung. Durch meine Ausbildung bei team neusta und eigene Projekte habe ich gelernt, Nutzerbedürfnisse, Business-Ziele und technische Anforderungen zusammenzubringen.":"I'm a UX/UI designer with technical know-how and a focus on conversion optimization. Through my apprenticeship at team neusta and my own projects, I've learned how to bring user needs, business goals and technical constraints together.",
+    "Mein Schwerpunkt liegt auf der Gestaltung digitaler Produkte, die intuitiv nutzbar, technisch umsetzbar und auf messbare Ergebnisse ausgerichtet sind, von der ersten Idee über die Konzeption bis zur Optimierung.":"My focus is on digital products that are intuitive, technically feasible and built for measurable results, from the first idea through concept to optimization.",
+    "digitale Produkte":"digital products",
+    "Mehr über mich":"More about me",
+    // Kontakt
+    "Kontakt":"Contact",
+    "Lass uns zusammenarbeiten":"Let's work together",
+    "Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.":"Like my work? I'd love to hear from you."
+  };
+
+  var lang = localStorage.getItem('siteLang') || 'de';
+  var root, obs, applying = false;
+
+  function walk(node){
+    var en = lang === 'en';
+    var w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while ((n = w.nextNode())){
+      var key = n.nodeValue.trim();
+      if (!key) continue;
+      if (en){
+        if (DICT[key] !== undefined){
+          if (n.__de == null) n.__de = n.nodeValue;
+          n.nodeValue = n.nodeValue.replace(key, DICT[key]);
+        }
+      } else if (n.__de != null){
+        n.nodeValue = n.__de;
+      }
+    }
+  }
+  function apply(){
+    if (!root) return;
+    applying = true;
+    if (obs) obs.disconnect();
+    walk(root);
+    if (obs) obs.observe(root, { childList:true, subtree:true, characterData:true });
+    applying = false;
+  }
+
+  function flagSVG(which){
+    if (which === 'de')
+      return '<svg width="24" height="16" viewBox="0 0 5 3" style="display:block;border-radius:3px"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>';
+    return '<svg width="24" height="16" viewBox="0 0 60 30" style="display:block;border-radius:3px"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3.5"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>';
+  }
+  function setLang(l){
+    if (l === lang) return;
+    lang = l;
+    localStorage.setItem('siteLang', l);
+    document.documentElement.lang = l;
+    apply();
+    refreshToggles();
+  }
+  var toggleEls = [];
+  var CELL = 34;
+  function refreshToggles(){
+    toggleEls.forEach(function(t){
+      t.de.style.opacity = lang === 'de' ? '1' : '0.45';
+      t.en.style.opacity = lang === 'en' ? '1' : '0.45';
+      t.thumb.style.transform = 'translateX(' + (lang === 'en' ? CELL : 0) + 'px)';
+    });
+  }
+  function buildToggle(){
+    var wrap = document.createElement('div');
+    wrap.className = 'langToggle';
+    wrap.setAttribute('role', 'switch');
+    wrap.title = 'DE / EN';
+    wrap.style.cssText = 'position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;padding:3px;' +
+      'border-radius:9999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);' +
+      'cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,0.35)';
+    var thumb = document.createElement('div');
+    thumb.style.cssText = 'position:absolute;top:3px;left:3px;width:' + CELL + 'px;height:22px;border-radius:9999px;' +
+      'background:rgba(255,255,255,0.82);box-shadow:0 2px 8px rgba(0,0,0,0.3);' +
+      'transition:transform .26s cubic-bezier(0.22,1,0.36,1);transform:translateX(' + (lang === 'en' ? CELL : 0) + 'px)';
+    wrap.appendChild(thumb);
+    function cell(l){
+      var c = document.createElement('div');
+      c.style.cssText = 'position:relative;z-index:1;width:' + CELL + 'px;height:22px;display:flex;' +
+        'align-items:center;justify-content:center;opacity:' + (lang === l ? '1' : '0.45') + ';transition:opacity .2s;filter:drop-shadow(0 1px 1.5px rgba(29,78,216,0.3))';
+      c.innerHTML = flagSVG(l);
+      return c;
+    }
+    var de = cell('de'), en = cell('en');
+    wrap.appendChild(de);
+    wrap.appendChild(en);
+    wrap.onclick = function(){ setLang(lang === 'de' ? 'en' : 'de'); };
+    toggleEls.push({ el: wrap, de: de, en: en, thumb: thumb });
+    return wrap;
+  }
+  function ensureNav(){
+    if (!root) return;
+    var nav = root.querySelector('nav');
+    if (!nav || nav.querySelector('.langToggle')) return;
+    toggleEls = toggleEls.filter(function(t){ return document.body.contains(t.el); });
+    var tg = buildToggle();
+    var rg = nav.lastElementChild;
+    if (rg && rg.tagName === 'DIV') rg.insertBefore(tg, rg.firstChild);
+    else nav.style.position='relative';nav.appendChild(tg);
+  }
+  var pending = null;
+  function schedule(){
+    if (pending) return;
+    pending = setTimeout(function(){
+      pending = null;
+      if (lang === 'en') apply();
+      ensureNav();
+    }, 40);
+  }
+  function start(){
+    root = document.getElementById('root');
+    if (!root){ setTimeout(start, 150); return; }
+    document.documentElement.lang = lang;
+    obs = new MutationObserver(function(){ if (!applying) schedule(); });
+    apply();
+    ensureNav();
+    obs.observe(root, { childList:true, subtree:true, characterData:true });
+  }
+  if (document.readyState !== 'loading') start();
+  else document.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+<script>(function(){function setup(){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("rv-in");io.unobserve(en.target)}})},{threshold:0.18});var seen=new WeakSet();function scan(){document.querySelectorAll(".rv").forEach(function(el){if(!seen.has(el)){seen.add(el);io.observe(el)}})}scan();var r=document.getElementById("root")||document.body;new MutationObserver(scan).observe(r,{childList:true,subtree:true});}if(document.readyState!=="loading")setup();else document.addEventListener("DOMContentLoaded",setup);})();</script>
+<!-- Main header: sticky + condense on scroll -->
+<style>
+#root header{position:fixed !important;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;z-index:500 !important;border-radius:9999px;background:rgba(14,23,58,0.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 14px 44px -16px rgba(0,0,0,0.6);transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, border-color .3s ease}#root header nav{padding:13px 16px 13px 28px !important}
+#root header nav{transition:padding .34s cubic-bezier(.16,1,.3,1)}
+#root header .btn-nav{background:rgba(255,255,255,0.08)!important;border-color:rgba(255,255,255,0.22)!important;color:hsl(40 6% 95%)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .25s,border-color .25s,color .25s}#root header .btn-nav:hover{background:rgba(255,255,255,0.14)!important;border-color:rgba(255,255,255,0.4)!important}
+#root header nav img{transition:transform .34s cubic-bezier(.16,1,.3,1), filter .3s ease}
+
+</style>
+<script>
+/* nav-main: spacing + menu state (no scroll switch) */
+(function(){
+  function syncMenu(){
+    var p=document.querySelector('.staggered-menu-panel');
+    var mopen = !!p && p.getAttribute('aria-hidden')==='false';
+    document.body.classList.toggle('sm-solid', mopen);
+  }
+  function init(){
+    var hdr=document.querySelector('#root header');
+    if(!hdr){ requestAnimationFrame(init); return; }
+    if(hdr.parentElement) hdr.parentElement.style.paddingTop=(hdr.offsetHeight+30)+'px';
+    (function watchPanel(){ var p=document.querySelector('.staggered-menu-panel'); if(!p){ requestAnimationFrame(watchPanel); return; } new MutationObserver(syncMenu).observe(p, { attributes:true, attributeFilter:['aria-hidden'] }); syncMenu(); })();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+<!-- StaggeredMenu (probeweise) -->
+<div id="sm-root"></div>
+<style>
+.staggered-menu-wrapper{position:relative;width:100%;height:100%;z-index:1000;pointer-events:none}
+.staggered-menu-wrapper.fixed-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1000;overflow:hidden}
+.staggered-menu-header{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;box-sizing:border-box;height:72px;display:flex;align-items:center;justify-content:flex-start;padding:0 32px;background:transparent;pointer-events:none;z-index:20}@media (max-width:768px){.staggered-menu-header{height:72px}}
+.staggered-menu-header > *{pointer-events:auto}
+.sm-logo{display:none}
+.sm-toggle{position:relative;display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:none;cursor:pointer;color:#111;font-weight:600;font-size:15px;line-height:1;overflow:visible;font-family:var(--font-body)}.sm-toggle{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color .25s}.sm-toggle:hover{background-color:rgba(63,70,84,0.14)}
+.sm-toggle:focus-visible{outline:2px solid #3f465466;outline-offset:4px;border-radius:4px}
+.sm-line:last-of-type{margin-top:6px}
+.sm-toggle-textWrap{position:relative;display:inline-block;height:1em;overflow:hidden;white-space:nowrap;width:var(--sm-toggle-width,auto);min-width:var(--sm-toggle-width,auto)}
+.sm-toggle-textInner{display:flex;flex-direction:column;line-height:1}
+.sm-toggle-line{display:block;height:1em;line-height:1}
+.sm-icon{position:relative;width:14px;height:14px;flex:0 0 14px;display:inline-flex;align-items:center;justify-content:center;will-change:transform}
+.sm-panel-itemWrap{position:relative;overflow:hidden;line-height:1.2}
+.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}
+.sm-line{display:none !important}
+.staggered-menu-panel{position:absolute;top:0;right:0;width:clamp(320px,48vw,585px);height:100%;background:#fff;box-shadow:-34px 0 90px -26px rgba(17,24,39,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:4em 2em 2em 2em;overflow-y:auto;z-index:10;pointer-events:auto;opacity:0}
+[data-position='left'] .staggered-menu-panel{right:auto;left:0}
+.sm-prelayers{position:absolute;top:0;right:0;bottom:0;width:clamp(320px,48vw,585px);pointer-events:none;z-index:5;opacity:0}
+[data-position='left'] .sm-prelayers{right:auto;left:0}
+.sm-prelayer{position:absolute;top:0;right:0;height:100%;width:100%;transform:translateX(0);opacity:0}
+.sm-panel-inner{flex:1;display:flex;flex-direction:column;gap:1.25rem}
+.sm-socials{margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem}
+.sm-socials-title{margin:0;font-size:1rem;font-weight:500;color:var(--sm-accent,#3f4654)}
+.sm-socials-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:center;gap:1rem;flex-wrap:wrap}
+.sm-panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.sm-panel-item{position:relative;color:#0e1013;font-weight:700;font-size:clamp(1.5rem,4.6vw,2.45rem);cursor:pointer;line-height:1.16;letter-spacing:-1.5px;text-transform:uppercase;transition:background .25s,color .25s;display:inline-block;white-space:nowrap;text-decoration:none;padding:.1em .62em .04em 0;font-family:var(--font-head)}
+@media (max-width:768px){.staggered-menu-panel .back-link{font-size:15px !important;gap:8px !important}.staggered-menu-panel .back-link::before{display:none !important}.staggered-menu-panel .back-link>svg{display:inline-block !important}}.sm-panel-itemLabel{display:inline-block;will-change:transform;transform-origin:50% 100%}
+.sm-panel-item:hover{color:var(--sm-accent,#3f4654)}
+.sm-panel-list[data-numbering]{counter-reset:smItem}
+.sm-panel-list[data-numbering] .sm-panel-item::after{counter-increment:smItem;content:counter(smItem,decimal-leading-zero);font-size:.42em;font-weight:400;color:var(--sm-accent,#3f4654);letter-spacing:0;vertical-align:1.2em;margin-left:.38em;pointer-events:none;user-select:none;opacity:var(--sm-num-opacity,0)}
+@media (max-width:1024px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (max-width:640px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (min-width:641px) and (max-width:1024px){.sm-panel-item{font-size:clamp(2.1rem,6.4vw,3.35rem) !important}.sm-panel-item.sm-small{font-size:clamp(1.85rem,6.4vw,2.85rem) !important}}#sm-root .staggered-menu-panel .sm-panel-item{color:#0e1013}@media (min-width:1025px){#sm-root{display:none !important}}.staggered-menu-header .sm-toggle,.staggered-menu-header .sm-toggle .sm-toggle-line{color:rgba(240,234,220,0.92) !important}body.sm-solid .staggered-menu-header .sm-toggle,body.sm-solid .staggered-menu-header .sm-toggle .sm-toggle-line{color:#3f4654 !important}#projekte,#ueber-mich,#kontakt{scroll-margin-top:90px}#sm-root .staggered-menu-panel{padding-top:20vh !important}@media (max-width:1024px){#root header nav>div:not(.langToggle){display:none !important}#root header nav{justify-content:flex-end !important}}</style>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+"use strict";
+
+const {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState
+} = React;
+const gsap = window.gsap;
+const StaggeredMenu = ({
+  position = 'right',
+  colors = ['#B497CF', '#5227FF'],
+  items = [],
+  socialItems = [],
+  displaySocials = false,
+  displayItemNumbering = true,
+  className,
+  logoUrl,
+  menuButtonColor = '#111',
+  openMenuButtonColor = '#111',
+  accentColor = '#3f4654',
+  changeMenuColorOnOpen = true,
+  isFixed = true,
+  closeOnClickAway = true,
+  onMenuOpen,
+  onMenuClose,
+  menuLabel = 'Menu',
+  closeLabel = 'Close'
+}) => {
+  const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
+  const panelRef = useRef(null);
+  const preLayersRef = useRef(null);
+  const preLayerElsRef = useRef([]);
+  const plusHRef = useRef(null);
+  const plusVRef = useRef(null);
+  const iconRef = useRef(null);
+  const textInnerRef = useRef(null);
+  const textWrapRef = useRef(null);
+  const [textLines, setTextLines] = useState([menuLabel, closeLabel]);
+  const openTlRef = useRef(null);
+  const closeTweenRef = useRef(null);
+  const spinTweenRef = useRef(null);
+  const textCycleAnimRef = useRef(null);
+  const colorTweenRef = useRef(null);
+  const toggleBtnRef = useRef(null);
+  const busyRef = useRef(false);
+  const itemEntranceTweenRef = useRef(null);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panel = panelRef.current;
+      const preContainer = preLayersRef.current;
+      const plusH = plusHRef.current;
+      const plusV = plusVRef.current;
+      const icon = iconRef.current;
+      const textInner = textInnerRef.current;
+      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      let preLayers = [];
+      if (preContainer) preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+      preLayerElsRef.current = preLayers;
+      const offscreen = position === 'left' ? -100 : 100;
+      gsap.set([panel, ...preLayers], {
+        xPercent: offscreen,
+        opacity: 1
+      });
+      if (preContainer) gsap.set(preContainer, {
+        xPercent: 0,
+        opacity: 1
+      });
+      gsap.set(plusH, {
+        transformOrigin: '50% 50%',
+        rotate: 0
+      });
+      gsap.set(plusV, {
+        transformOrigin: '50% 50%',
+        rotate: 90
+      });
+      gsap.set(icon, {
+        rotate: 0,
+        transformOrigin: '50% 50%'
+      });
+      gsap.set(textInner, {
+        yPercent: 0
+      });
+      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    });
+    return () => ctx.revert();
+  }, [menuButtonColor, position]);
+  const buildOpenTimeline = useCallback(() => {
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return null;
+    openTlRef.current && openTlRef.current.kill();
+    if (closeTweenRef.current) {
+      closeTweenRef.current.kill();
+      closeTweenRef.current = null;
+    }
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+    const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+    const socialTitle = panel.querySelector('.sm-socials-title');
+    const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+    const offscreen = position === 'left' ? -100 : 100;
+    const layerStates = layers.map(el => ({
+      el,
+      start: offscreen
+    }));
+    const panelStart = offscreen;
+    if (itemEls.length) gsap.set(itemEls, {
+      yPercent: 140,
+      rotate: 10
+    });
+    if (numberEls.length) gsap.set(numberEls, {
+      '--sm-num-opacity': 0
+    });
+    if (socialTitle) gsap.set(socialTitle, {
+      opacity: 0
+    });
+    if (socialLinks.length) gsap.set(socialLinks, {
+      y: 25,
+      opacity: 0
+    });
+    const tl = gsap.timeline({
+      paused: true
+    });
+    layerStates.forEach((ls, i) => {
+      tl.fromTo(ls.el, {
+        xPercent: ls.start
+      }, {
+        xPercent: 0,
+        duration: 0.5,
+        ease: 'power4.out'
+      }, i * 0.07);
+    });
+    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
+    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+    const panelDuration = 0.65;
+    tl.fromTo(panel, {
+      xPercent: panelStart
+    }, {
+      xPercent: 0,
+      duration: panelDuration,
+      ease: 'power4.out'
+    }, panelInsertTime);
+    if (itemEls.length) {
+      const itemsStart = panelInsertTime + panelDuration * 0.15;
+      tl.to(itemEls, {
+        yPercent: 0,
+        rotate: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: {
+          each: 0.1,
+          from: 'start'
+        }
+      }, itemsStart);
+      if (numberEls.length) {
+        tl.to(numberEls, {
+          duration: 0.6,
+          ease: 'power2.out',
+          '--sm-num-opacity': 1,
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          }
+        }, itemsStart + 0.1);
+      }
+    }
+    if (socialTitle || socialLinks.length) {
+      const socialsStart = panelInsertTime + panelDuration * 0.4;
+      if (socialTitle) tl.to(socialTitle, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, socialsStart);
+      if (socialLinks.length) {
+        tl.to(socialLinks, {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          },
+          onComplete: () => {
+            gsap.set(socialLinks, {
+              clearProps: 'opacity'
+            });
+          }
+        }, socialsStart + 0.04);
+      }
+    }
+    openTlRef.current = tl;
+    return tl;
+  }, [position]);
+  const playOpen = useCallback(() => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    const tl = buildOpenTimeline();
+    if (tl) {
+      tl.eventCallback('onComplete', () => {
+        busyRef.current = false;
+      });
+      tl.play(0);
+    } else busyRef.current = false;
+  }, [buildOpenTimeline]);
+  const playClose = useCallback(() => {
+    openTlRef.current && openTlRef.current.kill();
+    openTlRef.current = null;
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return;
+    const all = [...layers, panel];
+    closeTweenRef.current && closeTweenRef.current.kill();
+    const offscreen = position === 'left' ? -100 : 100;
+    closeTweenRef.current = gsap.to(all, {
+      xPercent: offscreen,
+      duration: 0.32,
+      ease: 'power3.in',
+      overwrite: 'auto',
+      onComplete: () => {
+        const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+        if (itemEls.length) gsap.set(itemEls, {
+          yPercent: 140,
+          rotate: 10
+        });
+        const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+        if (numberEls.length) gsap.set(numberEls, {
+          '--sm-num-opacity': 0
+        });
+        const socialTitle = panel.querySelector('.sm-socials-title');
+        const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+        if (socialTitle) gsap.set(socialTitle, {
+          opacity: 0
+        });
+        if (socialLinks.length) gsap.set(socialLinks, {
+          y: 25,
+          opacity: 0
+        });
+        busyRef.current = false;
+      }
+    });
+  }, [position]);
+  const animateIcon = useCallback(opening => {
+    const icon = iconRef.current;
+    if (!icon) return;
+    spinTweenRef.current && spinTweenRef.current.kill();
+    if (opening) spinTweenRef.current = gsap.to(icon, {
+      rotate: 225,
+      duration: 0.8,
+      ease: 'power4.out',
+      overwrite: 'auto'
+    });else spinTweenRef.current = gsap.to(icon, {
+      rotate: 0,
+      duration: 0.35,
+      ease: 'power3.inOut',
+      overwrite: 'auto'
+    });
+  }, []);
+  const animateColor = useCallback(opening => {
+    const btn = toggleBtnRef.current;
+    if (!btn) return;
+    colorTweenRef.current && colorTweenRef.current.kill();
+    if (changeMenuColorOnOpen) {
+      const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+      colorTweenRef.current = gsap.to(btn, {
+        color: targetColor,
+        delay: 0.18,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    } else gsap.set(btn, {
+      color: menuButtonColor
+    });
+  }, [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]);
+  React.useEffect(() => {
+    if (toggleBtnRef.current) {
+      if (changeMenuColorOnOpen) {
+        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
+        gsap.set(toggleBtnRef.current, {
+          color: targetColor
+        });
+      } else gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    }
+  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  const animateText = useCallback(opening => {
+    const inner = textInnerRef.current;
+    if (!inner) return;
+    textCycleAnimRef.current && textCycleAnimRef.current.kill();
+    const currentLabel = opening ? menuLabel : closeLabel;
+    const targetLabel = opening ? closeLabel : menuLabel;
+    const cycles = 3;
+    const seq = [currentLabel];
+    let last = currentLabel;
+    for (let i = 0; i < cycles; i++) {
+      last = last === menuLabel ? closeLabel : menuLabel;
+      seq.push(last);
+    }
+    if (last !== targetLabel) seq.push(targetLabel);
+    seq.push(targetLabel);
+    setTextLines(seq);
+    gsap.set(inner, {
+      yPercent: 0
+    });
+    const lineCount = seq.length;
+    const finalShift = (lineCount - 1) / lineCount * 100;
+    textCycleAnimRef.current = gsap.to(inner, {
+      yPercent: -finalShift,
+      duration: 0.5 + lineCount * 0.07,
+      ease: 'power4.out'
+    });
+  }, []);
+  const toggleMenu = useCallback(() => {
+    const target = !openRef.current;
+    openRef.current = target;
+    setOpen(target);
+    if (target) {
+      onMenuOpen && onMenuOpen();
+      playOpen();
+    } else {
+      onMenuClose && onMenuClose();
+      playClose();
+    }
+    animateIcon(target);
+    animateColor(target);
+    animateText(target);
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+  const closeMenu = useCallback(() => {
+    if (openRef.current) {
+      openRef.current = false;
+      setOpen(false);
+      onMenuClose && onMenuClose();
+      playClose();
+      animateIcon(false);
+      animateColor(false);
+      animateText(false);
+    }
+  }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
+  React.useEffect(() => {
+    if (!closeOnClickAway || !open) return;
+    const handleClickOutside = event => {
+      if (panelRef.current && !panelRef.current.contains(event.target) && toggleBtnRef.current && !toggleBtnRef.current.contains(event.target)) closeMenu();
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [closeOnClickAway, open, closeMenu]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: (className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : ''),
+    style: accentColor ? {
+      ['--sm-accent']: accentColor
+    } : undefined,
+    "data-position": position,
+    "data-open": open || undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: preLayersRef,
+    className: "sm-prelayers",
+    "aria-hidden": "true"
+  }, (() => {
+    const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
+    let arr = [...raw];
+    if (arr.length >= 3) {
+      const mid = Math.floor(arr.length / 2);
+      arr.splice(mid, 1);
+    }
+    return arr.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "sm-prelayer",
+      style: {
+        background: c
+      }
+    }));
+  })()), /*#__PURE__*/React.createElement("header", {
+    className: "staggered-menu-header",
+    "aria-label": "Main navigation header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-logo",
+    "aria-label": "Logo"
+  }), /*#__PURE__*/React.createElement("button", {
+    ref: toggleBtnRef,
+    className: "sm-toggle",
+    "aria-label": open ? 'Close menu' : 'Open menu',
+    "aria-expanded": open,
+    "aria-controls": "staggered-menu-panel",
+    onClick: toggleMenu,
+    type: "button"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textWrapRef,
+    className: "sm-toggle-textWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textInnerRef,
+    className: "sm-toggle-textInner"
+  }, textLines.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    className: "sm-toggle-line",
+    key: i
+  }, l)))), /*#__PURE__*/React.createElement("span", {
+    ref: iconRef,
+    className: "sm-icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: plusHRef,
+    className: "sm-icon-line"
+  }), /*#__PURE__*/React.createElement("span", {
+    ref: plusVRef,
+    className: "sm-icon-line sm-icon-line-v"
+  })))), /*#__PURE__*/React.createElement("aside", {
+    id: "staggered-menu-panel",
+    ref: panelRef,
+    className: "staggered-menu-panel",
+    "aria-hidden": !open
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-panel-inner"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "sm-panel-list",
+    role: "list",
+    "data-numbering": displayItemNumbering || undefined
+  }, items && items.length ? items.map((it, idx) => /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    key: it.label + idx
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "sm-panel-item",
+    href: it.link,
+    "aria-label": it.ariaLabel,
+    "data-index": idx + 1,
+    onClick: e => {
+      if (it.onClick) it.onClick(e);
+      closeMenu();
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, it.label)))) : /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, "No items")))), /*#__PURE__*/React.createElement("a", { href: "#kontakt", "aria-label": "Kontakt aufnehmen", onClick: function(e){ e.preventDefault(); var el=document.getElementById("kontakt"); if(el) el.scrollIntoView({ behavior:"smooth", block:"start" }); closeMenu(); }, style: { marginTop: "2rem", alignSelf: "flex-start", display: "inline-block", padding: "14px 30px", borderRadius: "9999px", background: "#1d4ed8", color: "#fff", fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "1rem", textDecoration: "none" } }, "Kontakt aufnehmen"))));
+};
+const SECTIONS = [
+  { de:'Projekte',  en:'Projekte',  target:'projekte' },
+  { de:'Über mich', en:'Über mich', target:'ueber-mich' }
+];
+const T = { de:{ menu:'Menü', close:'Schließen', to:'Zu ' }, en:{ menu:'Menu', close:'Close', to:'Go to ' } };
+function curLang(){ return (document.documentElement.lang === 'en' || localStorage.getItem('siteLang') === 'en') ? 'en' : 'de'; }
+function MenuApp(){
+  const [lang, setLang] = React.useState(curLang());
+  React.useEffect(function(){
+    const upd = function(){ setLang(curLang()); };
+    const mo = new MutationObserver(upd);
+    mo.observe(document.documentElement, { attributes:true, attributeFilter:['lang'] });
+    window.addEventListener('storage', upd);
+    return function(){ mo.disconnect(); window.removeEventListener('storage', upd); };
+  }, []);
+  const en = lang === 'en';
+  const items = SECTIONS.map(function(row){
+    const label = en ? row.en : row.de;
+    return { label: label, link: '#', ariaLabel: (en ? T.en.to : T.de.to) + label,
+      onClick: function(e){ e.preventDefault(); var el=document.getElementById(row.target); if(el) el.scrollIntoView({ behavior:'smooth', block:'start' }); } };
+  });
+  return React.createElement(StaggeredMenu, {
+    key: lang, position: "right", isFixed: true, items: items,
+    displaySocials: false, displayItemNumbering: true,
+    menuButtonColor: "#f0eadc", openMenuButtonColor: "#0e1013",
+    accentColor: "#1d4ed8", colors: ['#cfd3da', '#1d4ed8'], changeMenuColorOnOpen: false,
+    menuLabel: en ? T.en.menu : T.de.menu, closeLabel: en ? T.en.close : T.de.close
+  });
+}
+ReactDOM.createRoot(document.getElementById('sm-root')).render(React.createElement(MenuApp, null));
+})();
+</script>
+
 </body>
 </html>

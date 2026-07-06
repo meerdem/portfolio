@@ -30,8 +30,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="../assets/fonts/fonts.css" />
-<link rel="icon" type="image/svg+xml" href="../assets/me_logo.svg" />
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
@@ -41,14 +40,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       hsl(260 87% 3%);
+  --bg:       hsl(158 65% 4%);
   --fg:       hsl(40 6% 95%);
   --fg-sub:   hsl(40 6% 72%);
-  --font-body: 'Geist', sans-serif;
-  --font-head: 'General Sans', sans-serif;
+  --font-body: 'Momo Trust Sans', sans-serif;
+  --font-head: 'Momo Trust Sans', sans-serif;
 }
 
-html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); overflow-x: hidden; }
+html, body { background: var(--bg); color: var(--fg); font-family: var(--font-body); letter-spacing: -0.04em; overflow-x: hidden; }
 
 .nav-divider {
   height: 1px;
@@ -101,7 +100,7 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
 }
 .insight-card:hover {
   background: rgba(255,255,255,0.06);
-  border-color: rgba(168,85,247,0.25);
+  border-color: rgba(21,146,79,0.25);
 }
 .insight-card.slide-l,
 .insight-card.slide-r {
@@ -125,8 +124,8 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   padding: 0;
 }
 .back-link:hover { color: rgba(240,234,220,0.9); }
-.me-badge { display: inline-block; border-radius: 50%; transition: box-shadow 0.2s, transform 0.2s; line-height: 0; text-decoration: none; }
-.me-badge:hover { box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3); transform: scale(1.08); }
+.me-badge { display: inline-block; padding: 6px; margin: -6px; border-radius: 50%; transition: background-color 0.2s ease, transform 0.2s ease; line-height: 0; text-decoration: none; }
+.me-badge:hover { transform: scale(1.08); }
 
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr !important; }
@@ -164,7 +163,16 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   from { stroke-dashoffset: 22; }
   to   { stroke-dashoffset: 0; }
 }
+  @keyframes pnav-by{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}@keyframes pnav-bxr{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}@keyframes pnav-bxl{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}.proj-nav a{padding:12px 16px;border-radius:12px;transition:background-color .22s ease,box-shadow .22s ease}.proj-nav a:hover{background-color:#e3f4ec;box-shadow:inset 0 0 0 1px rgba(21,146,79,0.18),0 6px 18px rgba(21,146,79,0.12)}.proj-nav a[href*="index.html"]:hover svg{animation:pnav-by .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):first-child:hover svg{animation:pnav-bxl .55s ease-in-out infinite}.proj-nav a:not([href*="index.html"]):last-child:hover svg{animation:pnav-bxr .55s ease-in-out infinite}
+  .bounce-back{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color 0.15s}.bounce-back:hover{background-color:rgba(21,146,79,0.14)}.bounce-back:hover svg{animation:pnav-bxl .55s ease-in-out infinite}
+  .langToggle{transition:background .2s ease,border-color .2s ease}.langToggle:hover{background:rgba(21,146,79,0.2)!important;border-color:rgba(255,255,255,0.34)!important}
+  @keyframes cpbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}@keyframes libob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}.cp-btn:hover span{animation:cpbob .5s ease-in-out infinite}.li-btn:hover svg{animation:libob .55s ease-in-out infinite}.li-btn:hover{background:rgba(21,146,79,0.14)}
+  @media (max-width:600px){a.back-link,a.bounce-back{font-size:0 !important;gap:0 !important;}a.back-link>svg,a.bounce-back>svg{display:none !important;}a.back-link::before,a.bounce-back::before{content:"";display:inline-block;width:21px;height:21px;flex-shrink:0;background-color:currentColor;-webkit-mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;mask:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%209l9-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpolyline%20points%3D%229%2022%209%2012%2015%2012%2015%2022%22/%3E%3C/svg%3E') center/contain no-repeat;}}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="root"></div>
@@ -189,6 +197,676 @@ html, body { background: var(--bg); color: var(--fg); font-family: var(--font-bo
   window.addEventListener('resize', fix);
 })();
 </script>
+
+<!-- ── Sprach-Umschalter DE/EN (isoliert) ── -->
+<script>
+(function(){
+  var DICT = {
+    "Vorheriges Projekt":"Previous project",
+    "Zur Übersicht":"All projects",
+    "Alle Projekte":"All projects",
+    "Nächstes Projekt":"Next project",
+    "Werderloge ist ein Internes Tool zur Buchung und Verwaltung von Sitzplätzen in Logen im Weserstadion, dem Heimatstadion des SV Werder Bremen. Das System richtet sich an Mitarbeitende sowie Geschäftsführer, die im Arbeitsalltag Reservierungen vornehmen und verwalten.":"Werderloge is an internal tool for booking and managing seats in the boxes at the Weserstadion, the home stadium of SV Werder Bremen. The system is aimed at employees and managing directors who make and manage reservations in their everyday work.",
+    "Die wichtigsten Match-Infos wie Vereine und Uhrzeit sind über ein Akkordeon sofort sichtbar, was die Orientierung beschleunigt.":"Key match details like clubs and kickoff time are visible instantly through an accordion, so users get oriented faster.",
+    "Ein Bestätigungsmodal mit ausgeblurrtem Hintergrund lenkt die Aufmerksamkeit gezielt. Buttons werden nach Bestätigung deaktiviert, eine Toast-Meldung schließt den Prozess ab.":"A confirmation modal with a blurred background focuses attention. Buttons are disabled after confirming, and a toast message wraps up the process.",
+    "Das neue Design reduziert die notwendigen Schritte zur Buchung auf ein Minimum und gibt Nutzern jederzeit eine klare Übersicht über Verfügbarkeiten und bestehende Reservierungen.":"The new design cuts the booking steps to a minimum and gives users a clear, always-on overview of availability and existing reservations.",
+    "Interne Tools werden oft unterschätzt, dabei steckt genauso viel UX-Potenzial drin wie in Consumer-Produkten.":"Internal tools are often underestimated, even though they hold just as much UX potential as consumer products.",
+    "Zurück zum Portfolio":"Back to portfolio",
+    "Webentwicklung":"Web Development",
+    "Internes Tool":"Internal Tool",
+    "Prozessoptimierung":"Process Optimization",
+    "Buchungssystem":"Booking System",
+    "01 · Briefing":"01 · Briefing",
+    "02 · Herausforderung & Ziel":"02 · Challenge & Goal",
+    "03 · User Journey":"03 · User Journey",
+    "04 · Ergebnis":"04 · Result",
+    "05 · Erkenntnisse":"05 · Learnings",
+    "Zeitraum":"Timeframe",
+    "Jan. 2024 – Feb. 2025":"Jan 2024 – Feb 2025",
+    "Rolle":"Role",
+    "UX/UI Designer & Frontend-Entwickler":"UX/UI Designer & Frontend Developer",
+    "Einsatzdauer":"Duration",
+    "13 Monate":"13 months",
+    "Ein internes Buchungstool für Logenplätze im Weserstadion":"An internal booking tool for box seats at the Weserstadion",
+    "Das Projekt entstand im Rahmen meiner Ausbildung bei team neusta und umfasste den vollständigen UX/UI-Prozess, von der Analyse des bestehenden Systems bis hin zum fertigen Redesign. Entwickelt wurde es in enger Zusammenarbeit mit Backend-Entwicklern.":"Built during my apprenticeship at team neusta, this project covered the full UX/UI process, from analyzing the existing system to the finished redesign, in close collaboration with backend developers.",
+    "Die Herausforderung":"The Challenge",
+    "Das bestehende System war visuell veraltet, unübersichtlich und fehleranfällig. Nutzer verloren schnell den Überblick über verfügbare Plätze, Eingabefehler beim Buchungsvorgang waren an der Tagesordnung.":"The old system was outdated, cluttered and prone to errors. Users quickly lost track of available seats, and booking mistakes were a daily occurrence.",
+    "Die Informationsstruktur war nicht auf den tatsächlichen Arbeitsfluss ausgerichtet, was zu unnötigem Zeitaufwand und Frustration bei den Nutzern führte.":"The information structure wasn't aligned with the actual workflow, which caused unnecessary effort and user frustration.",
+    "Das Ziel":"The Goal",
+    "Ein modernes, klar strukturiertes System, das Fehler reduziert und den Arbeitsalltag spürbar vereinfacht.":"A modern, clearly structured system that cuts errors and noticeably simplifies daily work.",
+    "Moderne, klare Oberfläche":"Modern, clear interface",
+    "Vereinfachter, geführter Buchungsflow":"Simplified, guided booking flow",
+    "Klare Verfügbarkeitsübersicht":"Clear availability overview",
+    "Fehlerreduktion durch bessere Struktur":"Fewer errors through better structure",
+    "Der Buchungsprozess im Detail":"The booking process in detail",
+    "Von der Startseite bis zur Bestätigungsmail, ein geführter Flow, der Fehler minimiert und Klarheit schafft.":"From the homepage to the confirmation email, a guided flow that minimizes errors and creates clarity.",
+    "Startseite":"Homepage",
+    "Buchungsprozess":"Booking Process",
+    "Buchungsabschluss":"Booking Completion",
+    "Buchungsbestätigung per E-Mail":"Booking Confirmation by Email",
+    "Der Off-Canvas sorgt für eine klare Navigation ohne Ablenkung. Die klare Struktur reduziert Fehlklicks und erleichtert das Arbeiten mit diversen Unterseiten.":"The off-canvas menu keeps navigation clear and distraction-free. The structure reduces misclicks and makes working across the various subpages easier.",
+    "Durch das Öffnen des Akkordeons erscheinen alle relevanten Informationen über das Match und der direkte Einstieg in den Buchungsprozess.":"Opening the accordion reveals all the relevant match details and a direct way into the booking process.",
+    "Die Buchung läuft über ein mehrteiliges Formular, das Schritt für Schritt führt, Fehler reduziert und nur die jeweils nötigen Eingaben zeigt.":"Booking runs through a multi-step form that guides users step by step, reduces errors and only shows the inputs needed at each point.",
+    "Nach Eingabe aller Daten sieht der Nutzer eine kompakte Zusammenfassung zur finalen Kontrolle. Die Ticketanzahl lässt sich direkt anpassen, ohne zurückspringen zu müssen.":"After entering everything, the user sees a compact summary for a final check. Ticket quantity can be adjusted right there, with no need to jump back.",
+    "Am Ende des Buchungsprozesses erhält der Nutzer eine automatisierte E-Mail mit allen wichtigen Informationen.":"At the end of the booking process, the user receives an automated email with all the important information.",
+    "Die E-Mail ist klar strukturiert, sodass Nutzer auf einen Blick sehen, dass ihre Buchung erfolgreich war.":"The email is clearly structured, so users can see at a glance that their booking was successful.",
+    "Ein durchdachtes Interface,":"A thoughtful interface,",
+    "das den Arbeitsalltag vereinfacht":"that simplifies everyday work",
+    "Weniger Schritte":"Fewer Steps",
+    "Der Buchungsflow wurde auf das Wesentliche reduziert":"The booking flow was reduced to the essentials",
+    "Mehr Klarheit":"More Clarity",
+    "Verfügbarkeiten und Buchungen auf einen Blick sichtbar":"Availability and bookings visible at a glance",
+    "Weniger Fehler":"Fewer Errors",
+    "Geführter Prozess minimiert Eingabefehler im Alltag":"A guided process minimizes input errors in everyday use",
+    "Was dieses Projekt gelehrt hat":"What this project taught me",
+    "Interne Tools brauchen UX-Qualität":"Internal tools need UX quality",
+    "Auch Mitarbeitende verdienen durchdachte Interfaces. Schlechtes Design kostet im Arbeitsalltag Zeit und erzeugt Frust, genauso wie bei externen Produkten.":"Employees deserve thoughtful interfaces too. Bad design wastes time and breeds frustration in daily work, exactly like it does in consumer products.",
+    "Scope knallhart begrenzen":"Limit scope ruthlessly",
+    "Wir haben uns zu Beginn zu viel vorgenommen. Der Wendepunkt war, ein klares MVP zu definieren und konsequent dabei zu bleiben, kein Feature ohne explizite Begründung. Diese Disziplin hat das Projekt gerettet.":"We took on too much at the start. The turning point was defining a clear MVP and sticking to it consistently, no feature without an explicit reason. That discipline saved the project.",
+    "Enge Zusammenarbeit mit Backend":"Close collaboration with backend",
+    "Zum ersten Mal habe ich so direkt mit Backend-Entwicklern zusammengearbeitet. Ich habe gelernt, wie wichtig es ist, Design-Entscheidungen auch aus Sicht des Backends zu durchdenken, und wie viel besser das Ergebnis wird, wenn beide Seiten früh miteinander sprechen.":"For the first time I worked this closely with backend developers. I learned how important it is to think through design decisions from the backend's perspective too, and how much better the result gets when both sides talk early.",
+    "Abstimmung mit Product Owner & anderer Designerin":"Alignment with Product Owner & another designer",
+    "Mit Designerinnen und einem Product Owner zusammenzuarbeiten war an sich nichts Neues, aber die Intensität und Dimension dieser Abstimmungen habe ich so noch nicht erlebt. Täglich Entscheidungen gemeinsam abwägen, begründen und verfeinern: das hat mein Verständnis von kollaborativem Arbeiten auf ein neues Level gehoben.":"Working with designers and a product owner wasn't new in itself, but I'd never experienced this intensity and scale of coordination. Weighing, justifying and refining decisions together every day took my understanding of collaborative work to a new level.",
+    "Kopieren":"Copy",
+    "Nach oben":"Back to top",
+    "Kontakt":"Contact",
+    "Lass uns zusammenarbeiten":"Let's work together",
+    "Dir gefällt meine Arbeit? Ich freue mich auf den Austausch.":"Like my work? I'd love to hear from you."
+  };
+  var lang = localStorage.getItem('siteLang') || 'de';
+  var root, obs, applying = false;
+  function walk(node){
+    var en = lang === 'en';
+    var w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+    var n;
+    while ((n = w.nextNode())){
+      var key = n.nodeValue.trim();
+      if (!key) continue;
+      if (en){ if (DICT[key] !== undefined){ if (n.__de == null) n.__de = n.nodeValue; n.nodeValue = n.nodeValue.replace(key, DICT[key]); } }
+      else if (n.__de != null){ n.nodeValue = n.__de; }
+    }
+  }
+  function apply(){ if (!root) return; applying = true; if (obs) obs.disconnect(); walk(root); if (obs) obs.observe(root, { childList:true, subtree:true, characterData:true }); applying = false; }
+  function flagSVG(which){
+    if (which === 'de') return '<svg width="24" height="16" viewBox="0 0 5 3" style="display:block;border-radius:3px"><rect width="5" height="1" y="0" fill="#000"/><rect width="5" height="1" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>';
+    return '<svg width="24" height="16" viewBox="0 0 60 30" style="display:block;border-radius:3px"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3.5"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>';
+  }
+  function setLang(l){ if (l === lang) return; lang = l; localStorage.setItem('siteLang', l); document.documentElement.lang = l; apply(); refreshToggles(); }
+  var toggleEls = [];
+  var CELL = 34;
+  function refreshToggles(){ toggleEls.forEach(function(t){ t.de.style.opacity = lang==='de'?'1':'0.45'; t.en.style.opacity = lang==='en'?'1':'0.45'; t.thumb.style.transform = 'translateX(' + (lang==='en'?CELL:0) + 'px)'; }); }
+  function buildToggle(){
+    var wrap = document.createElement('div'); wrap.className='langToggle'; wrap.setAttribute('role','switch'); wrap.title='DE / EN';
+    wrap.style.cssText='position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;padding:3px;border-radius:9999px;background:rgba(21,146,79,0.14);border:1px solid rgba(255,255,255,0.16);cursor:pointer;box-shadow:inset 0 1px 3px rgba(0,0,0,0.35)';
+    var thumb=document.createElement('div');
+    thumb.style.cssText='position:absolute;top:3px;left:3px;width:'+CELL+'px;height:22px;border-radius:9999px;background:rgba(255,255,255,0.82);box-shadow:0 2px 8px rgba(0,0,0,0.3);transition:transform .26s cubic-bezier(0.22,1,0.36,1);transform:translateX('+(lang==='en'?CELL:0)+'px)';
+    wrap.appendChild(thumb);
+    function cell(l){ var c=document.createElement('div'); c.style.cssText='position:relative;z-index:1;width:'+CELL+'px;height:22px;display:flex;align-items:center;justify-content:center;opacity:'+(lang===l?'1':'0.45')+';transition:opacity .2s;filter:drop-shadow(0 1px 1.5px rgba(21,146,79,0.3))'; c.innerHTML=flagSVG(l); return c; }
+    var de=cell('de'), en=cell('en'); wrap.appendChild(de); wrap.appendChild(en);
+    wrap.onclick=function(){ setLang(lang==='de'?'en':'de'); };
+    toggleEls.push({el:wrap,de:de,en:en,thumb:thumb}); return wrap;
+  }
+  function ensureNav(){
+    if (!root) return;
+    var nav = root.querySelector('nav');
+    if (!nav || nav.querySelector('.langToggle')) return;
+    toggleEls = toggleEls.filter(function(t){ return document.body.contains(t.el); });
+    nav.style.position='relative';nav.appendChild(buildToggle());
+  }
+  var pending=null;
+  function schedule(){ if (pending) return; pending=setTimeout(function(){ pending=null; if(lang==='en') apply(); ensureNav(); }, 40); }
+  function start(){ root=document.getElementById('root'); if(!root){ setTimeout(start,150); return; } document.documentElement.lang=lang; obs=new MutationObserver(function(){ if(!applying) schedule(); }); apply(); ensureNav(); obs.observe(root,{childList:true,subtree:true,characterData:true}); }
+  if (document.readyState !== 'loading') start(); else document.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+<!-- StaggeredMenu (probeweise) -->
+<div id="sm-root"></div>
+<style>
+.staggered-menu-wrapper{position:relative;width:100%;height:100%;z-index:200;pointer-events:none}
+.staggered-menu-wrapper.fixed-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:200;overflow:hidden}
+.staggered-menu-header{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:1180px;box-sizing:border-box;height:72px;display:flex;align-items:center;justify-content:flex-start;padding:0 32px;background:transparent;pointer-events:none;z-index:20}
+.staggered-menu-header > *{pointer-events:auto}
+.sm-logo{display:none}
+.sm-toggle{position:relative;display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:none;cursor:pointer;color:#111;font-weight:600;font-size:15px;line-height:1;overflow:visible;font-family:var(--font-body)}.sm-toggle{border-radius:10px;padding:8px 12px;margin:-8px -12px;transition:background-color .2s ease,color .25s}.sm-toggle:hover{background-color:rgba(29,122,82,0.12)}
+.sm-toggle:focus-visible{outline:2px solid #3f465466;outline-offset:4px;border-radius:4px}
+.sm-line:last-of-type{margin-top:6px}
+.sm-toggle-textWrap{position:relative;display:inline-block;height:1em;overflow:hidden;white-space:nowrap;width:var(--sm-toggle-width,auto);min-width:var(--sm-toggle-width,auto)}
+.sm-toggle-textInner{display:flex;flex-direction:column;line-height:1}
+.sm-toggle-line{display:block;height:1em;line-height:1}
+.sm-icon{position:relative;width:14px;height:14px;flex:0 0 14px;display:inline-flex;align-items:center;justify-content:center;will-change:transform}
+.sm-panel-itemWrap{position:relative;overflow:hidden;line-height:1.2}
+.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}
+.sm-line{display:none !important}
+.staggered-menu-panel{position:absolute;top:0;right:0;width:clamp(320px,48vw,585px);height:100%;background:#fff;box-shadow:-34px 0 90px -26px rgba(17,24,39,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:4em 2em 2em 2em;overflow-y:auto;z-index:10;pointer-events:auto;opacity:0}
+[data-position='left'] .staggered-menu-panel{right:auto;left:0}
+.sm-prelayers{position:absolute;top:0;right:0;bottom:0;width:clamp(320px,48vw,585px);pointer-events:none;z-index:5;opacity:0}
+[data-position='left'] .sm-prelayers{right:auto;left:0}
+.sm-prelayer{position:absolute;top:0;right:0;height:100%;width:100%;transform:translateX(0);opacity:0}
+.sm-panel-inner{flex:1;display:flex;flex-direction:column;gap:1.25rem}
+.sm-socials{margin-top:auto;padding-top:2rem;display:flex;flex-direction:column;gap:.75rem}
+.sm-socials-title{margin:0;font-size:1rem;font-weight:500;color:var(--sm-accent,#3f4654)}
+.sm-socials-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;align-items:center;gap:1rem;flex-wrap:wrap}
+.sm-panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.sm-panel-item{position:relative;color:#0e1013;font-weight:700;font-size:clamp(1.5rem,4.6vw,2.45rem);cursor:pointer;line-height:1.16;letter-spacing:-1.5px;text-transform:uppercase;transition:background .25s,color .25s;display:inline-block;white-space:nowrap;text-decoration:none;padding:.1em .62em .04em 0;font-family:var(--font-head)}
+@media (max-width:768px){.staggered-menu-panel .back-link{font-size:15px !important;gap:8px !important}.staggered-menu-panel .back-link::before{display:none !important}.staggered-menu-panel .back-link>svg{display:inline-block !important}}.sm-panel-itemLabel{display:inline-block;will-change:transform;transform-origin:50% 100%}
+.sm-panel-item:hover{color:var(--sm-accent,#3f4654)}
+.sm-panel-list[data-numbering]{counter-reset:smItem}
+.sm-panel-list[data-numbering] .sm-panel-item::after{counter-increment:smItem;content:counter(smItem,decimal-leading-zero);font-size:.42em;font-weight:400;color:var(--sm-accent,#3f4654);letter-spacing:0;vertical-align:1.2em;margin-left:.38em;pointer-events:none;user-select:none;opacity:var(--sm-num-opacity,0)}.sm-panel-item.sm-small{font-size:clamp(1.35rem,4.6vw,2.1rem)!important}.sm-panel-item.sm-sub{font-size:clamp(.85rem,2.6vw,1.25rem);margin-left:1.8rem;font-weight:600;letter-spacing:-.3px;text-transform:none}.sm-panel-list[data-numbering] .sm-panel-item.sm-sub::after{content:none}
+@media (max-width:1024px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (max-width:640px){.staggered-menu-panel{width:100%;left:0;right:0}.sm-prelayers{width:100%}}
+@media (min-width:641px) and (max-width:1024px){.sm-panel-item{font-size:clamp(2.1rem,6.4vw,3.35rem) !important}.sm-panel-item.sm-small{font-size:clamp(1.85rem,6.4vw,2.85rem) !important}}</style>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+<script>
+(function(){
+"use strict";
+
+const {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState
+} = React;
+const gsap = window.gsap;
+const StaggeredMenu = ({
+  position = 'right',
+  colors = ['#B497CF', '#5227FF'],
+  items = [],
+  socialItems = [],
+  displaySocials = false,
+  displayItemNumbering = true,
+  className,
+  logoUrl,
+  menuButtonColor = '#111',
+  openMenuButtonColor = '#111',
+  accentColor = '#3f4654',
+  changeMenuColorOnOpen = true,
+  isFixed = true,
+  closeOnClickAway = true,
+  onMenuOpen,
+  onMenuClose,
+  menuLabel = 'Menu',
+  closeLabel = 'Close'
+}) => {
+  const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
+  const panelRef = useRef(null);
+  const preLayersRef = useRef(null);
+  const preLayerElsRef = useRef([]);
+  const plusHRef = useRef(null);
+  const plusVRef = useRef(null);
+  const iconRef = useRef(null);
+  const textInnerRef = useRef(null);
+  const textWrapRef = useRef(null);
+  const [textLines, setTextLines] = useState([menuLabel, closeLabel]);
+  const openTlRef = useRef(null);
+  const closeTweenRef = useRef(null);
+  const spinTweenRef = useRef(null);
+  const textCycleAnimRef = useRef(null);
+  const colorTweenRef = useRef(null);
+  const toggleBtnRef = useRef(null);
+  const busyRef = useRef(false);
+  const itemEntranceTweenRef = useRef(null);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const panel = panelRef.current;
+      const preContainer = preLayersRef.current;
+      const plusH = plusHRef.current;
+      const plusV = plusVRef.current;
+      const icon = iconRef.current;
+      const textInner = textInnerRef.current;
+      if (!panel || !plusH || !plusV || !icon || !textInner) return;
+      let preLayers = [];
+      if (preContainer) preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
+      preLayerElsRef.current = preLayers;
+      const offscreen = position === 'left' ? -100 : 100;
+      gsap.set([panel, ...preLayers], {
+        xPercent: offscreen,
+        opacity: 1
+      });
+      if (preContainer) gsap.set(preContainer, {
+        xPercent: 0,
+        opacity: 1
+      });
+      gsap.set(plusH, {
+        transformOrigin: '50% 50%',
+        rotate: 0
+      });
+      gsap.set(plusV, {
+        transformOrigin: '50% 50%',
+        rotate: 90
+      });
+      gsap.set(icon, {
+        rotate: 0,
+        transformOrigin: '50% 50%'
+      });
+      gsap.set(textInner, {
+        yPercent: 0
+      });
+      if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    });
+    return () => ctx.revert();
+  }, [menuButtonColor, position]);
+  const buildOpenTimeline = useCallback(() => {
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return null;
+    openTlRef.current && openTlRef.current.kill();
+    if (closeTweenRef.current) {
+      closeTweenRef.current.kill();
+      closeTweenRef.current = null;
+    }
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+    const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+    const socialTitle = panel.querySelector('.sm-socials-title');
+    const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+    const offscreen = position === 'left' ? -100 : 100;
+    const layerStates = layers.map(el => ({
+      el,
+      start: offscreen
+    }));
+    const panelStart = offscreen;
+    if (itemEls.length) gsap.set(itemEls, {
+      yPercent: 140,
+      rotate: 10
+    });
+    if (numberEls.length) gsap.set(numberEls, {
+      '--sm-num-opacity': 0
+    });
+    if (socialTitle) gsap.set(socialTitle, {
+      opacity: 0
+    });
+    if (socialLinks.length) gsap.set(socialLinks, {
+      y: 25,
+      opacity: 0
+    });
+    const tl = gsap.timeline({
+      paused: true
+    });
+    layerStates.forEach((ls, i) => {
+      tl.fromTo(ls.el, {
+        xPercent: ls.start
+      }, {
+        xPercent: 0,
+        duration: 0.5,
+        ease: 'power4.out'
+      }, i * 0.07);
+    });
+    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
+    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+    const panelDuration = 0.65;
+    tl.fromTo(panel, {
+      xPercent: panelStart
+    }, {
+      xPercent: 0,
+      duration: panelDuration,
+      ease: 'power4.out'
+    }, panelInsertTime);
+    if (itemEls.length) {
+      const itemsStart = panelInsertTime + panelDuration * 0.15;
+      tl.to(itemEls, {
+        yPercent: 0,
+        rotate: 0,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: {
+          each: 0.1,
+          from: 'start'
+        }
+      }, itemsStart);
+      if (numberEls.length) {
+        tl.to(numberEls, {
+          duration: 0.6,
+          ease: 'power2.out',
+          '--sm-num-opacity': 1,
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          }
+        }, itemsStart + 0.1);
+      }
+    }
+    if (socialTitle || socialLinks.length) {
+      const socialsStart = panelInsertTime + panelDuration * 0.4;
+      if (socialTitle) tl.to(socialTitle, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, socialsStart);
+      if (socialLinks.length) {
+        tl.to(socialLinks, {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.08,
+            from: 'start'
+          },
+          onComplete: () => {
+            gsap.set(socialLinks, {
+              clearProps: 'opacity'
+            });
+          }
+        }, socialsStart + 0.04);
+      }
+    }
+    openTlRef.current = tl;
+    return tl;
+  }, [position]);
+  const playOpen = useCallback(() => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    const tl = buildOpenTimeline();
+    if (tl) {
+      tl.eventCallback('onComplete', () => {
+        busyRef.current = false;
+      });
+      tl.play(0);
+    } else busyRef.current = false;
+  }, [buildOpenTimeline]);
+  const playClose = useCallback(() => {
+    openTlRef.current && openTlRef.current.kill();
+    openTlRef.current = null;
+    itemEntranceTweenRef.current && itemEntranceTweenRef.current.kill();
+    const panel = panelRef.current;
+    const layers = preLayerElsRef.current;
+    if (!panel) return;
+    const all = [...layers, panel];
+    closeTweenRef.current && closeTweenRef.current.kill();
+    const offscreen = position === 'left' ? -100 : 100;
+    closeTweenRef.current = gsap.to(all, {
+      xPercent: offscreen,
+      duration: 0.32,
+      ease: 'power3.in',
+      overwrite: 'auto',
+      onComplete: () => {
+        const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel'));
+        if (itemEls.length) gsap.set(itemEls, {
+          yPercent: 140,
+          rotate: 10
+        });
+        const numberEls = Array.from(panel.querySelectorAll('.sm-panel-list[data-numbering] .sm-panel-item'));
+        if (numberEls.length) gsap.set(numberEls, {
+          '--sm-num-opacity': 0
+        });
+        const socialTitle = panel.querySelector('.sm-socials-title');
+        const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link'));
+        if (socialTitle) gsap.set(socialTitle, {
+          opacity: 0
+        });
+        if (socialLinks.length) gsap.set(socialLinks, {
+          y: 25,
+          opacity: 0
+        });
+        busyRef.current = false;
+      }
+    });
+  }, [position]);
+  const animateIcon = useCallback(opening => {
+    const icon = iconRef.current;
+    if (!icon) return;
+    spinTweenRef.current && spinTweenRef.current.kill();
+    if (opening) spinTweenRef.current = gsap.to(icon, {
+      rotate: 225,
+      duration: 0.8,
+      ease: 'power4.out',
+      overwrite: 'auto'
+    });else spinTweenRef.current = gsap.to(icon, {
+      rotate: 0,
+      duration: 0.35,
+      ease: 'power3.inOut',
+      overwrite: 'auto'
+    });
+  }, []);
+  const animateColor = useCallback(opening => {
+    const btn = toggleBtnRef.current;
+    if (!btn) return;
+    colorTweenRef.current && colorTweenRef.current.kill();
+    if (changeMenuColorOnOpen) {
+      const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+      colorTweenRef.current = gsap.to(btn, {
+        color: targetColor,
+        delay: 0.18,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    } else gsap.set(btn, {
+      color: menuButtonColor
+    });
+  }, [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]);
+  React.useEffect(() => {
+    if (toggleBtnRef.current) {
+      if (changeMenuColorOnOpen) {
+        const targetColor = openRef.current ? openMenuButtonColor : menuButtonColor;
+        gsap.set(toggleBtnRef.current, {
+          color: targetColor
+        });
+      } else gsap.set(toggleBtnRef.current, {
+        color: menuButtonColor
+      });
+    }
+  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  const animateText = useCallback(opening => {
+    const inner = textInnerRef.current;
+    if (!inner) return;
+    textCycleAnimRef.current && textCycleAnimRef.current.kill();
+    const currentLabel = opening ? menuLabel : closeLabel;
+    const targetLabel = opening ? closeLabel : menuLabel;
+    const cycles = 3;
+    const seq = [currentLabel];
+    let last = currentLabel;
+    for (let i = 0; i < cycles; i++) {
+      last = last === menuLabel ? closeLabel : menuLabel;
+      seq.push(last);
+    }
+    if (last !== targetLabel) seq.push(targetLabel);
+    seq.push(targetLabel);
+    setTextLines(seq);
+    gsap.set(inner, {
+      yPercent: 0
+    });
+    const lineCount = seq.length;
+    const finalShift = (lineCount - 1) / lineCount * 100;
+    textCycleAnimRef.current = gsap.to(inner, {
+      yPercent: -finalShift,
+      duration: 0.5 + lineCount * 0.07,
+      ease: 'power4.out'
+    });
+  }, []);
+  const toggleMenu = useCallback(() => {
+    const target = !openRef.current;
+    openRef.current = target;
+    setOpen(target);
+    if (target) {
+      onMenuOpen && onMenuOpen();
+      playOpen();
+    } else {
+      onMenuClose && onMenuClose();
+      playClose();
+    }
+    animateIcon(target);
+    animateColor(target);
+    animateText(target);
+  }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
+  const closeMenu = useCallback(() => {
+    if (openRef.current) {
+      openRef.current = false;
+      setOpen(false);
+      onMenuClose && onMenuClose();
+      playClose();
+      animateIcon(false);
+      animateColor(false);
+      animateText(false);
+    }
+  }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
+  React.useEffect(() => {
+    if (!closeOnClickAway || !open) return;
+    const handleClickOutside = event => {
+      if (panelRef.current && !panelRef.current.contains(event.target) && toggleBtnRef.current && !toggleBtnRef.current.contains(event.target)) closeMenu();
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [closeOnClickAway, open, closeMenu]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: (className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : ''),
+    style: accentColor ? {
+      ['--sm-accent']: accentColor
+    } : undefined,
+    "data-position": position,
+    "data-open": open || undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: preLayersRef,
+    className: "sm-prelayers",
+    "aria-hidden": "true"
+  }, (() => {
+    const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
+    let arr = [...raw];
+    if (arr.length >= 3) {
+      const mid = Math.floor(arr.length / 2);
+      arr.splice(mid, 1);
+    }
+    return arr.map((c, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "sm-prelayer",
+      style: {
+        background: c
+      }
+    }));
+  })()), /*#__PURE__*/React.createElement("header", {
+    className: "staggered-menu-header",
+    "aria-label": "Main navigation header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-logo",
+    "aria-label": "Logo"
+  }), /*#__PURE__*/React.createElement("button", {
+    ref: toggleBtnRef,
+    className: "sm-toggle",
+    "aria-label": open ? 'Close menu' : 'Open menu',
+    "aria-expanded": open,
+    "aria-controls": "staggered-menu-panel",
+    onClick: toggleMenu,
+    type: "button"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textWrapRef,
+    className: "sm-toggle-textWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: textInnerRef,
+    className: "sm-toggle-textInner"
+  }, textLines.map((l, i) => /*#__PURE__*/React.createElement("span", {
+    className: "sm-toggle-line",
+    key: i
+  }, l)))), /*#__PURE__*/React.createElement("span", {
+    ref: iconRef,
+    className: "sm-icon",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    ref: plusHRef,
+    className: "sm-icon-line"
+  }), /*#__PURE__*/React.createElement("span", {
+    ref: plusVRef,
+    className: "sm-icon-line sm-icon-line-v"
+  })))), /*#__PURE__*/React.createElement("aside", {
+    id: "staggered-menu-panel",
+    ref: panelRef,
+    className: "staggered-menu-panel",
+    "aria-hidden": !open
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sm-panel-inner"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "sm-panel-list",
+    role: "list",
+    "data-numbering": displayItemNumbering || undefined
+  }, items && items.length ? items.map((it, idx) => /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    key: it.label + idx
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "sm-panel-item" + (it.sub ? " sm-sub" : "") + (it.small ? " sm-small" : ""),
+    href: it.link,
+    "aria-label": it.ariaLabel,
+    "data-index": idx + 1,
+    onClick: e => {
+      if (it.onClick) it.onClick(e);
+      closeMenu();
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, it.label)))) : /*#__PURE__*/React.createElement("li", {
+    className: "sm-panel-itemWrap",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-item"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sm-panel-itemLabel"
+  }, "No items")))))));
+};
+const SECTIONS = [
+  { de:'Briefing',               en:'Briefing',          target:'wl-briefing' },
+  { de:'Herausforderung & Ziel', en:'Challenge & Goal',  target:'wl-herausforderung', small:true },
+  { de:'User Journey',           en:'User Journey',      target:'wl-journey' },
+  { de:'Ergebnis',               en:'Result',            target:'wl-ergebnis' },
+  { de:'Erkenntnisse',           en:'Learnings',         target:'wl-erkenntnisse' }
+];
+const T = { de:{ menu:'Menü', close:'Schließen', to:'Zu ' }, en:{ menu:'Menu', close:'Close', to:'Go to ' } };
+function curLang(){ return (document.documentElement.lang === 'en' || localStorage.getItem('siteLang') === 'en') ? 'en' : 'de'; }
+function MenuApp(){
+  const [lang, setLang] = React.useState(curLang());
+  React.useEffect(function(){
+    const upd = function(){ setLang(curLang()); };
+    const mo = new MutationObserver(upd);
+    mo.observe(document.documentElement, { attributes:true, attributeFilter:['lang'] });
+    window.addEventListener('storage', upd);
+    return function(){ mo.disconnect(); window.removeEventListener('storage', upd); };
+  }, []);
+  const en = lang === 'en';
+  const items = SECTIONS.map(function(row){
+    const label = en ? row.en : row.de;
+    return {
+      label: label, sub: !!row.sub, small: !!row.small, link: '#',
+      ariaLabel: (en ? T.en.to : T.de.to) + label,
+      onClick: function(e){ e.preventDefault(); var el=document.getElementById(row.target); if(el) el.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    };
+  });
+  return React.createElement(StaggeredMenu, {
+    key: lang, position: "right", isFixed: true, items: items,
+    displaySocials: false, displayItemNumbering: true,
+    menuButtonColor: "#1d7a52", openMenuButtonColor: "#1d7a52",
+    accentColor: "#1d7a52", colors: ['#cfe3d6', '#1d7a52'], changeMenuColorOnOpen: true,
+    menuLabel: en ? T.en.menu : T.de.menu, closeLabel: en ? T.en.close : T.de.close
+  });
+}
+ReactDOM.createRoot(document.getElementById('sm-root')).render(React.createElement(MenuApp, null));
+})();
+</script>
+<!-- Header: fixed + condense on scroll -->
+<style>
+#root{background:#fff}#root header nav{padding:13px 28px !important}@media (max-width:768px){.staggered-menu-panel{padding-top:8em !important}}#root header{position:fixed!important;top:16px!important;left:50%;transform:translateX(-50%);width:calc(100% - 28px)!important;max-width:1180px;border-radius:9999px!important;background:linear-gradient(0deg,rgba(29,122,82,0.16),rgba(29,122,82,0.16)),rgba(255,255,255,0.58)!important;backdrop-filter:blur(22px) saturate(140%)!important;-webkit-backdrop-filter:blur(22px) saturate(140%)!important;border:1px solid rgba(29,122,82,0.18)!important;box-shadow:0 14px 40px -16px rgba(29,122,82,.34)!important;transition:box-shadow .3s ease,background .3s ease}
+#root header nav{transition:padding .34s cubic-bezier(.16,1,.3,1)!important}
+#root header.nav-scrolled{background:linear-gradient(0deg,rgba(29,122,82,0.16),rgba(29,122,82,0.16)),rgba(255,255,255,0.58) !important;box-shadow:0 14px 40px -16px rgba(29,122,82,.34)}
+#root header.nav-scrolled nav{padding-top:13px!important;padding-bottom:13px!important}
+#root header nav img{transition:transform .34s cubic-bezier(.16,1,.3,1)}
+#root header.nav-scrolled nav img{transform:scale(1)}@media (max-width:768px){#root header nav{padding:13px 20px !important}.staggered-menu-header{height:72px;padding:0 20px}}
+#root section,[id^="wl-"]{scroll-margin-top:84px}
+.staggered-menu-header{transition:height .34s cubic-bezier(.16,1,.3,1)!important}
+.staggered-menu-header.nav-scrolled{height:72px!important}
+</style>
+<script>
+(function(){
+  function init(){
+    var hdr = document.querySelector('#root header');
+    if (!hdr){ requestAnimationFrame(init); return; }
+    if (hdr.parentElement){ hdr.parentElement.style.paddingTop = (hdr.offsetHeight + 34) + 'px'; hdr.parentElement.style.background = '#fff'; }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+
+
+
 </body>
 </html>
 
