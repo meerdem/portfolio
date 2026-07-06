@@ -29,6 +29,9 @@
     "jobTitle": "UX/UI Designer & Webentwickler",
     "description": "Mediengestalter für UX/UI Design und Webentwicklung aus Bremen, ausgebildet bei team neusta.",
     "url": "https://muhammed-emre-erdem.de",
+    "image": "https://muhammed-emre-erdem.de/assets/ueber-mich/portrait.webp",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bremen", "addressCountry": "DE" },
+    "knowsAbout": ["UX Design", "UI Design", "Webentwicklung", "Conversion-Optimierung", "A/B Testing"],
     "email": "m.e.erdem@hotmail.de",
     "sameAs": ["https://www.linkedin.com/in/muhammed-emre-erdem-70408536a"]
   }
@@ -247,6 +250,24 @@ html, body {
 </head>
 <body>
 
+<noscript>
+  <div style="max-width:820px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.6;color:#111">
+    <h1>Portfolio &ndash; Muhammed-Emre Erdem</h1>
+    <p>UX/UI Designer und Webentwickler aus Bremen, ausgebildet bei team neusta. Ich verbinde UX&nbsp;Design, Webentwicklung und Conversion-Optimierung, um digitale Produkte zu entwickeln, die gut aussehen und funktionieren.</p>
+    <h2>Ausgew&auml;hlte Projekte</h2>
+    <ul>
+      <li><a href="components/aboutyou.html">ABOUT YOU &ndash; Checkout ohne Reibung (CRO Case Study)</a></li>
+      <li><a href="components/fitx.html">FitX &ndash; 9 Hypothesen zur CRO-Optimierung</a></li>
+      <li><a href="components/poolwagen.html">Poolwagen &ndash; Company Pool Cars (UX/UI, Webentwicklung)</a></li>
+      <li><a href="components/werderloge.html">Werderloge &ndash; Buchungssystem-Redesign</a></li>
+      <li><a href="components/socialmedia.html">Content &amp; Brand Design &ndash; Social-Media-Projekte</a></li>
+      <li><a href="components/gastwlan.html">Gast-WLAN &ndash; Access-Management-Tool</a></li>
+    </ul>
+    <h2>&Uuml;ber mich</h2>
+    <p><a href="components/ueber-mich.html">Mehr &uuml;ber mich</a></p>
+    <p>Kontakt: <a href="mailto:m.e.erdem@hotmail.de">m.e.erdem@hotmail.de</a> &middot; <a href="https://www.linkedin.com/in/muhammed-emre-erdem-70408536a" rel="noopener">LinkedIn</a></p>
+  </div>
+</noscript>
 <div id="root"></div>
 
 <!-- Tweaks panel -->
@@ -508,7 +529,7 @@ html, body {
 .sm-toggle-line{display:block;height:1em;line-height:1}
 .sm-icon{position:relative;width:14px;height:14px;flex:0 0 14px;display:inline-flex;align-items:center;justify-content:center;will-change:transform}
 .sm-panel-itemWrap{position:relative;overflow:hidden;line-height:1.2}
-.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}
+.sm-icon-line{position:absolute;left:50%;top:50%;width:100%;height:2px;background:currentColor;border-radius:2px;transform:translate(-50%,-50%);will-change:transform}@media (max-width:599px){/* burger-x */.sm-toggle-textWrap{display:none !important}.sm-toggle{gap:0 !important}.sm-icon{transform:none !important;width:20px !important;height:14px !important;flex:0 0 20px !important}.sm-icon-line{display:none !important}.sm-icon::before,.sm-icon::after{content:"";position:absolute;left:0;width:100%;height:2px;background:currentColor;border-radius:2px;transition:transform .3s ease,box-shadow .15s ease}.sm-icon::before{top:2px;box-shadow:0 5px 0 currentColor}.sm-icon::after{top:12px}.sm-toggle[aria-expanded="true"] .sm-icon::before{transform:translateY(5px) rotate(45deg);box-shadow:0 5px 0 transparent}.sm-toggle[aria-expanded="true"] .sm-icon::after{transform:translateY(-5px) rotate(-45deg)}}
 .sm-line{display:none !important}
 .staggered-menu-panel{position:absolute;top:0;right:0;width:clamp(320px,48vw,585px);height:100%;background:#fff;box-shadow:-34px 0 90px -26px rgba(17,24,39,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:4em 2em 2em 2em;overflow-y:auto;z-index:10;pointer-events:auto;opacity:0}
 [data-position='left'] .staggered-menu-panel{right:auto;left:0}
